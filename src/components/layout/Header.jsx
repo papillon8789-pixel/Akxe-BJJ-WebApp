@@ -14,7 +14,7 @@ export default function Header() {
             <span className="text-2xl">🦅</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold tracking-wide">BJJ TECHNIQUE LOCKER</h1>
+            <h1 className="text-lg font-bold tracking-wide">PRIMO TECHNIQUE VAULT</h1>
             <p className="text-xs text-primo-gold">PRIMO BJJ München</p>
           </div>
         </div>
