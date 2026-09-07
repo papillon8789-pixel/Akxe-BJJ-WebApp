@@ -1,5 +1,5 @@
 // Base URL for R2 Storage
-const R2_BASE_URL = 'https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev/bjjvideos';
+const R2_BASE_URL = 'https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev';
 
 export const mockTechniques = [
   {
