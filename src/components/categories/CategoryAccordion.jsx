@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
 
-export default function CategoryAccordion({ category, techniques, isNewest }) {
+export default function CategoryAccordion({ category, techniques, isNewest, isLegacy }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -24,6 +24,11 @@ export default function CategoryAccordion({ category, techniques, isNewest }) {
           {isNewest && (
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold uppercase animate-pulse">
               NEW!
+            </span>
+          )}
+          {isLegacy && !isNewest && (
+            <span className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+              🏛️ LEGACY
             </span>
           )}
         </div>

@@ -26,6 +26,11 @@ function AppContent() {
     return newestCategory;
   };
 
+  // Check if a category is legacy (all videos have isLegacy: true)
+  const isLegacyCategory = (techniques) => {
+    return techniques.every(tech => tech.isLegacy === true);
+  };
+
   const newestCategory = getNewestCategory();
 
   return (
@@ -48,6 +53,7 @@ function AppContent() {
                 category={category}
                 techniques={techniques}
                 isNewest={category === newestCategory}
+                isLegacy={isLegacyCategory(techniques)}
               />
             ))}
           </div>
