@@ -26,6 +26,9 @@ const videoGroups = [
   
   // Back Control
   { start: 50, count: 4, title: 'Back Control', filePrefix: 'Back_Technique_', category: 'back', subCategory: 'Back Control', tags: ['Back', 'Position', 'Gi'], difficulties: Array(4).fill('Intermediate') },
+  
+  // TakeDown
+  { start: 54, count: 27, title: 'TakeDown', filePrefix: 'TakeDown_Technique_', category: 'takedown', subCategory: 'TakeDown', tags: ['TakeDown', 'Standing', 'Gi'], difficulties: Array(27).fill('Intermediate'), isLegacy: false },
 ];
 
 let techniques = [];
@@ -70,12 +73,13 @@ const R2_BASE_URL = '${R2_BASE_URL}';
 export const mockTechniques = ${JSON.stringify(techniques, null, 2).replace(/"(\$\{R2_BASE_URL\}[^"]+)"/g, '`$1`')};
 
 export const categories = [
-  { id: 'all', icon: '▦', label: 'ALL', iconType: 'emoji' },
+  { id: 'all', icon: '/images/AllCategories.png', label: 'ALL', iconType: 'image' },
   { id: 'guard', icon: '/images/guard.png', label: 'GUARD', iconType: 'image' },
   { id: 'pass', icon: '/images/pass.png', label: 'PASS', iconType: 'image' },
   { id: 'side', icon: '/images/side.png', label: 'SIDE CONTROL', iconType: 'image' },
   { id: 'back', icon: '/images/back.png', label: 'BACK', iconType: 'image' },
-  { id: 'submissions', icon: '/images/submission.png', label: 'SUBMISSIONS', iconType: 'image' }
+  { id: 'submissions', icon: '/images/submission.png', label: 'SUBMISSIONS', iconType: 'image' },
+  { id: 'takedown', icon: '/images/TakeDown.png', label: 'TAKEDOWN', iconType: 'image' }
 ];
 
 export const subCategories = {
@@ -83,7 +87,8 @@ export const subCategories = {
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   side: ['Side Control', 'North South', 'Knee on Belly'],
   back: ['Back Control', 'Turtle'],
-  submissions: ['Armlocks', 'Chokes', 'Leglocks']
+  submissions: ['Armlocks', 'Chokes', 'Leglocks'],
+  takedown: ['TakeDown']
 };
 `;
 

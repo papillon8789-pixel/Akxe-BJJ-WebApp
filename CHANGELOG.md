@@ -1,5 +1,42 @@
 # Changelog - PRIMO BJJ Technique Locker
 
+## 2026-09-09 - TakeDown Category & Icon Updates
+
+### Icon-Update: ALL Category
+- **Neues Icon für "ALL":** `/images/AllCategories.png` statt Emoji
+- **Design:** Konsistentes Image-Icon für alle Kategorien
+- **Typ:** Von `emoji` zu `image` geändert
+
+### TakeDown Category Added (27 Videos)
+
+### Neue Video-Kategorie: TakeDown
+- **27 TakeDown Videos** aus Cloudflare R2 integriert
+- **Video-Dateien:** TakeDown_Technique_1.mp4 bis TakeDown_Technique_27.mp4
+- **Kategorie-Icon:** `/images/TakeDown.png`
+- **Tags:** TakeDown, Standing, Gi
+- **Schwierigkeitsgrad:** Intermediate
+- **Status:** Neue Videos (isLegacy: false) - "NEW!" Badge
+
+### Technische Details
+- **Gesamt-Videos:** 80 (vorher 53)
+- **Neue Kategorie:** "TAKEDOWN" in Navigation hinzugefügt
+- **SubCategory:** TakeDown
+- **ID-Range:** 54-80
+
+### Dateien geändert
+- `generate-techniques.js` - TakeDown Gruppe hinzugefügt
+- `src/data/mockTechniques.js` - 27 neue Video-Einträge generiert
+- Categories und SubCategories aktualisiert
+
+### Video-Übersicht nach Kategorien
+- **GUARD:** 30 Videos
+- **SIDE CONTROL:** 19 Videos
+- **BACK:** 4 Videos
+- **TAKEDOWN:** 27 Videos (NEU!)
+- **Gesamt:** 80 Videos
+
+---
+
 ## 2026-09-09 - Legacy Badge System
 
 ### Badge System Implementation
