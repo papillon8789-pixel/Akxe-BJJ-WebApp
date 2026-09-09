@@ -10,11 +10,11 @@ export default function Header() {
       <div className="flex items-center justify-between">
         {/* Logo & Title */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden">
+          <div className="w-12 h-12 flex items-center justify-center">
             <img
               src="/images/logo.png"
               alt="PRIMO BJJ Logo"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
           <div>
