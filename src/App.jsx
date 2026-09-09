@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import IconNavigation from './components/layout/IconNavigation';
 import CategoryAccordion from './components/categories/CategoryAccordion';
 import SplashScreen from './components/SplashScreen';
+import Banner from './components/Banner';
 
 function AppContent() {
   const { groupedTechniques, filteredTechniques } = useTechniques();
@@ -39,6 +40,8 @@ function AppContent() {
       <IconNavigation />
       
       <main className="container mx-auto px-4 py-6 max-w-4xl">
+        <Banner />
+        
         {Object.keys(groupedTechniques).length === 0 ? (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🥋</div>

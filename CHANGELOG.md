@@ -1,5 +1,46 @@
 # Changelog - PRIMO BJJ Technique Locker
 
+## 2026-09-09 - Banner System Implementation
+
+### Dynamisches Banner-System
+- **Banner-Komponente erstellt:** Zeigt dynamische Ankündigungen in der App
+- **GitHub Integration:** Banner-Text liegt im Repository (`public/banner.json`)
+- **Handy-freundlich:** Einfach mit GitHub Mobile App bearbeitbar
+- **Aktiv/Inaktiv Steuerung:** Einfaches `"active": true/false` Flag
+- **4 Banner-Typen:** Info (blau), Success (grün), Warning (gelb), Error (rot)
+- **Features:**
+  - Dismissible: User können Banner schließen (localStorage)
+  - Auto-Expire: Banner verschwinden automatisch nach Ablaufdatum
+  - Optional klickbar mit Link
+  - Automatisches Deployment bei Änderungen
+
+### Technische Details
+- **Banner-Datei:** `public/banner.json` (im GitHub Repository)
+- **Komponente:** `src/components/Banner.jsx`
+- **Icons:** lucide-react Package hinzugefügt
+- **Deployment:** Automatisch bei Git Push (1-2 Minuten)
+- **Cache:** No-cache für immer aktuelle Banner-Daten
+
+### Dateien erstellt
+- `src/components/Banner.jsx` - Banner-Komponente
+- `public/banner.json` - Banner-Konfiguration
+- `BANNER-ANLEITUNG.md` - Vollständige Dokumentation mit Handy-Anleitung
+
+### Workflow
+1. GitHub App öffnen (oder Browser)
+2. `public/banner.json` bearbeiten
+3. Commit & Push
+4. Cloudflare deployed automatisch
+5. Banner ist live (1-2 Minuten)
+
+### Use Cases
+- 📢 Neue Videos ankündigen
+- 🎄 Events kommunizieren (z.B. Weihnachtsparty)
+- 🔧 Wartungsarbeiten ankündigen
+- ⚠️ Wichtige Hinweise anzeigen
+
+---
+
 ## 2026-09-09 - TakeDown Category & Icon Updates
 
 ### Icon-Update: ALL Category
