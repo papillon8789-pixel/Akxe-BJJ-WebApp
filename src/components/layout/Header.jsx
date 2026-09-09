@@ -12,7 +12,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 flex items-center justify-center">
             <img
-              src="/images/logo.png"
+              src="/images/logo.jpg"
               alt="PRIMO BJJ Logo"
               className="w-full h-full object-contain"
             />
