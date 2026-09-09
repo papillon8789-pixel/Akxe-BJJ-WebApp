@@ -41,11 +41,11 @@ function AppContent() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="text-2xl">🦅</span>
-            <span className="text-primo-gold font-bold">PRIMO BJJ - AKXE GERMANY</span>
+            <span className="text-primo-gold font-bold">AKXE BJJ - PRIMO GERMANY</span>
           </div>
           <p className="text-gray-400 text-sm mb-1">München</p>
           <p className="text-gray-600 text-xs italic">"Together we stand, united we fight"</p>
-          <p className="text-gray-700 text-xs mt-3">© 2012-2026 PRIMO BJJ | EST. 2012</p>
+          <p className="text-gray-700 text-xs mt-3">© 2012-2026 AKXE BJJ | EST. 2012</p>
         </div>
       </footer>
     </div>
