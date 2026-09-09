@@ -21,7 +21,16 @@ export default function IconNavigation() {
               <img
                 src={cat.icon}
                 alt={cat.label}
-                className="w-8 h-8 object-contain"
+                className={`w-8 h-8 object-contain transition-all ${
+                  selectedCategory === cat.id
+                    ? 'brightness-0 invert' // Weiß wenn aktiv
+                    : 'brightness-75 opacity-70' // Gedimmt wenn inaktiv
+                }`}
+                style={{
+                  filter: selectedCategory === cat.id
+                    ? 'brightness(0) invert(1)'
+                    : 'brightness(0.75) opacity(0.7)'
+                }}
                 onError={(e) => {
                   // Fallback zu Emoji wenn Bild nicht lädt
                   e.target.style.display = 'none';
