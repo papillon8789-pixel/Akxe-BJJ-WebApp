@@ -17,8 +17,15 @@ export default function IconNavigation() {
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
             }`}
           >
-            <span className="text-2xl">{cat.icon}</span>
-            <span className="text-xs font-semibold whitespace-nowrap">{cat.label}</span>
+            {cat.iconType === 'image' ? (
+              <img
+                src={cat.icon}
+                alt={cat.label}
+                className="w-16 h-16 object-contain"
+              />
+            ) : (
+              <span className="text-2xl">{cat.icon}</span>
+            )}
           </button>
         ))}
       </div>
