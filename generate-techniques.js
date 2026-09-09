@@ -3,8 +3,8 @@ import fs from 'fs';
 const R2_BASE_URL = 'https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev';
 
 const videoGroups = [
-  // Z Guard (C_Guard1-6)
-  { start: 1, count: 6, title: 'Z Guard', filePrefix: 'C_Guard', category: 'guard', subCategory: 'Z Guard', tags: ['Guard', 'Z Guard', 'Gi'], difficulties: ['Beginner', 'Beginner', 'Intermediate', 'Intermediate', 'Advanced', 'Advanced'] },
+  // Z Guard (C_Guard1-6) - NEW!
+  { start: 1, count: 6, title: 'Z Guard', filePrefix: 'C_Guard', category: 'guard', subCategory: 'Z Guard', tags: ['Guard', 'Z Guard', 'Gi'], difficulties: ['Beginner', 'Beginner', 'Intermediate', 'Intermediate', 'Advanced', 'Advanced'], isLegacy: false },
   
   // 50/50 Guard
   { start: 7, count: 6, title: '50/50 Position', filePrefix: '50_50_Position_Technique_', category: 'guard', subCategory: '50/50 Guard', tags: ['Guard', '50/50', 'Gi', 'Leg Entanglement'], difficulties: ['Intermediate', 'Intermediate', 'Advanced', 'Advanced', 'Advanced', 'Advanced'] },
@@ -52,7 +52,7 @@ videoGroups.forEach(group => {
       dateAdded: '2026-09-09',
       month: '2026-09',
       difficulty: group.difficulties[i],
-      isLegacy: true,
+      isLegacy: group.isLegacy !== false,
       isFavorite: false,
       isDownloaded: false,
       isBookmarked: false,
