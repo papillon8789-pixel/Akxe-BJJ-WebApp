@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
 
 export default function CategoryAccordion({ category, techniques }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="mb-4">
