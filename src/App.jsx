@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { TechniqueProvider, useTechniques } from './context/TechniqueContext';
 import Header from './components/layout/Header';
 import IconNavigation from './components/layout/IconNavigation';
 import CategoryAccordion from './components/categories/CategoryAccordion';
+import SplashScreen from './components/SplashScreen';
 
 function AppContent() {
   const { groupedTechniques, filteredTechniques } = useTechniques();
@@ -102,6 +104,12 @@ function AppContent() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
+
   return (
     <TechniqueProvider>
       <AppContent />
