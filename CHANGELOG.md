@@ -1,5 +1,45 @@
 # Changelog - PRIMO BJJ Technique Locker
 
+## 2026-09-09 - Legacy Badge System
+
+### Badge System Implementation
+- **LEGACY Badge hinzugefügt:** Goldenes "🏛️ LEGACY" Badge für ältere Video-Kategorien
+- **Badge-Position:** Auf Unterkategorie-Ebene (neben Kategorie-Namen)
+- **Design:** Gradient von Amber-600 zu Amber-700
+- **Logik:** Wird angezeigt, wenn alle Videos einer Kategorie `isLegacy: true` haben
+- **Priorität:** "NEW!" Badge hat Vorrang vor "LEGACY" Badge
+
+### Video-Kategorisierung
+- **Z Guard (6 Videos):** "NEW!" Badge - Neueste Videos
+- **Legacy Kategorien (47 Videos):** "🏛️ LEGACY" Badge
+  - 50/50 Guard: 6 Videos
+  - Half Guard: 9 Videos
+  - Knee Shield: 6 Videos
+  - Spider Lasso: 3 Videos
+  - Side Control: 10 Videos
+  - North South: 9 Videos
+  - Back Control: 4 Videos
+
+### Technische Details
+- **CategoryAccordion.jsx:** `isLegacy` Prop und Badge-Rendering
+- **App.jsx:** `isLegacyCategory()` Funktion zur Kategorieprüfung
+- **TechniqueCard.jsx:** Legacy Badge auf Video-Karten-Ebene
+- **generate-techniques.js:** Konfigurierbare `isLegacy` Flag pro Gruppe
+
+### Dateien geändert
+- `src/components/categories/CategoryAccordion.jsx` - Legacy Badge Display
+- `src/components/techniques/TechniqueCard.jsx` - Video-Level Badge
+- `src/App.jsx` - Legacy Kategorie Detection
+- `generate-techniques.js` - Legacy Flag Configuration
+- `src/data/mockTechniques.js` - Video Data mit Legacy Flags
+
+### Deployment
+- **Commit:** edaf962
+- **Branch:** main
+- **Platform:** Cloudflare Pages
+
+---
+
 ## 2026-09-09 - Video Library Expansion (53 Videos)
 
 ### Video Integration
