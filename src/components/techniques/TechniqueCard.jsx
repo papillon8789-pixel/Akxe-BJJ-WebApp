@@ -140,7 +140,7 @@ export default function TechniqueCard({ technique }) {
                   preload="metadata"
                 >
                   <source src={technique.videoUrl} type="video/mp4" />
-                  Dein Browser unterstützt das Video-Tag nicht.
+                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>

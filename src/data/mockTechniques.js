@@ -4,8 +4,8 @@ const R2_BASE_URL = 'https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev';
 export const mockTechniques = [
   {
     id: '1',
-    title: 'Z Guard - Technik 1',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 1',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard1.mp4',
@@ -24,8 +24,8 @@ export const mockTechniques = [
   },
   {
     id: '2',
-    title: 'Z Guard - Technik 2',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 2',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard2.mp4',
@@ -44,8 +44,8 @@ export const mockTechniques = [
   },
   {
     id: '3',
-    title: 'Z Guard - Technik 3',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 3',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard3.mp4',
@@ -64,8 +64,8 @@ export const mockTechniques = [
   },
   {
     id: '4',
-    title: 'Z Guard - Technik 4',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 4',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard4.mp4',
@@ -84,8 +84,8 @@ export const mockTechniques = [
   },
   {
     id: '5',
-    title: 'Z Guard - Technik 5',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 5',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard5.mp4',
@@ -104,8 +104,8 @@ export const mockTechniques = [
   },
   {
     id: '6',
-    title: 'Z Guard - Technik 6',
-    description: 'Z Guard Technik aus dem PRIMO BJJ Training',
+    title: 'Z Guard - Technique 6',
+    description: 'Z Guard technique from PRIMO BJJ Training',
     category: 'guard',
     subCategory: 'Z Guard',
     videoId: 'C_Guard6.mp4',
