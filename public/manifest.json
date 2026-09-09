@@ -9,19 +9,19 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/logo_neu_192.png",
+      "src": "/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/logo_neu_512.png",
+      "src": "/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/logo_neu_512.png",
+      "src": "/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -35,14 +35,14 @@
       "short_name": "Guard",
       "description": "Show all Guard techniques",
       "url": "/?category=guard",
-      "icons": [{ "src": "/images/logo_neu_192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Submissions",
       "short_name": "Submissions",
       "description": "Show all Submissions",
       "url": "/?category=submissions",
-      "icons": [{ "src": "/images/logo_neu_192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
