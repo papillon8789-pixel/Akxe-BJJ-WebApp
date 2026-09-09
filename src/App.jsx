@@ -53,7 +53,7 @@ function AppContent() {
 
         {/* Stats Footer */}
         <div className="mt-8 text-center text-gray-600 text-sm">
-          <p>{filteredTechniques.length} Techniken angezeigt</p>
+          <p>{filteredTechniques.length} Techniques displayed</p>
         </div>
       </main>
 
@@ -69,6 +69,34 @@ function AppContent() {
           <p className="text-gray-700 text-xs mt-3">© 2012-2026 AKXE BJJ | EST. 2012</p>
         </div>
       </footer>
+
+      {/* Training Schedule Section */}
+      <section className="bg-gradient-to-b from-card-bg to-app-bg py-12">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-white mb-2">
+              📅 Training Schedule
+            </h2>
+            <p className="text-primo-gold text-sm">
+              AKXE BJJ - PRIMO München
+            </p>
+          </div>
+          
+          <div className="bg-card-bg rounded-xl p-6 shadow-2xl border border-gray-800">
+            <img
+              src="/images/schedule.png"
+              alt="PRIMO BJJ Training Schedule"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+
+          <div className="text-center mt-6">
+            <p className="text-gray-400 text-sm">
+              Join us for world-class BJJ training in Munich
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
