@@ -17,29 +17,7 @@ export default function IconNavigation() {
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
             }`}
           >
-            {cat.iconType === 'image' ? (
-              <img
-                src={cat.icon}
-                alt={cat.label}
-                className={`w-8 h-8 object-contain transition-all ${
-                  selectedCategory === cat.id
-                    ? 'brightness-0 invert' // Weiß wenn aktiv
-                    : 'brightness-75 opacity-70' // Gedimmt wenn inaktiv
-                }`}
-                style={{
-                  filter: selectedCategory === cat.id
-                    ? 'brightness(0) invert(1)'
-                    : 'brightness(0.75) opacity(0.7)'
-                }}
-                onError={(e) => {
-                  // Fallback zu Emoji wenn Bild nicht lädt
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-            ) : (
-              <span className="text-2xl">{cat.icon}</span>
-            )}
+            <span className="text-2xl">{cat.icon}</span>
             <span className="text-xs font-semibold whitespace-nowrap">{cat.label}</span>
           </button>
         ))}

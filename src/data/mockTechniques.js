@@ -125,12 +125,12 @@ export const mockTechniques = [
 ];
 
 export const categories = [
-  { id: 'all', icon: '▦', label: 'ALL', iconType: 'emoji' },
-  { id: 'guard', icon: '/images/guard.png', label: 'GUARD', iconType: 'image' },
-  { id: 'pass', icon: '/images/pass.png', label: 'PASS', iconType: 'image' },
-  { id: 'side', icon: '/images/side.png', label: 'SIDE CONTROL', iconType: 'image' },
-  { id: 'back', icon: '/images/back.png', label: 'BACK', iconType: 'image' },
-  { id: 'submissions', icon: '/images/submission.png', label: 'SUBMISSIONS', iconType: 'image' }
+  { id: 'all', icon: '▦', label: 'ALL' },
+  { id: 'guard', icon: '🛡️', label: 'GUARD' },
+  { id: 'pass', icon: '🏃', label: 'PASS' },
+  { id: 'side', icon: '🔄', label: 'SIDE CONTROL' },
+  { id: 'back', icon: '🔙', label: 'BACK' },
+  { id: 'submissions', icon: '⚔️', label: 'SUBMISSIONS' }
 ];
 
 export const subCategories = {
