@@ -1,0 +1,42 @@
+{
+  "name": "PRIMO BJJ Technique Locker",
+  "short_name": "PRIMO BJJ",
+  "description": "BJJ Technique Locker für PRIMO BJJ München - AKXE Germany",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#e63946",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "education", "lifestyle"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Guard Techniken",
+      "short_name": "Guard",
+      "description": "Zeige alle Guard Techniken",
+      "url": "/?category=guard",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Submissions",
+      "short_name": "Submissions",
+      "description": "Zeige alle Submissions",
+      "url": "/?category=submissions",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
