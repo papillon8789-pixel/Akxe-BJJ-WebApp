@@ -9,9 +9,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/logo.jpg",
+      "src": "/images/logo_neu.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
@@ -23,14 +23,14 @@
       "short_name": "Guard",
       "description": "Show all Guard techniques",
       "url": "/?category=guard",
-      "icons": [{ "src": "/images/logo.jpg", "sizes": "512x512" }]
+      "icons": [{ "src": "/images/logo_neu.png", "sizes": "512x512" }]
     },
     {
       "name": "Submissions",
       "short_name": "Submissions",
       "description": "Show all Submissions",
       "url": "/?category=submissions",
-      "icons": [{ "src": "/images/logo.jpg", "sizes": "512x512" }]
+      "icons": [{ "src": "/images/logo_neu.png", "sizes": "512x512" }]
     }
   ]
 }
