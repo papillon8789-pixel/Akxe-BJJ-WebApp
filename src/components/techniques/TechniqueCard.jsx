@@ -22,6 +22,13 @@ export default function TechniqueCard({ technique }) {
           </h3>
           
           <div className="flex flex-wrap gap-2 mb-3">
+            {/* Legacy Badge */}
+            {technique.isLegacy && (
+              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-amber-600 text-white">
+                🏛️ Legacy
+              </span>
+            )}
+            
             {/* Difficulty Badge */}
             {technique.difficulty && (
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${getDifficultyColor(technique.difficulty)}`}>

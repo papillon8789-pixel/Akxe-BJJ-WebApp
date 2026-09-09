@@ -52,6 +52,7 @@ videoGroups.forEach(group => {
       dateAdded: '2026-09-09',
       month: '2026-09',
       difficulty: group.difficulties[i],
+      isLegacy: true,
       isFavorite: false,
       isDownloaded: false,
       isBookmarked: false,
