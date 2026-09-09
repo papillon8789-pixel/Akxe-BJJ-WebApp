@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
 
-export default function CategoryAccordion({ category, techniques }) {
+export default function CategoryAccordion({ category, techniques, isNewest }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -21,6 +21,11 @@ export default function CategoryAccordion({ category, techniques }) {
           <span className="bg-primo-red text-white px-2 py-1 rounded-full text-sm font-semibold">
             {techniques.length}
           </span>
+          {isNewest && (
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold uppercase animate-pulse">
+              NEW!
+            </span>
+          )}
         </div>
         <svg 
           className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}

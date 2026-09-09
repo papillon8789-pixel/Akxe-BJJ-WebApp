@@ -6,6 +6,26 @@ import CategoryAccordion from './components/categories/CategoryAccordion';
 function AppContent() {
   const { groupedTechniques, filteredTechniques } = useTechniques();
 
+  // Find the newest category based on the most recent dateAdded
+  const getNewestCategory = () => {
+    let newestCategory = null;
+    let newestDate = null;
+
+    Object.entries(groupedTechniques).forEach(([category, techniques]) => {
+      techniques.forEach(tech => {
+        const techDate = new Date(tech.dateAdded);
+        if (!newestDate || techDate > newestDate) {
+          newestDate = techDate;
+          newestCategory = category;
+        }
+      });
+    });
+
+    return newestCategory;
+  };
+
+  const newestCategory = getNewestCategory();
+
   return (
     <div className="min-h-screen bg-app-bg">
       <Header />
@@ -25,6 +45,7 @@ function AppContent() {
                 key={category}
                 category={category}
                 techniques={techniques}
+                isNewest={category === newestCategory}
               />
             ))}
           </div>
