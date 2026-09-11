@@ -107,13 +107,6 @@ export default function LoginScreen() {
               </div>
             </div>
           </div>
-
-          {/* Demo Hint */}
-          <div className="mt-4 text-center">
-            <p className="text-gray-500 text-xs">
-              Demo: demo@primo-bjj.com
-            </p>
-          </div>
         </div>
 
         {/* Footer */}
