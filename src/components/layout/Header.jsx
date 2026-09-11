@@ -9,7 +9,7 @@ export default function Header() {
   const { logout, userEmail } = useAuth();
 
   const handleLogout = () => {
-    if (confirm('Möchtest du dich wirklich abmelden?')) {
+    if (confirm('Are you sure you want to log out?')) {
       logout();
     }
   };
@@ -58,7 +58,7 @@ export default function Header() {
             {showMenu && (
               <div className="absolute right-0 mt-2 w-64 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
                 <div className="p-3 border-b border-gray-700">
-                  <p className="text-xs text-gray-400">Angemeldet als:</p>
+                  <p className="text-xs text-gray-400">Logged in as:</p>
                   <p className="text-sm text-white truncate">{userEmail}</p>
                 </div>
                 <button
@@ -68,7 +68,7 @@ export default function Header() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
-                  Abmelden
+                  Log Out
                 </button>
               </div>
             )}

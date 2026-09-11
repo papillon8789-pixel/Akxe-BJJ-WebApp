@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
       const user = data.users.find(u => u.email.toLowerCase() === normalizedEmail);
 
       if (!user) {
-        setError('E-Mail nicht berechtigt. Bitte kontaktiere den Administrator.');
+        setError('Email not authorized. Please contact your professor.');
         setIsLoading(false);
         return false;
       }
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
       const now = new Date();
 
       if (validUntil < now) {
-        setError('Dein Zugang ist abgelaufen. Bitte verlängere dein Abonnement.');
+        setError('Your access has expired. Please contact your professor to renew.');
         setIsLoading(false);
         return false;
       }
@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
 
     } catch (err) {
       console.error('Authentication error:', err);
-      setError('Fehler beim Überprüfen der E-Mail. Bitte versuche es erneut.');
+      setError('Error verifying email. Please try again.');
       setIsLoading(false);
       return false;
     }
