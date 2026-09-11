@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { TechniqueProvider, useTechniques } from './context/TechniqueContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import Header from './components/layout/Header';
 import IconNavigation from './components/layout/IconNavigation';
 import CategoryAccordion from './components/categories/CategoryAccordion';
 import SplashScreen from './components/SplashScreen';
+import LoginScreen from './components/LoginScreen';
 import Banner from './components/Banner';
 
 function AppContent() {
@@ -112,17 +114,45 @@ function AppContent() {
   );
 }
 
-function App() {
+function AuthenticatedApp() {
+  const { isAuthenticated, isLoading } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
 
+  // Show splash screen first
   if (showSplash) {
     return <SplashScreen onFinish={() => setShowSplash(false)} />;
   }
 
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-app-bg flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primo-red mx-auto mb-4"></div>
+          <p className="text-gray-400">Lade...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show login screen if not authenticated
+  if (!isAuthenticated) {
+    return <LoginScreen />;
+  }
+
+  // Show main app if authenticated
   return (
     <TechniqueProvider>
       <AppContent />
     </TechniqueProvider>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AuthenticatedApp />
+    </AuthProvider>
   );
 }
 

@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "email": "admin@primo-bjj.com",
+      "validUntil": "2099-12-31",
+      "paidMonths": 999,
+      "addedDate": "2026-09-11",
+      "notes": "Admin - Lebenslanger Zugang (für dich und Trainer)"
+    },
+    {
+      "email": "demo@primo-bjj.com",
+      "validUntil": "2027-12-31",
+      "paidMonths": 12,
+      "addedDate": "2026-09-11",
+      "notes": "Demo Account"
+    }
+  ],
+  "lastUpdated": "2026-09-11T08:04:00Z"
+}
