@@ -50,7 +50,7 @@ videoGroups.forEach(group => {
       videoId: videoFile,
       videoUrl: `\${R2_BASE_URL}/${videoFile}`,
       thumbnail: `https://via.placeholder.com/400x225/1a1a1a/e63946?text=${encodeURIComponent(group.title + ' ' + techNum)}`,
-      duration: '1:00',
+      duration: null,
       tags: group.tags,
       dateAdded: '2026-09-09',
       month: '2026-09',

@@ -11,7 +11,7 @@ export const mockTechniques = [
     "videoId": "C_Guard1.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -36,7 +36,7 @@ export const mockTechniques = [
     "videoId": "C_Guard2.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -61,7 +61,7 @@ export const mockTechniques = [
     "videoId": "C_Guard3.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -86,7 +86,7 @@ export const mockTechniques = [
     "videoId": "C_Guard4.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -111,7 +111,7 @@ export const mockTechniques = [
     "videoId": "C_Guard5.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -136,7 +136,7 @@ export const mockTechniques = [
     "videoId": "C_Guard6.mp4",
     "videoUrl": `${R2_BASE_URL}/C_Guard6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Z Guard",
@@ -161,7 +161,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -187,7 +187,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -213,7 +213,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -239,7 +239,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -265,7 +265,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -291,7 +291,7 @@ export const mockTechniques = [
     "videoId": "50_50_Position_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/50_50_Position_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "50/50",
@@ -317,7 +317,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -342,7 +342,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -367,7 +367,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -392,7 +392,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -417,7 +417,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -442,7 +442,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -467,7 +467,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_7.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_7.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%207",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -492,7 +492,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_8.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_8.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%208",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -517,7 +517,7 @@ export const mockTechniques = [
     "videoId": "HalfGuard_Technique_9.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%209",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Half Guard",
@@ -542,7 +542,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -568,7 +568,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -594,7 +594,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -620,7 +620,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -646,7 +646,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -672,7 +672,7 @@ export const mockTechniques = [
     "videoId": "KneeShield_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Knee Shield",
@@ -698,7 +698,7 @@ export const mockTechniques = [
     "videoId": "SpiderLasso_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/SpiderLasso_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Spider Guard",
@@ -724,7 +724,7 @@ export const mockTechniques = [
     "videoId": "SpiderLasso_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/SpiderLasso_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Spider Guard",
@@ -750,7 +750,7 @@ export const mockTechniques = [
     "videoId": "SpiderLasso_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/SpiderLasso_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Guard",
       "Spider Guard",
@@ -776,7 +776,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -801,7 +801,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -826,7 +826,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -851,7 +851,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -876,7 +876,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -901,7 +901,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -926,7 +926,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_7.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_7.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%207",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -951,7 +951,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_8.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_8.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%208",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -976,7 +976,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_9.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%209",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -1001,7 +1001,7 @@ export const mockTechniques = [
     "videoId": "SideControl_Technique_10.mp4",
     "videoUrl": `${R2_BASE_URL}/SideControl_Technique_10.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%2010",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Side Control",
       "Position",
@@ -1026,7 +1026,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1051,7 +1051,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1076,7 +1076,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1101,7 +1101,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1126,7 +1126,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1151,7 +1151,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1176,7 +1176,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_7.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_7.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%207",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1201,7 +1201,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_8.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_8.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%208",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1226,7 +1226,7 @@ export const mockTechniques = [
     "videoId": "NorthSouth_Technique_9.mp4",
     "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%209",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "North South",
       "Position",
@@ -1251,7 +1251,7 @@ export const mockTechniques = [
     "videoId": "Back_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/Back_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Back",
       "Position",
@@ -1276,7 +1276,7 @@ export const mockTechniques = [
     "videoId": "Back_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/Back_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Back",
       "Position",
@@ -1301,7 +1301,7 @@ export const mockTechniques = [
     "videoId": "Back_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/Back_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Back",
       "Position",
@@ -1326,7 +1326,7 @@ export const mockTechniques = [
     "videoId": "Back_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/Back_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "Back",
       "Position",
@@ -1351,7 +1351,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_1.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%201",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1376,7 +1376,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_2.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%202",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1401,7 +1401,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_3.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%203",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1426,7 +1426,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%204",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1451,7 +1451,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%205",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1476,7 +1476,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%206",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1501,7 +1501,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_7.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_7.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%207",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1526,7 +1526,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_8.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_8.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%208",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1551,7 +1551,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_9.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%209",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1576,7 +1576,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_10.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_10.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2010",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1601,7 +1601,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_11.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_11.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2011",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1626,7 +1626,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_12.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_12.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2012",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1651,7 +1651,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_13.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_13.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2013",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1676,7 +1676,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_14.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_14.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2014",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1701,7 +1701,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_15.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_15.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2015",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1726,7 +1726,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_16.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_16.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2016",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1751,7 +1751,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_17.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_17.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2017",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1776,7 +1776,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_18.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_18.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2018",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1801,7 +1801,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_19.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_19.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2019",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1826,7 +1826,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_20.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_20.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2020",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1851,7 +1851,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_21.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_21.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2021",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1876,7 +1876,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_22.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_22.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2022",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1901,7 +1901,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_23.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_23.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2023",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1926,7 +1926,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_24.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_24.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2024",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1951,7 +1951,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_25.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_25.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2025",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -1976,7 +1976,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_26.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_26.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2026",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",
@@ -2001,7 +2001,7 @@ export const mockTechniques = [
     "videoId": "TakeDown_Technique_27.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_27.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2027",
-    "duration": "1:00",
+    "duration": null,
     "tags": [
       "TakeDown",
       "Standing",

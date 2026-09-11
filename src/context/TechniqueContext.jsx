@@ -9,17 +9,19 @@ export function TechniqueProvider({ children }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubCategory, setSelectedSubCategory] = useState('all');
 
-  // Load favorites and downloads from localStorage
+  // Load favorites, downloads, and view counts from localStorage
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     const savedDownloads = JSON.parse(localStorage.getItem('downloads') || '[]');
     const savedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    const savedViewCounts = JSON.parse(localStorage.getItem('viewCounts') || '{}');
 
     setTechniques(prev => prev.map(tech => ({
       ...tech,
       isFavorite: savedFavorites.includes(tech.id),
       isDownloaded: savedDownloads.includes(tech.id),
-      isBookmarked: savedBookmarks.includes(tech.id)
+      isBookmarked: savedBookmarks.includes(tech.id),
+      viewCount: savedViewCounts[tech.id] || 0
     })));
   }, []);
 
@@ -81,6 +83,22 @@ export function TechniqueProvider({ children }) {
     });
   };
 
+  const incrementViewCount = (id) => {
+    setTechniques(prev => {
+      const updated = prev.map(tech =>
+        tech.id === id ? { ...tech, viewCount: (tech.viewCount || 0) + 1 } : tech
+      );
+      const viewCounts = {};
+      updated.forEach(tech => {
+        if (tech.viewCount > 0) {
+          viewCounts[tech.id] = tech.viewCount;
+        }
+      });
+      localStorage.setItem('viewCounts', JSON.stringify(viewCounts));
+      return updated;
+    });
+  };
+
   const value = {
     techniques,
     filteredTechniques,
@@ -93,7 +111,8 @@ export function TechniqueProvider({ children }) {
     setSelectedSubCategory,
     toggleFavorite,
     toggleDownload,
-    toggleBookmark
+    toggleBookmark,
+    incrementViewCount
   };
 
   return (

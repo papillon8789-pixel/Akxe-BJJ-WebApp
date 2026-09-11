@@ -1,7 +1,36 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useTechniques } from '../../context/TechniqueContext';
 
 export default function TechniqueCard({ technique }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(technique.duration);
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const videoRef = useRef(null);
+  const { incrementViewCount } = useTechniques();
+
+  // Format seconds to MM:SS
+  const formatDuration = (seconds) => {
+    if (!seconds || isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Handle video metadata loaded
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      const duration = videoRef.current.duration;
+      setVideoDuration(formatDuration(duration));
+    }
+  };
+
+  // Handle video play - increment view count once per session
+  const handlePlay = () => {
+    if (!hasPlayed) {
+      incrementViewCount(technique.id);
+      setHasPlayed(true);
+    }
+  };
 
   const getDifficultyColor = (difficulty) => {
     const colors = {
@@ -44,9 +73,9 @@ export default function TechniqueCard({ technique }) {
             )}
 
             {/* Duration Badge */}
-            {technique.duration && (
+            {videoDuration && (
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primo-red text-white">
-                ⏱️ {technique.duration}
+                ⏱️ {videoDuration}
               </span>
             )}
           </div>
@@ -142,9 +171,12 @@ export default function TechniqueCard({ technique }) {
               </h4>
               <div className="rounded-lg overflow-hidden bg-black">
                 <video
+                  ref={videoRef}
                   controls
                   className="w-full"
                   preload="metadata"
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onPlay={handlePlay}
                 >
                   <source src={technique.videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
