@@ -1,6 +1,6 @@
 {
   "active": true,
-  "type": "info",
+  "type": "success",
   "title": "🥋 Technique Week !",
   "message": "New Week - New Technique!",
   "dismissible": true,
