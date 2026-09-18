@@ -1,9 +1,9 @@
 {
   "active": true,
-  "type": "success",
+  "type": "info",
   "title": "🥋 Technique Week !",
-  "message": "New Week - New Technique!",
+  "message": "New Week - New Technique! -> Deep Half",
   "dismissible": true,
   "link": null,
-  "expiresAt": "2026-09-16T23:59:59Z"
+  "expiresAt": "2026-09-27T23:59:59Z"
 }
