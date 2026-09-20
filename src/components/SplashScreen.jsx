@@ -41,9 +41,9 @@ function SplashScreen({ onFinish }) {
       <div className="text-center">
         {/* Logo */}
         <div className="mb-8">
-          <img 
-            src="/images/icon-512.png" 
-            alt="PRIMO BJJ Logo" 
+          <img
+            src="/images/logo_splas_neu.png"
+            alt="PRIMO BJJ Logo"
             className="w-48 h-48 mx-auto"
           />
         </div>
