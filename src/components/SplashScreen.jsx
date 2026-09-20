@@ -44,7 +44,7 @@ function SplashScreen({ onFinish }) {
           <img
             src="/images/logo_splas_neu.png"
             alt="PRIMO BJJ Logo"
-            className="w-48 h-48 mx-auto"
+            className="w-48 h-48 mx-auto object-contain"
           />
         </div>
 
