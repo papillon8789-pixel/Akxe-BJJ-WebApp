@@ -14,8 +14,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -39,8 +38,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -64,8 +62,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -89,8 +86,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -114,8 +110,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -139,8 +134,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Z Guard",
-      "Gi"
+      "Z Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -165,7 +159,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -191,7 +184,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -217,7 +209,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -243,7 +234,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -269,7 +259,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -295,7 +284,6 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "50/50",
-      "Gi",
       "Leg Entanglement"
     ],
     "dateAdded": "2026-09-09",
@@ -320,8 +308,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -345,8 +332,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -370,8 +356,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -395,8 +380,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -420,8 +404,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -445,8 +428,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -470,8 +452,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -495,8 +476,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -520,8 +500,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Guard",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -546,8 +525,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -572,8 +550,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -598,8 +575,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -624,8 +600,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -650,8 +625,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -676,8 +650,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Knee Shield",
-      "Half Guard",
-      "Gi"
+      "Half Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -702,8 +675,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Spider Guard",
-      "Lasso",
-      "Gi"
+      "Lasso"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -728,8 +700,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Spider Guard",
-      "Lasso",
-      "Gi"
+      "Lasso"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -754,8 +725,7 @@ export const mockTechniques = [
     "tags": [
       "Guard",
       "Spider Guard",
-      "Lasso",
-      "Gi"
+      "Lasso"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -779,8 +749,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -804,8 +773,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -829,8 +797,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -854,8 +821,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -879,8 +845,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -904,8 +869,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -929,8 +893,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -954,8 +917,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -979,8 +941,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1004,8 +965,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1029,8 +989,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1054,8 +1013,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1079,8 +1037,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1104,8 +1061,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1129,8 +1085,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1154,8 +1109,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1179,8 +1133,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1204,8 +1157,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1229,8 +1181,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "North South",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1254,8 +1205,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Back",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1279,8 +1229,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Back",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1304,8 +1253,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Back",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1329,8 +1277,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Back",
-      "Position",
-      "Gi"
+      "Position"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1354,8 +1301,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1379,8 +1325,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1404,8 +1349,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1429,8 +1373,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1454,8 +1397,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1479,8 +1421,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1504,8 +1445,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1529,8 +1469,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1554,8 +1493,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1579,8 +1517,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1604,8 +1541,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1629,8 +1565,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1654,8 +1589,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1679,8 +1613,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1704,8 +1637,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1729,8 +1661,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1754,8 +1685,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1779,8 +1709,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1804,8 +1733,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1829,8 +1757,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1854,8 +1781,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1879,8 +1805,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1904,8 +1829,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1929,8 +1853,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1954,8 +1877,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1979,8 +1901,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -2004,8 +1925,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing",
-      "Gi"
+      "Standing"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -2037,3 +1957,4 @@ export const subCategories = {
   submissions: ['Armlocks', 'Chokes', 'Leglocks'],
   takedown: ['TakeDown']
 };
+
