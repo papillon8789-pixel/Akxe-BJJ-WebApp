@@ -10,14 +10,40 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - Kategorien in der Navigation in folgender Reihenfolge: Guard - Pass - Sweep - Mount - Side Control - Back - Submission - TakeDown
 
 ### Geändert
+- **Tag-basierte Filterung implementiert**:
+  - Filterlogik in `TechniqueContext.jsx` von `category`-Feld auf Tag-basiert umgestellt
+  - Videos erscheinen jetzt in ALLEN Kategorien, die ihren Tags entsprechen
+  - "All Categories" zeigt weiterhin alle Videos
+  
+- **Z Guard Techniken aktualisiert** (5 Videos):
+  - Detaillierte Beschreibungen für alle Techniken hinzugefügt
+  - Tags aktualisiert: 2 Videos mit #sweep, 3 Videos mit #pass
+  - Alle Videos haben #Guard und #zguard Tags
+
+- **50/50 Guard Techniken aktualisiert** (6 Videos):
+  - Detaillierte Beschreibungen für alle Techniken hinzugefügt
+  - Tags aktualisiert: 2 Videos mit #sweep, 1 Video mit #back, 3 Videos mit #submission
+  - Alle Videos haben #50/50 Tag
+
 - **Kategorie-Navigation erweitert**:
   - `categories` Array in `mockTechniques.js` um Mount und Sweep erweitert
   - `subCategories` Objekt um Mount und Sweep Unterkategorien ergänzt
 
+### Entfernt
+- **Difficulty-Feld entfernt**:
+  - "difficulty" Feld (Beginner/Intermediate/Advanced) von allen 80 Techniken entfernt
+  - 80 Zeilen Code bereinigt
+
 ### Technische Details
-- Datei: `src/data/mockTechniques.js` - Kategorien-Konfiguration aktualisiert
+- Datei: `src/context/TechniqueContext.jsx` - Tag-basierte Filterlogik implementiert
+- Datei: `src/data/mockTechniques.js` - 11 Techniken mit neuen Descriptions und Tags aktualisiert, difficulty-Feld entfernt
 - Datei: `public/images/Mount.png` - Neues Mount Kategorie-Icon
 - Datei: `public/images/Sweep.png` - Neues Sweep Kategorie-Icon
+
+### Commits
+- `50a5973` - Add Mount and Sweep category icons to navigation
+- `21382dd` - Update Z Guard and 50/50 techniques with detailed descriptions and tag-based filtering
+- `01498aa` - Remove difficulty field from all techniques
 
 ---
 
