@@ -5,7 +5,7 @@ export const mockTechniques = [
   {
     "id": "1",
     "title": "Z Guard - Technique 1",
-    "description": "Z Guard technique from PRIMO BJJ Training",
+    "description": "parallel top side sleeve control - elbow punch through sit up - dive to far side leg under hook - roll over",
     "category": "guard",
     "subCategory": "Z Guard",
     "videoId": "C_Guard1.mp4",
@@ -13,8 +13,9 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%201",
     "duration": null,
     "tags": [
+      "Z Guard",
       "Guard",
-      "Z Guard"
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -29,7 +30,7 @@ export const mockTechniques = [
   {
     "id": "2",
     "title": "Z Guard - Technique 2",
-    "description": "Z Guard technique from PRIMO BJJ Training",
+    "description": "parallel outside grip on top knee - cross grip top lapel - sprawl - hip switch and elbow post - hip scape with leg drag - back step",
     "category": "guard",
     "subCategory": "Z Guard",
     "videoId": "C_Guard2.mp4",
@@ -37,8 +38,9 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%202",
     "duration": null,
     "tags": [
+      "Z Guard",
       "Guard",
-      "Z Guard"
+      "Pass"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -53,7 +55,7 @@ export const mockTechniques = [
   {
     "id": "3",
     "title": "Z Guard - Technique 3",
-    "description": "Z Guard technique from PRIMO BJJ Training",
+    "description": "reach to hip control - parallel grip bottom lapel - sprawl - outside pass",
     "category": "guard",
     "subCategory": "Z Guard",
     "videoId": "C_Guard3.mp4",
@@ -61,8 +63,9 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%203",
     "duration": null,
     "tags": [
+      "Z Guard",
       "Guard",
-      "Z Guard"
+      "Pass"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -77,7 +80,7 @@ export const mockTechniques = [
   {
     "id": "4",
     "title": "Z Guard - Technique 4",
-    "description": "Z Guard technique from PRIMO BJJ Training",
+    "description": "crossed top sleeve grip - parallel far side bottom leg grip - hip elevation - arm control switch - roll over - technical stand up",
     "category": "guard",
     "subCategory": "Z Guard",
     "videoId": "C_Guard4.mp4",
@@ -85,8 +88,9 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%204",
     "duration": null,
     "tags": [
+      "Z Guard",
       "Guard",
-      "Z Guard"
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -101,7 +105,7 @@ export const mockTechniques = [
   {
     "id": "5",
     "title": "Z Guard - Technique 5",
-    "description": "Z Guard technique from PRIMO BJJ Training",
+    "description": "double collar control and elbow lock - knee post to top leg backside - bottom knee scoop to leg weave - outside pass to backside",
     "category": "guard",
     "subCategory": "Z Guard",
     "videoId": "C_Guard5.mp4",
@@ -109,8 +113,9 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%205",
     "duration": null,
     "tags": [
+      "Z Guard",
       "Guard",
-      "Z Guard"
+      "Pass"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -149,7 +154,7 @@ export const mockTechniques = [
   {
     "id": "7",
     "title": "50/50 Position - Technique 1",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "parallel inside lapel grip - technical stand up",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_1.mp4",
@@ -157,9 +162,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%201",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -174,7 +178,7 @@ export const mockTechniques = [
   {
     "id": "8",
     "title": "50/50 Position - Technique 2",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "inside leg grip - outside sleeve grip and foot to biceps - inside leg across the body - sit up to back take",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_2.mp4",
@@ -182,9 +186,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%202",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Back"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -199,7 +202,7 @@ export const mockTechniques = [
   {
     "id": "9",
     "title": "50/50 Position - Technique 3",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "inside leg grip - outside parallel sleeve grip - roll over to turtle",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_3.mp4",
@@ -207,9 +210,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%203",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -224,7 +226,7 @@ export const mockTechniques = [
   {
     "id": "10",
     "title": "50/50 Position - Technique 4",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "outside parallel sleeve grip - inside arm post in between - mata leão the leg - foot lock",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_4.mp4",
@@ -232,9 +234,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%204",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -249,7 +250,7 @@ export const mockTechniques = [
   {
     "id": "11",
     "title": "50/50 Position - Technique 5",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "inside leg grip - outside parallel sleeve grip and foot to biceps - inside leg across the body - arm bar",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_5.mp4",
@@ -257,9 +258,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%205",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -274,7 +274,7 @@ export const mockTechniques = [
   {
     "id": "12",
     "title": "50/50 Position - Technique 6",
-    "description": "50/50 Position technique from PRIMO BJJ Training",
+    "description": "outside parallel sleeve grip - inside arm post in between - leg push to shift weight - reach to far leg control - hip scape to knee bar",
     "category": "guard",
     "subCategory": "50/50 Guard",
     "videoId": "50_50_Position_Technique_6.mp4",
@@ -282,9 +282,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=50%2F50%20Position%206",
     "duration": null,
     "tags": [
-      "Guard",
       "50/50",
-      "Leg Entanglement"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",

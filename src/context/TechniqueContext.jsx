@@ -25,10 +25,13 @@ export function TechniqueProvider({ children }) {
     })));
   }, []);
 
-  // Filter techniques based on category and search
+  // Filter techniques based on category (tags) and search
   const filteredTechniques = useMemo(() => {
     return techniques.filter(tech => {
-      const matchesCategory = selectedCategory === 'all' || tech.category === selectedCategory;
+      // Match by tags instead of category field
+      const matchesCategory = selectedCategory === 'all' ||
+        tech.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase());
+      
       const matchesSearch = tech.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            tech.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            tech.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
