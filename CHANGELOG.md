@@ -2,6 +2,25 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
+## [2026-09-21]
+
+### Hinzugefügt
+- **Neue Kategorien**: Mount und Sweep Kategorien zur App hinzugefügt
+  - Neue Icon-Bilder: `Mount.png` (1,61 MB) und `Sweep.png` (1,61 MB)
+  - Kategorien in der Navigation in folgender Reihenfolge: Guard - Pass - Sweep - Mount - Side Control - Back - Submission - TakeDown
+
+### Geändert
+- **Kategorie-Navigation erweitert**:
+  - `categories` Array in `mockTechniques.js` um Mount und Sweep erweitert
+  - `subCategories` Objekt um Mount und Sweep Unterkategorien ergänzt
+
+### Technische Details
+- Datei: `src/data/mockTechniques.js` - Kategorien-Konfiguration aktualisiert
+- Datei: `public/images/Mount.png` - Neues Mount Kategorie-Icon
+- Datei: `public/images/Sweep.png` - Neues Sweep Kategorie-Icon
+
+---
+
 ## [2026-09-20]
 
 ### Hinzugefügt

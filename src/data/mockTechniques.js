@@ -1943,6 +1943,8 @@ export const categories = [
   { id: 'all', icon: '/images/AllCategories.png', label: 'ALL', iconType: 'image' },
   { id: 'guard', icon: '/images/guard.png', label: 'GUARD', iconType: 'image' },
   { id: 'pass', icon: '/images/pass.png', label: 'PASS', iconType: 'image' },
+  { id: 'sweep', icon: '/images/Sweep.png', label: 'SWEEP', iconType: 'image' },
+  { id: 'mount', icon: '/images/Mount.png', label: 'MOUNT', iconType: 'image' },
   { id: 'side', icon: '/images/side.png', label: 'SIDE CONTROL', iconType: 'image' },
   { id: 'back', icon: '/images/back.png', label: 'BACK', iconType: 'image' },
   { id: 'submissions', icon: '/images/submission.png', label: 'SUBMISSIONS', iconType: 'image' },
@@ -1952,6 +1954,8 @@ export const categories = [
 export const subCategories = {
   guard: ['Z Guard', '50/50 Guard', 'Half Guard', 'Knee Shield', 'Spider Lasso'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
+  sweep: ['Sweep'],
+  mount: ['Mount'],
   side: ['Side Control', 'North South', 'Knee on Belly'],
   back: ['Back Control', 'Turtle'],
   submissions: ['Armlocks', 'Chokes', 'Leglocks'],

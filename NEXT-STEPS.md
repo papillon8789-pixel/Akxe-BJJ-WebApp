@@ -32,12 +32,7 @@ Die komplette BJJ Technique Locker App ist implementiert! 🎉
 ```bash
 node --version
 ```
-
-### Schritt 2: Projekt starten
-
-```bash
-# In den Projektordner wechseln
-cd bjj-app
+s
 
 # Dependencies installieren (nur beim ersten Mal)
 npm install
