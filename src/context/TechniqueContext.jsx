@@ -28,8 +28,9 @@ export function TechniqueProvider({ children }) {
   // Filter techniques based on category (tags) and search
   const filteredTechniques = useMemo(() => {
     return techniques.filter(tech => {
-      // Match by tags instead of category field
+      // Match by category field OR tags
       const matchesCategory = selectedCategory === 'all' ||
+        tech.category === selectedCategory ||
         tech.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase());
       
       const matchesSearch = tech.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -27,6 +27,12 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ## [2026-09-24]
 
+### Behoben
+- **Kategorie-Filter Bug**: Side Control Techniken wurden nicht in der Side Control Kategorie angezeigt
+  - Problem: Filter prüfte nur Tags, nicht das `category` Feld
+  - Lösung: Filter prüft jetzt sowohl `category` Feld als auch Tags
+  - Datei: `src/context/TechniqueContext.jsx`
+
 ### Hinzugefügt
 - **Detaillierte Beschreibungen und Hashtags für 34 Techniken**:
   - Half-lasso Guard (ehemals Knee Shield) - 6 Techniken mit neuen Beschreibungen und Tags
