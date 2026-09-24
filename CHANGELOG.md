@@ -2,6 +2,39 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
+## [2026-09-24]
+
+### Hinzugefügt
+- **Detaillierte Beschreibungen und Hashtags für 31 Techniken**:
+  - Half-lasso Guard (ehemals Knee Shield) - 6 Techniken mit neuen Beschreibungen und Tags
+  - Spider Lasso - 3 Techniken mit neuen Beschreibungen und Tags
+  - Side Control - 9 Techniken mit neuen Beschreibungen und Tags (1 Technik gelöscht, IDs neu nummeriert)
+  - North South - 9 Techniken mit neuen Beschreibungen und Tags
+  - Back Control - 4 Techniken mit neuen Beschreibungen und Tags
+
+### Geändert
+- **Kategorie-Umbenennung**: "Knee Shield" wurde zu "Half-lasso Guard" umbenannt
+  - Alle 6 Techniken aktualisiert mit neuen Titeln, Beschreibungen und Tags
+  - subCategories Array in mockTechniques.js aktualisiert
+  
+- **Side Control Techniken neu strukturiert**:
+  - Technique 8 (ID 38) wurde gelöscht
+  - Technique 9 wurde zu Technique 8 (ID 38, verwendet SideControl_Technique_9.mp4)
+  - Technique 10 wurde zu Technique 9 (ID 39, verwendet SideControl_Technique_10.mp4)
+  - Alle nachfolgenden IDs (TakeDown 54-80) wurden zu 53-79 neu nummeriert
+  
+- **Branding-Update**: Footer und Header Text geändert
+  - Von "AKXE BJJ - PRIMO Germany/München" zu "PRIMO BJJ - AKXE Germany/München"
+  - Betrifft: App.jsx (Footer und Training Schedule) und Header.jsx
+
+### Technische Details
+- Datei: `src/data/mockTechniques.js` - 31 Techniken mit Beschreibungen und Tags aktualisiert, IDs neu nummeriert
+- Datei: `src/App.jsx` - Footer und Training Schedule Branding aktualisiert
+- Datei: `src/components/layout/Header.jsx` - Header Branding aktualisiert
+- Gesamt: 79 Techniken in der Datenbank (1 gelöscht, IDs neu nummeriert von 1-79)
+
+---
+
 ## [2026-09-21]
 
 ### Hinzugefügt

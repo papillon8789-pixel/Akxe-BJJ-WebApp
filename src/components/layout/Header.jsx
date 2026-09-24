@@ -28,7 +28,7 @@ export default function Header() {
           </div>
           <div>
             <h1 className="text-lg font-bold tracking-wide">PRIMO TECHNIQUE VAULT</h1>
-            <p className="text-xs text-primo-gold">AKXE BJJ - PRIMO München</p>
+            <p className="text-xs text-primo-gold">PRIMO BJJ - AKXE München</p>
           </div>
         </div>
 

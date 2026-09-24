@@ -492,18 +492,17 @@ export const mockTechniques = [
   },
   {
     "id": "22",
-    "title": "Knee Shield - Technique 1",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 1",
+    "description": "sprawl - outside leg pummel in - hip lift to open space - jump to back take",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_1.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%201",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%201",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Back"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -516,18 +515,17 @@ export const mockTechniques = [
   },
   {
     "id": "23",
-    "title": "Knee Shield - Technique 2",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 2",
+    "description": "open knee to unbalance - reach far leg and x-lasso the arm - pivot 180•",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_2.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%202",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%202",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -540,18 +538,17 @@ export const mockTechniques = [
   },
   {
     "id": "24",
-    "title": "Knee Shield - Technique 3",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 3",
+    "description": "elbow post to elevate - pull trapped leg out - roll into omoplata or triangle",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_3.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%203",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%203",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -564,18 +561,17 @@ export const mockTechniques = [
   },
   {
     "id": "25",
-    "title": "Knee Shield - Technique 4",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 4",
+    "description": "sprawl - outside leg pummel in - colar control and leg weave - hip switch to back step - or mounted",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_4.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%204",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%204",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Pass"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -588,18 +584,17 @@ export const mockTechniques = [
   },
   {
     "id": "26",
-    "title": "Knee Shield - Technique 5",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 5",
+    "description": "sprawl - outside leg pummel in - colar control and leg weave - hip switch to knee bar",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_5.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%205",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%205",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -612,18 +607,17 @@ export const mockTechniques = [
   },
   {
     "id": "27",
-    "title": "Knee Shield - Technique 6",
-    "description": "Knee Shield technique from PRIMO BJJ Training",
+    "title": "Half-lasso Guard - Technique 6",
+    "description": "open knee to unbalance - reach far leg - roll over and technical stand up",
     "category": "guard",
-    "subCategory": "Knee Shield",
+    "subCategory": "Half-lasso Guard",
     "videoId": "KneeShield_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/KneeShield_Technique_6.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Knee%20Shield%206",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half-lasso%20Guard%206",
     "duration": null,
     "tags": [
-      "Guard",
-      "Knee Shield",
-      "Half Guard"
+      "Half-lasso",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -637,7 +631,7 @@ export const mockTechniques = [
   {
     "id": "28",
     "title": "Spider Lasso - Technique 1",
-    "description": "Spider Lasso technique from PRIMO BJJ Training",
+    "description": "deepen lasso hook - switch foot from biceps to hip - pull and flip over",
     "category": "guard",
     "subCategory": "Spider Lasso",
     "videoId": "SpiderLasso_Technique_1.mp4",
@@ -645,9 +639,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%201",
     "duration": null,
     "tags": [
-      "Guard",
-      "Spider Guard",
-      "Lasso"
+      "Spider Lasso",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -661,7 +654,7 @@ export const mockTechniques = [
   {
     "id": "29",
     "title": "Spider Lasso - Technique 2",
-    "description": "Spider Lasso technique from PRIMO BJJ Training",
+    "description": "hip elevation - shoot through to high guard - sub options",
     "category": "guard",
     "subCategory": "Spider Lasso",
     "videoId": "SpiderLasso_Technique_2.mp4",
@@ -669,9 +662,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%202",
     "duration": null,
     "tags": [
-      "Guard",
-      "Spider Guard",
-      "Lasso"
+      "Spider Lasso",
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -685,7 +677,7 @@ export const mockTechniques = [
   {
     "id": "30",
     "title": "Spider Lasso - Technique 3",
-    "description": "Spider Lasso technique from PRIMO BJJ Training",
+    "description": "foot from biceps to leg - deepen lasso hook to outside of front leg - pivot for better angle - sit up to side control",
     "category": "guard",
     "subCategory": "Spider Lasso",
     "videoId": "SpiderLasso_Technique_3.mp4",
@@ -693,9 +685,8 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Spider%20Lasso%203",
     "duration": null,
     "tags": [
-      "Guard",
-      "Spider Guard",
-      "Lasso"
+      "Spider Lasso",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -709,7 +700,7 @@ export const mockTechniques = [
   {
     "id": "31",
     "title": "Side Control - Technique 1",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "isolate same side arm - embrace opposite arm and head - mata leão",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_1.mp4",
@@ -718,7 +709,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -732,7 +723,7 @@ export const mockTechniques = [
   {
     "id": "32",
     "title": "Side Control - Technique 2",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "hip switch - shotgun grip - shin to arm pit - arm bar",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_2.mp4",
@@ -741,7 +732,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -755,7 +746,7 @@ export const mockTechniques = [
   {
     "id": "33",
     "title": "Side Control - Technique 3",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "frame - hip scape - leg over head - sit up to reverse",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_3.mp4",
@@ -763,8 +754,7 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%203",
     "duration": null,
     "tags": [
-      "Side Control",
-      "Position"
+      "Side Control"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -778,7 +768,7 @@ export const mockTechniques = [
   {
     "id": "34",
     "title": "Side Control - Technique 4",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "frame - hip scape - top arm to cross colar grip - bottom arm to bottom leg pants grip - hip scoop and roll over",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_4.mp4",
@@ -786,8 +776,7 @@ export const mockTechniques = [
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%204",
     "duration": null,
     "tags": [
-      "Side Control",
-      "Position"
+      "Side Control"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -801,7 +790,7 @@ export const mockTechniques = [
   {
     "id": "35",
     "title": "Side Control - Technique 5",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "opposite side arm Kimura grip - same side hip blockade - slide over shoulder - pull arm back",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_5.mp4",
@@ -810,7 +799,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -824,7 +813,7 @@ export const mockTechniques = [
   {
     "id": "36",
     "title": "Side Control - Technique 6",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "reverse shotgun grip on opposite arm - hip switch and trap leg - twist arm",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_6.mp4",
@@ -833,7 +822,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -847,7 +836,7 @@ export const mockTechniques = [
   {
     "id": "37",
     "title": "Side Control - Technique 7",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "hip switch to isolate arm - step over head - shotgun grip - arm bar",
     "category": "side",
     "subCategory": "Side Control",
     "videoId": "SideControl_Technique_7.mp4",
@@ -856,7 +845,7 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Side Control",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -870,16 +859,15 @@ export const mockTechniques = [
   {
     "id": "38",
     "title": "Side Control - Technique 8",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "frame - bridge over shoulder - swing back and hip scape - leg over head - sit up to reverse",
     "category": "side",
     "subCategory": "Side Control",
-    "videoId": "SideControl_Technique_8.mp4",
-    "videoUrl": `${R2_BASE_URL}/SideControl_Technique_8.mp4`,
+    "videoId": "SideControl_Technique_9.mp4",
+    "videoUrl": `${R2_BASE_URL}/SideControl_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%208",
     "duration": null,
     "tags": [
-      "Side Control",
-      "Position"
+      "Side Control"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -893,16 +881,15 @@ export const mockTechniques = [
   {
     "id": "39",
     "title": "Side Control - Technique 9",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "description": "frame - open lapel and feed it under leg to opposite side - scape to turtle",
     "category": "side",
     "subCategory": "Side Control",
-    "videoId": "SideControl_Technique_9.mp4",
-    "videoUrl": `${R2_BASE_URL}/SideControl_Technique_9.mp4`,
+    "videoId": "SideControl_Technique_10.mp4",
+    "videoUrl": `${R2_BASE_URL}/SideControl_Technique_10.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%209",
     "duration": null,
     "tags": [
-      "Side Control",
-      "Position"
+      "Side Control"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -915,17 +902,16 @@ export const mockTechniques = [
   },
   {
     "id": "40",
-    "title": "Side Control - Technique 10",
-    "description": "Side Control technique from PRIMO BJJ Training",
+    "title": "North South - Technique 1",
+    "description": "double over - bridge and roll wrapping the head",
     "category": "side",
-    "subCategory": "Side Control",
-    "videoId": "SideControl_Technique_10.mp4",
-    "videoUrl": `${R2_BASE_URL}/SideControl_Technique_10.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Side%20Control%2010",
+    "subCategory": "North South",
+    "videoId": "NorthSouth_Technique_1.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_1.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%201",
     "duration": null,
     "tags": [
-      "Side Control",
-      "Position"
+      "North South"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -938,17 +924,17 @@ export const mockTechniques = [
   },
   {
     "id": "41",
-    "title": "North South - Technique 1",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 2",
+    "description": "over/under - turn to under side - reach to grab leg - walk around and trap leg in the half guard",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_1.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_1.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%201",
+    "videoId": "NorthSouth_Technique_2.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_2.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%202",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -961,17 +947,17 @@ export const mockTechniques = [
   },
   {
     "id": "42",
-    "title": "North South - Technique 2",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 3",
+    "description": "over/under - reach for colar grip from over side - under side wrap the head - connect arm pit to neck - slide out over shoulder",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_2.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_2.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%202",
+    "videoId": "NorthSouth_Technique_3.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_3.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%203",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -984,17 +970,17 @@ export const mockTechniques = [
   },
   {
     "id": "43",
-    "title": "North South - Technique 3",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 4",
+    "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - scoop opponent",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_3.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_3.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%203",
+    "videoId": "NorthSouth_Technique_4.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_4.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%204",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Back"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1007,17 +993,17 @@ export const mockTechniques = [
   },
   {
     "id": "44",
-    "title": "North South - Technique 4",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 5",
+    "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - inside leg hook behind head - arm bar",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_4.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_4.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%204",
+    "videoId": "NorthSouth_Technique_5.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_5.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%205",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1030,17 +1016,17 @@ export const mockTechniques = [
   },
   {
     "id": "45",
-    "title": "North South - Technique 5",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 6",
+    "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - roll onto the inside and trap crucifix - reach for far side colar - choke",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_5.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_5.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%205",
+    "videoId": "NorthSouth_Technique_6.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_6.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%206",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1053,17 +1039,16 @@ export const mockTechniques = [
   },
   {
     "id": "46",
-    "title": "North South - Technique 6",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 7",
+    "description": "double under - frame one side on the biceps - other side grip on the leg - bridge and place shin on the biceps - x the arm with other leg - extend leg, pivot to the inside and roll",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_6.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_6.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%206",
+    "videoId": "NorthSouth_Technique_7.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_7.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%207",
     "duration": null,
     "tags": [
-      "North South",
-      "Position"
+      "North South"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1076,17 +1061,17 @@ export const mockTechniques = [
   },
   {
     "id": "47",
-    "title": "North South - Technique 7",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 8",
+    "description": "double under - frame one side on the biceps - other side grip on the leg - bridge and place shin on the biceps - opposite side arm reaches across body to hip - pivot and bring other shin across the body",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_7.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_7.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%207",
+    "videoId": "NorthSouth_Technique_8.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_8.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%208",
     "duration": null,
     "tags": [
       "North South",
-      "Position"
+      "Guard"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1099,17 +1084,16 @@ export const mockTechniques = [
   },
   {
     "id": "48",
-    "title": "North South - Technique 8",
-    "description": "North South technique from PRIMO BJJ Training",
+    "title": "North South - Technique 9",
+    "description": "opponent traps Kimura - keep hand to chest - pinch elbow to lock his arm - bring free elbow close and block flank - roll to turtle and step through - finish behind opponent",
     "category": "side",
     "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_8.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_8.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%208",
+    "videoId": "NorthSouth_Technique_9.mp4",
+    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_9.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%209",
     "duration": null,
     "tags": [
-      "North South",
-      "Position"
+      "North South"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1122,17 +1106,17 @@ export const mockTechniques = [
   },
   {
     "id": "49",
-    "title": "North South - Technique 9",
-    "description": "North South technique from PRIMO BJJ Training",
-    "category": "side",
-    "subCategory": "North South",
-    "videoId": "NorthSouth_Technique_9.mp4",
-    "videoUrl": `${R2_BASE_URL}/NorthSouth_Technique_9.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=North%20South%209",
+    "title": "Back Control - Technique 1",
+    "description": "seatbelt - feed lapel over shoulder to under hand - angle and reach for pants grip - modified bow and arrow",
+    "category": "back",
+    "subCategory": "Back Control",
+    "videoId": "Back_Technique_1.mp4",
+    "videoUrl": `${R2_BASE_URL}/Back_Technique_1.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%201",
     "duration": null,
     "tags": [
-      "North South",
-      "Position"
+      "Back",
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1145,17 +1129,17 @@ export const mockTechniques = [
   },
   {
     "id": "50",
-    "title": "Back Control - Technique 1",
-    "description": "Back Control technique from PRIMO BJJ Training",
+    "title": "Back Control - Technique 2",
+    "description": "seatbelt - feed lapel over shoulder to under hand - switch grip again behind the head - cross grip from behind - press elbows together - modified cross choke from back",
     "category": "back",
     "subCategory": "Back Control",
-    "videoId": "Back_Technique_1.mp4",
-    "videoUrl": `${R2_BASE_URL}/Back_Technique_1.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%201",
+    "videoId": "Back_Technique_2.mp4",
+    "videoUrl": `${R2_BASE_URL}/Back_Technique_2.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%202",
     "duration": null,
     "tags": [
       "Back",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1168,17 +1152,17 @@ export const mockTechniques = [
   },
   {
     "id": "51",
-    "title": "Back Control - Technique 2",
-    "description": "Back Control technique from PRIMO BJJ Training",
+    "title": "Back Control - Technique 3",
+    "description": "seatbelt - feed lapel under shoulder to over hand - angle and reach for pants grip - modified bow and arrow",
     "category": "back",
     "subCategory": "Back Control",
-    "videoId": "Back_Technique_2.mp4",
-    "videoUrl": `${R2_BASE_URL}/Back_Technique_2.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%202",
+    "videoId": "Back_Technique_3.mp4",
+    "videoUrl": `${R2_BASE_URL}/Back_Technique_3.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%203",
     "duration": null,
     "tags": [
       "Back",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1191,17 +1175,17 @@ export const mockTechniques = [
   },
   {
     "id": "52",
-    "title": "Back Control - Technique 3",
-    "description": "Back Control technique from PRIMO BJJ Training",
+    "title": "Back Control - Technique 4",
+    "description": "seatbelt - feed lapel under shoulder to over hand - switch to inside sleeve grip - reach behind head to Ezequiel choke",
     "category": "back",
     "subCategory": "Back Control",
-    "videoId": "Back_Technique_3.mp4",
-    "videoUrl": `${R2_BASE_URL}/Back_Technique_3.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%203",
+    "videoId": "Back_Technique_4.mp4",
+    "videoUrl": `${R2_BASE_URL}/Back_Technique_4.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%204",
     "duration": null,
     "tags": [
       "Back",
-      "Position"
+      "Submissions"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1214,29 +1198,6 @@ export const mockTechniques = [
   },
   {
     "id": "53",
-    "title": "Back Control - Technique 4",
-    "description": "Back Control technique from PRIMO BJJ Training",
-    "category": "back",
-    "subCategory": "Back Control",
-    "videoId": "Back_Technique_4.mp4",
-    "videoUrl": `${R2_BASE_URL}/Back_Technique_4.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Back%20Control%204",
-    "duration": null,
-    "tags": [
-      "Back",
-      "Position"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "54",
     "title": "TakeDown - Technique 1",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1259,7 +1220,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "55",
+    "id": "54",
     "title": "TakeDown - Technique 2",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1282,7 +1243,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "56",
+    "id": "55",
     "title": "TakeDown - Technique 3",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1305,7 +1266,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "57",
+    "id": "56",
     "title": "TakeDown - Technique 4",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1328,7 +1289,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "58",
+    "id": "57",
     "title": "TakeDown - Technique 5",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1351,7 +1312,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "59",
+    "id": "58",
     "title": "TakeDown - Technique 6",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1374,7 +1335,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "60",
+    "id": "59",
     "title": "TakeDown - Technique 7",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1397,7 +1358,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "61",
+    "id": "60",
     "title": "TakeDown - Technique 8",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1420,7 +1381,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "62",
+    "id": "61",
     "title": "TakeDown - Technique 9",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1443,7 +1404,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "63",
+    "id": "62",
     "title": "TakeDown - Technique 10",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1466,7 +1427,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "64",
+    "id": "63",
     "title": "TakeDown - Technique 11",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1489,7 +1450,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "65",
+    "id": "64",
     "title": "TakeDown - Technique 12",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1512,7 +1473,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "66",
+    "id": "65",
     "title": "TakeDown - Technique 13",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1535,7 +1496,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "67",
+    "id": "66",
     "title": "TakeDown - Technique 14",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1558,7 +1519,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "68",
+    "id": "67",
     "title": "TakeDown - Technique 15",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1581,7 +1542,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "69",
+    "id": "68",
     "title": "TakeDown - Technique 16",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1604,7 +1565,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "70",
+    "id": "69",
     "title": "TakeDown - Technique 17",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1627,7 +1588,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "71",
+    "id": "70",
     "title": "TakeDown - Technique 18",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1650,7 +1611,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "72",
+    "id": "71",
     "title": "TakeDown - Technique 19",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1673,7 +1634,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "73",
+    "id": "72",
     "title": "TakeDown - Technique 20",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1696,7 +1657,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "74",
+    "id": "73",
     "title": "TakeDown - Technique 21",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1719,7 +1680,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "75",
+    "id": "74",
     "title": "TakeDown - Technique 22",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1742,7 +1703,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "76",
+    "id": "75",
     "title": "TakeDown - Technique 23",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1765,7 +1726,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "77",
+    "id": "76",
     "title": "TakeDown - Technique 24",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1788,7 +1749,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "78",
+    "id": "77",
     "title": "TakeDown - Technique 25",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1811,7 +1772,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "79",
+    "id": "78",
     "title": "TakeDown - Technique 26",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1834,7 +1795,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "80",
+    "id": "79",
     "title": "TakeDown - Technique 27",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1871,7 +1832,7 @@ export const categories = [
 ];
 
 export const subCategories = {
-  guard: ['Z Guard', '50/50 Guard', 'Half Guard', 'Knee Shield', 'Spider Lasso'],
+  guard: ['Z Guard', '50/50 Guard', 'Half Guard', 'Half-lasso Guard', 'Spider Lasso'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   sweep: ['Sweep'],
   mount: ['Mount'],
