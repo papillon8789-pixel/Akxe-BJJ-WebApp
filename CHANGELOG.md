@@ -2,6 +2,29 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
+---
+
+## 🔮 Geplante Verbesserungen (Future Ideas)
+
+### Sicherheit & Authentifizierung
+- **Email-Verifizierung statt Allowed-User.json**
+  - **Problem**: Aktuelle Allowed-User.json Lösung ist im Frontend sichtbar und kann von Bots umgangen werden
+  - **Lösung**: Email-Verifizierung mit Bestätigungslink
+  - **Technologie-Stack**:
+    - Cloudflare Workers (Backend API)
+    - Cloudflare D1 Database (User-Datenbank)
+    - Resend Email Service (Email-Versand, 100 Emails/Tag kostenlos)
+  - **Vorteile**:
+    - Deutlich sicherer - echte Identitätsprüfung
+    - Nur Personen mit Zugang zur Email können sich verifizieren
+    - Professioneller Standard
+    - Kostenlos für kleine Teams
+    - Alles im Cloudflare-Ökosystem integriert
+  - **Priorität**: Mittel
+  - **Aufwand**: 2-3 Stunden Implementierung
+
+---
+
 ## [2026-09-24]
 
 ### Hinzugefügt
