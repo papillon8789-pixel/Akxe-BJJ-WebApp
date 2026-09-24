@@ -262,17 +262,17 @@ export const mockTechniques = [
   },
   {
     "id": "12",
-    "title": "Half Guard - Technique 1",
-    "description": "Half Guard technique from PRIMO BJJ Training",
+    "title": "Octopus Guard - Technique 1",
+    "description": "elbow post to shoulder blade - bottom leg grip - hip elevation to open space - hip scape to back take",
     "category": "guard",
-    "subCategory": "Half Guard",
+    "subCategory": "Octopus Guard",
     "videoId": "HalfGuard_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_1.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%201",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Octopus%20Guard%201",
     "duration": null,
     "tags": [
-      "Guard",
-      "Half Guard"
+      "Octopus Guard",
+      "Back"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -285,17 +285,17 @@ export const mockTechniques = [
   },
   {
     "id": "13",
-    "title": "Half Guard - Technique 2",
-    "description": "Half Guard technique from PRIMO BJJ Training",
+    "title": "Octopus Guard - Technique 2",
+    "description": "elbow post to shoulder blade - bottom leg grip - top leg pummel to inside hook - hook sweep",
     "category": "guard",
-    "subCategory": "Half Guard",
+    "subCategory": "Octopus Guard",
     "videoId": "HalfGuard_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_2.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%202",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Octopus%20Guard%202",
     "duration": null,
     "tags": [
-      "Guard",
-      "Half Guard"
+      "Octopus Guard",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -308,17 +308,17 @@ export const mockTechniques = [
   },
   {
     "id": "14",
-    "title": "Half Guard - Technique 3",
-    "description": "Half Guard technique from PRIMO BJJ Training",
+    "title": "Octopus Guard - Technique 3",
+    "description": "elbow post to shoulder blade - bottom leg grip - top leg pummel to inside hook - reverse hook sweep",
     "category": "guard",
-    "subCategory": "Half Guard",
+    "subCategory": "Octopus Guard",
     "videoId": "HalfGuard_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_3.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%203",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Octopus%20Guard%203",
     "duration": null,
     "tags": [
-      "Guard",
-      "Half Guard"
+      "Octopus Guard",
+      "Sweep"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -331,144 +331,6 @@ export const mockTechniques = [
   },
   {
     "id": "15",
-    "title": "Half Guard - Technique 4",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_4.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_4.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%204",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "16",
-    "title": "Half Guard - Technique 5",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_5.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_5.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%205",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "17",
-    "title": "Half Guard - Technique 6",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_6.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_6.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%206",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "18",
-    "title": "Half Guard - Technique 7",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_7.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_7.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%207",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "19",
-    "title": "Half Guard - Technique 8",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_8.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_8.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%208",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "20",
-    "title": "Half Guard - Technique 9",
-    "description": "Half Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Half Guard",
-    "videoId": "HalfGuard_Technique_9.mp4",
-    "videoUrl": `${R2_BASE_URL}/HalfGuard_Technique_9.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Guard%209",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Half Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": true,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "21",
     "title": "Half-lasso Guard - Technique 1",
     "description": "sprawl - outside leg pummel in - hip lift to open space - jump to back take",
     "category": "guard",
@@ -1809,7 +1671,7 @@ export const categories = [
 ];
 
 export const subCategories = {
-  guard: ['Z Guard', '50/50 Guard', 'Half Guard', 'Half-lasso Guard', 'Spider Lasso'],
+  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   sweep: ['Sweep'],
   mount: ['Mount'],
