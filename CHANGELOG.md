@@ -27,11 +27,15 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - Von "AKXE BJJ - PRIMO Germany/München" zu "PRIMO BJJ - AKXE Germany/München"
   - Betrifft: App.jsx (Footer und Training Schedule) und Header.jsx
 
+### Entfernt
+- **Z Guard - Technique 6** (ID 6) wurde gelöscht (Duplikat von Technique 3)
+  - Alle nachfolgenden IDs von 7-79 wurden zu 6-78 neu nummeriert
+
 ### Technische Details
-- Datei: `src/data/mockTechniques.js` - 31 Techniken mit Beschreibungen und Tags aktualisiert, IDs neu nummeriert
+- Datei: `src/data/mockTechniques.js` - 31 Techniken mit Beschreibungen und Tags aktualisiert, 2 Techniken gelöscht, IDs neu nummeriert
 - Datei: `src/App.jsx` - Footer und Training Schedule Branding aktualisiert
 - Datei: `src/components/layout/Header.jsx` - Header Branding aktualisiert
-- Gesamt: 79 Techniken in der Datenbank (1 gelöscht, IDs neu nummeriert von 1-79)
+- **Gesamt: 78 Techniken** in der Datenbank (2 gelöscht, IDs neu nummeriert von 1-78)
 
 ---
 

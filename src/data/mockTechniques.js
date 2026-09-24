@@ -124,29 +124,6 @@ export const mockTechniques = [
   },
   {
     "id": "6",
-    "title": "Z Guard - Technique 6",
-    "description": "Z Guard technique from PRIMO BJJ Training",
-    "category": "guard",
-    "subCategory": "Z Guard",
-    "videoId": "C_Guard6.mp4",
-    "videoUrl": `${R2_BASE_URL}/C_Guard6.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Z%20Guard%206",
-    "duration": null,
-    "tags": [
-      "Guard",
-      "Z Guard"
-    ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
-    "isLegacy": false,
-    "isFavorite": false,
-    "isDownloaded": false,
-    "isBookmarked": false,
-    "viewCount": 0,
-    "notes": ""
-  },
-  {
-    "id": "7",
     "title": "50/50 Position - Technique 1",
     "description": "parallel inside lapel grip - technical stand up",
     "category": "guard",
@@ -169,7 +146,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "8",
+    "id": "7",
     "title": "50/50 Position - Technique 2",
     "description": "inside leg grip - outside sleeve grip and foot to biceps - inside leg across the body - sit up to back take",
     "category": "guard",
@@ -192,7 +169,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "9",
+    "id": "8",
     "title": "50/50 Position - Technique 3",
     "description": "inside leg grip - outside parallel sleeve grip - roll over to turtle",
     "category": "guard",
@@ -215,7 +192,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "10",
+    "id": "9",
     "title": "50/50 Position - Technique 4",
     "description": "outside parallel sleeve grip - inside arm post in between - mata leão the leg - foot lock",
     "category": "guard",
@@ -238,7 +215,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "11",
+    "id": "10",
     "title": "50/50 Position - Technique 5",
     "description": "inside leg grip - outside parallel sleeve grip and foot to biceps - inside leg across the body - arm bar",
     "category": "guard",
@@ -261,7 +238,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "12",
+    "id": "11",
     "title": "50/50 Position - Technique 6",
     "description": "outside parallel sleeve grip - inside arm post in between - leg push to shift weight - reach to far leg control - hip scape to knee bar",
     "category": "guard",
@@ -284,7 +261,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "13",
+    "id": "12",
     "title": "Half Guard - Technique 1",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -307,7 +284,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "14",
+    "id": "13",
     "title": "Half Guard - Technique 2",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -330,7 +307,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "15",
+    "id": "14",
     "title": "Half Guard - Technique 3",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -353,7 +330,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "16",
+    "id": "15",
     "title": "Half Guard - Technique 4",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -376,7 +353,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "17",
+    "id": "16",
     "title": "Half Guard - Technique 5",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -399,7 +376,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "18",
+    "id": "17",
     "title": "Half Guard - Technique 6",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -422,7 +399,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "19",
+    "id": "18",
     "title": "Half Guard - Technique 7",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -445,7 +422,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "20",
+    "id": "19",
     "title": "Half Guard - Technique 8",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -468,7 +445,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "21",
+    "id": "20",
     "title": "Half Guard - Technique 9",
     "description": "Half Guard technique from PRIMO BJJ Training",
     "category": "guard",
@@ -491,7 +468,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "22",
+    "id": "21",
     "title": "Half-lasso Guard - Technique 1",
     "description": "sprawl - outside leg pummel in - hip lift to open space - jump to back take",
     "category": "guard",
@@ -514,7 +491,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "23",
+    "id": "22",
     "title": "Half-lasso Guard - Technique 2",
     "description": "open knee to unbalance - reach far leg and x-lasso the arm - pivot 180•",
     "category": "guard",
@@ -537,7 +514,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "24",
+    "id": "23",
     "title": "Half-lasso Guard - Technique 3",
     "description": "elbow post to elevate - pull trapped leg out - roll into omoplata or triangle",
     "category": "guard",
@@ -560,7 +537,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "25",
+    "id": "24",
     "title": "Half-lasso Guard - Technique 4",
     "description": "sprawl - outside leg pummel in - colar control and leg weave - hip switch to back step - or mounted",
     "category": "guard",
@@ -583,7 +560,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "26",
+    "id": "25",
     "title": "Half-lasso Guard - Technique 5",
     "description": "sprawl - outside leg pummel in - colar control and leg weave - hip switch to knee bar",
     "category": "guard",
@@ -606,7 +583,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "27",
+    "id": "26",
     "title": "Half-lasso Guard - Technique 6",
     "description": "open knee to unbalance - reach far leg - roll over and technical stand up",
     "category": "guard",
@@ -629,7 +606,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "28",
+    "id": "27",
     "title": "Spider Lasso - Technique 1",
     "description": "deepen lasso hook - switch foot from biceps to hip - pull and flip over",
     "category": "guard",
@@ -652,7 +629,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "29",
+    "id": "28",
     "title": "Spider Lasso - Technique 2",
     "description": "hip elevation - shoot through to high guard - sub options",
     "category": "guard",
@@ -675,7 +652,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "30",
+    "id": "29",
     "title": "Spider Lasso - Technique 3",
     "description": "foot from biceps to leg - deepen lasso hook to outside of front leg - pivot for better angle - sit up to side control",
     "category": "guard",
@@ -698,7 +675,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "31",
+    "id": "30",
     "title": "Side Control - Technique 1",
     "description": "isolate same side arm - embrace opposite arm and head - mata leão",
     "category": "side",
@@ -721,7 +698,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "32",
+    "id": "31",
     "title": "Side Control - Technique 2",
     "description": "hip switch - shotgun grip - shin to arm pit - arm bar",
     "category": "side",
@@ -744,7 +721,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "33",
+    "id": "32",
     "title": "Side Control - Technique 3",
     "description": "frame - hip scape - leg over head - sit up to reverse",
     "category": "side",
@@ -766,7 +743,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "34",
+    "id": "33",
     "title": "Side Control - Technique 4",
     "description": "frame - hip scape - top arm to cross colar grip - bottom arm to bottom leg pants grip - hip scoop and roll over",
     "category": "side",
@@ -788,7 +765,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "35",
+    "id": "34",
     "title": "Side Control - Technique 5",
     "description": "opposite side arm Kimura grip - same side hip blockade - slide over shoulder - pull arm back",
     "category": "side",
@@ -811,7 +788,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "36",
+    "id": "35",
     "title": "Side Control - Technique 6",
     "description": "reverse shotgun grip on opposite arm - hip switch and trap leg - twist arm",
     "category": "side",
@@ -834,7 +811,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "37",
+    "id": "36",
     "title": "Side Control - Technique 7",
     "description": "hip switch to isolate arm - step over head - shotgun grip - arm bar",
     "category": "side",
@@ -857,7 +834,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "38",
+    "id": "37",
     "title": "Side Control - Technique 8",
     "description": "frame - bridge over shoulder - swing back and hip scape - leg over head - sit up to reverse",
     "category": "side",
@@ -879,7 +856,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "39",
+    "id": "38",
     "title": "Side Control - Technique 9",
     "description": "frame - open lapel and feed it under leg to opposite side - scape to turtle",
     "category": "side",
@@ -901,7 +878,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "40",
+    "id": "39",
     "title": "North South - Technique 1",
     "description": "double over - bridge and roll wrapping the head",
     "category": "side",
@@ -923,7 +900,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "41",
+    "id": "40",
     "title": "North South - Technique 2",
     "description": "over/under - turn to under side - reach to grab leg - walk around and trap leg in the half guard",
     "category": "side",
@@ -946,7 +923,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "42",
+    "id": "41",
     "title": "North South - Technique 3",
     "description": "over/under - reach for colar grip from over side - under side wrap the head - connect arm pit to neck - slide out over shoulder",
     "category": "side",
@@ -969,7 +946,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "43",
+    "id": "42",
     "title": "North South - Technique 4",
     "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - scoop opponent",
     "category": "side",
@@ -992,7 +969,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "44",
+    "id": "43",
     "title": "North South - Technique 5",
     "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - inside leg hook behind head - arm bar",
     "category": "side",
@@ -1015,7 +992,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "45",
+    "id": "44",
     "title": "North South - Technique 6",
     "description": "over/under - shift weight to over arm side - scoop opposite side arm - roll opponent on the side and trap Kimura grip - step over opposite arm - sit and let head free - roll onto the inside and trap crucifix - reach for far side colar - choke",
     "category": "side",
@@ -1038,7 +1015,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "46",
+    "id": "45",
     "title": "North South - Technique 7",
     "description": "double under - frame one side on the biceps - other side grip on the leg - bridge and place shin on the biceps - x the arm with other leg - extend leg, pivot to the inside and roll",
     "category": "side",
@@ -1060,7 +1037,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "47",
+    "id": "46",
     "title": "North South - Technique 8",
     "description": "double under - frame one side on the biceps - other side grip on the leg - bridge and place shin on the biceps - opposite side arm reaches across body to hip - pivot and bring other shin across the body",
     "category": "side",
@@ -1083,7 +1060,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "48",
+    "id": "47",
     "title": "North South - Technique 9",
     "description": "opponent traps Kimura - keep hand to chest - pinch elbow to lock his arm - bring free elbow close and block flank - roll to turtle and step through - finish behind opponent",
     "category": "side",
@@ -1105,7 +1082,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "49",
+    "id": "48",
     "title": "Back Control - Technique 1",
     "description": "seatbelt - feed lapel over shoulder to under hand - angle and reach for pants grip - modified bow and arrow",
     "category": "back",
@@ -1128,7 +1105,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "50",
+    "id": "49",
     "title": "Back Control - Technique 2",
     "description": "seatbelt - feed lapel over shoulder to under hand - switch grip again behind the head - cross grip from behind - press elbows together - modified cross choke from back",
     "category": "back",
@@ -1151,7 +1128,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "51",
+    "id": "50",
     "title": "Back Control - Technique 3",
     "description": "seatbelt - feed lapel under shoulder to over hand - angle and reach for pants grip - modified bow and arrow",
     "category": "back",
@@ -1174,7 +1151,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "52",
+    "id": "51",
     "title": "Back Control - Technique 4",
     "description": "seatbelt - feed lapel under shoulder to over hand - switch to inside sleeve grip - reach behind head to Ezequiel choke",
     "category": "back",
@@ -1197,7 +1174,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "53",
+    "id": "52",
     "title": "TakeDown - Technique 1",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1220,7 +1197,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "54",
+    "id": "53",
     "title": "TakeDown - Technique 2",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1243,7 +1220,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "55",
+    "id": "54",
     "title": "TakeDown - Technique 3",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1266,7 +1243,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "56",
+    "id": "55",
     "title": "TakeDown - Technique 4",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1289,7 +1266,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "57",
+    "id": "56",
     "title": "TakeDown - Technique 5",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1312,7 +1289,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "58",
+    "id": "57",
     "title": "TakeDown - Technique 6",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1335,7 +1312,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "59",
+    "id": "58",
     "title": "TakeDown - Technique 7",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1358,7 +1335,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "60",
+    "id": "59",
     "title": "TakeDown - Technique 8",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1381,7 +1358,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "61",
+    "id": "60",
     "title": "TakeDown - Technique 9",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1404,7 +1381,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "62",
+    "id": "61",
     "title": "TakeDown - Technique 10",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1427,7 +1404,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "63",
+    "id": "62",
     "title": "TakeDown - Technique 11",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1450,7 +1427,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "64",
+    "id": "63",
     "title": "TakeDown - Technique 12",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1473,7 +1450,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "65",
+    "id": "64",
     "title": "TakeDown - Technique 13",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1496,7 +1473,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "66",
+    "id": "65",
     "title": "TakeDown - Technique 14",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1519,7 +1496,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "67",
+    "id": "66",
     "title": "TakeDown - Technique 15",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1542,7 +1519,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "68",
+    "id": "67",
     "title": "TakeDown - Technique 16",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1565,7 +1542,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "69",
+    "id": "68",
     "title": "TakeDown - Technique 17",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1588,7 +1565,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "70",
+    "id": "69",
     "title": "TakeDown - Technique 18",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1611,7 +1588,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "71",
+    "id": "70",
     "title": "TakeDown - Technique 19",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1634,7 +1611,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "72",
+    "id": "71",
     "title": "TakeDown - Technique 20",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1657,7 +1634,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "73",
+    "id": "72",
     "title": "TakeDown - Technique 21",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1680,7 +1657,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "74",
+    "id": "73",
     "title": "TakeDown - Technique 22",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1703,7 +1680,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "75",
+    "id": "74",
     "title": "TakeDown - Technique 23",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1726,7 +1703,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "76",
+    "id": "75",
     "title": "TakeDown - Technique 24",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1749,7 +1726,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "77",
+    "id": "76",
     "title": "TakeDown - Technique 25",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1772,7 +1749,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "78",
+    "id": "77",
     "title": "TakeDown - Technique 26",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
@@ -1795,7 +1772,7 @@ export const mockTechniques = [
     "notes": ""
   },
   {
-    "id": "79",
+    "id": "78",
     "title": "TakeDown - Technique 27",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
