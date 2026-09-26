@@ -497,19 +497,31 @@ export default {
           return jsonResponse({ error: 'Admin access required' }, 403);
         }
         
-        const { email, paidMonths } = await request.json();
+        const { email, paidMonths, validUntil: customValidUntil } = await request.json();
         
         if (!email) {
           return jsonResponse({ error: 'Email required' }, 400);
         }
         
         const normalizedEmail = email.toLowerCase().trim();
-        const months = paidMonths || 3; // Default 3 Monate
+        
+        let validUntil;
+        let months;
+        
+        // Check if custom date is provided
+        if (customValidUntil) {
+          validUntil = new Date(customValidUntil);
+          // Calculate months difference for display
+          const now = new Date();
+          months = Math.round((validUntil - now) / (1000 * 60 * 60 * 24 * 30));
+        } else {
+          // Use paidMonths
+          months = paidMonths || 3; // Default 3 Monate
+          validUntil = new Date();
+          validUntil.setMonth(validUntil.getMonth() + months);
+        }
         
         // Update User Status
-        const validUntil = new Date();
-        validUntil.setMonth(validUntil.getMonth() + months);
-        
         await env.DB.prepare(
           'UPDATE allowed_users SET status = "active", paid_months = ?, valid_until = ?, approved_by = ?, approved_at = datetime("now") WHERE email = ?'
         ).bind(months, validUntil.toISOString(), payload.email, normalizedEmail).run();

@@ -7,6 +7,8 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [processingEmail, setProcessingEmail] = useState(null);
+  const [customDateEmail, setCustomDateEmail] = useState(null);
+  const [customDate, setCustomDate] = useState('');
 
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -44,7 +46,7 @@ export default function AdminDashboard() {
     }
   }, [user, token]);
 
-  // Approve user
+  // Approve user with months
   const handleApprove = async (email, paidMonths = 3) => {
     try {
       setProcessingEmail(email);
@@ -65,12 +67,57 @@ export default function AdminDashboard() {
 
       // Refresh list
       await fetchPendingUsers();
+      setCustomDateEmail(null);
+      setCustomDate('');
     } catch (err) {
       console.error('Error approving user:', err);
       setError(err.message);
     } finally {
       setProcessingEmail(null);
     }
+  };
+
+  // Approve user with custom date
+  const handleApproveWithDate = async (email, validUntilDate) => {
+    try {
+      setProcessingEmail(email);
+      setError(null);
+
+      const response = await fetch(`${API_URL}/api/admin/approve-user`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          validUntil: validUntilDate
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to approve user');
+      }
+
+      // Refresh list
+      await fetchPendingUsers();
+      setCustomDateEmail(null);
+      setCustomDate('');
+    } catch (err) {
+      console.error('Error approving user:', err);
+      setError(err.message);
+    } finally {
+      setProcessingEmail(null);
+    }
+  };
+
+  // Handle custom date submission
+  const handleCustomDateSubmit = (email) => {
+    if (!customDate) {
+      setError('Please select a date');
+      return;
+    }
+    handleApproveWithDate(email, customDate);
   };
 
   // Reject user
@@ -192,43 +239,89 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      {/* Approve Buttons */}
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleApprove(pendingUser.email, 3)}
-                          disabled={processingEmail === pendingUser.email}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
-                          title="Approve for 3 months"
-                        >
-                          {processingEmail === pendingUser.email ? '⏳' : '✓ 3M'}
-                        </button>
-                        <button
-                          onClick={() => handleApprove(pendingUser.email, 6)}
-                          disabled={processingEmail === pendingUser.email}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
-                          title="Approve for 6 months"
-                        >
-                          {processingEmail === pendingUser.email ? '⏳' : '✓ 6M'}
-                        </button>
-                        <button
-                          onClick={() => handleApprove(pendingUser.email, 12)}
-                          disabled={processingEmail === pendingUser.email}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
-                          title="Approve for 12 months"
-                        >
-                          {processingEmail === pendingUser.email ? '⏳' : '✓ 12M'}
-                        </button>
-                      </div>
-
-                      {/* Reject Button */}
-                      <button
-                        onClick={() => handleReject(pendingUser.email)}
-                        disabled={processingEmail === pendingUser.email}
-                        className="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
-                      >
-                        {processingEmail === pendingUser.email ? '⏳' : '✗ Reject'}
-                      </button>
+                    <div className="flex flex-col gap-2">
+                      {customDateEmail === pendingUser.email ? (
+                        /* Custom Date Picker */
+                        <div className="flex gap-2 items-center">
+                          <input
+                            type="date"
+                            value={customDate}
+                            onChange={(e) => setCustomDate(e.target.value)}
+                            min={new Date().toISOString().split('T')[0]}
+                            className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-primo-red"
+                          />
+                          <button
+                            onClick={() => handleCustomDateSubmit(pendingUser.email)}
+                            disabled={processingEmail === pendingUser.email || !customDate}
+                            className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                          >
+                            ✓ Confirm
+                          </button>
+                          <button
+                            onClick={() => {
+                              setCustomDateEmail(null);
+                              setCustomDate('');
+                            }}
+                            className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm font-semibold rounded-lg transition-all"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      ) : (
+                        /* Quick Approve Buttons */
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleApprove(pendingUser.email, 1)}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                            title="Approve for 1 month"
+                          >
+                            {processingEmail === pendingUser.email ? '⏳' : '✓ 1M'}
+                          </button>
+                          <button
+                            onClick={() => handleApprove(pendingUser.email, 3)}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                            title="Approve for 3 months"
+                          >
+                            {processingEmail === pendingUser.email ? '⏳' : '✓ 3M'}
+                          </button>
+                          <button
+                            onClick={() => handleApprove(pendingUser.email, 6)}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                            title="Approve for 6 months"
+                          >
+                            {processingEmail === pendingUser.email ? '⏳' : '✓ 6M'}
+                          </button>
+                          <button
+                            onClick={() => handleApprove(pendingUser.email, 12)}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                            title="Approve for 12 months"
+                          >
+                            {processingEmail === pendingUser.email ? '⏳' : '✓ 12M'}
+                          </button>
+                          <button
+                            onClick={() => {
+                              setCustomDateEmail(pendingUser.email);
+                              setCustomDate('');
+                            }}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                            title="Choose custom date"
+                          >
+                            📅 Custom
+                          </button>
+                          <button
+                            onClick={() => handleReject(pendingUser.email)}
+                            disabled={processingEmail === pendingUser.email}
+                            className="px-3 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                          >
+                            {processingEmail === pendingUser.email ? '⏳' : '✗ Reject'}
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
