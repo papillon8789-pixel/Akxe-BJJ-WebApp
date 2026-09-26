@@ -1,0 +1,45 @@
+# Cloudflare Workers Konfiguration für Auth API
+
+name = "bjj-auth-api"
+main = "auth-api.js"
+compatibility_date = "2024-01-01"
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "bjj-auth-db"
+database_id = "9db9f3c0-7a6e-41d8-a440-3322e56725b0"
+
+# Environment Variables (Secrets via: wrangler secret put SECRET_NAME)
+[vars]
+ENVIRONMENT = "production"
+
+# Secrets (nicht hier eintragen, sondern via CLI):
+# wrangler secret put RESEND_API_KEY
+# wrangler secret put JWT_SECRET
+
+# Routes - Worker wird auf diesen Routes aktiv
+routes = [
+  { pattern = "your-domain.com/api/auth/*", zone_name = "your-domain.com" }
+]
+
+# Oder für Development mit Custom Domain:
+# route = "*/api/auth/*"
+
+# Build Configuration
+[build]
+command = ""
+
+# Development Configuration
+[env.development]
+name = "bjj-auth-api-dev"
+
+[env.development.vars]
+ENVIRONMENT = "development"
+
+# Staging Configuration
+[env.staging]
+name = "bjj-auth-api-staging"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"

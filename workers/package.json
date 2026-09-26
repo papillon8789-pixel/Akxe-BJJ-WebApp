@@ -1,0 +1,32 @@
+{
+  "name": "bjj-auth-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker für PRIMO BJJ Email-Verifizierung",
+  "main": "auth-api.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "db:create": "wrangler d1 create bjj-auth-db",
+    "db:execute": "wrangler d1 execute bjj-auth-db --file=./schema.sql",
+    "db:query": "wrangler d1 execute bjj-auth-db --command",
+    "tail": "wrangler tail",
+    "secret:resend": "wrangler secret put RESEND_API_KEY",
+    "secret:jwt": "wrangler secret put JWT_SECRET"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "authentication",
+    "email-verification"
+  ],
+  "author": "PRIMO BJJ",
+  "license": "MIT",
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

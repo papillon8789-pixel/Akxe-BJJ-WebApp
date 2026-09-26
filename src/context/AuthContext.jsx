@@ -2,104 +2,159 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+// API Base URL - wird in Production durch Cloudflare Worker URL ersetzt
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://your-worker.your-subdomain.workers.dev';
+
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [verificationStep, setVerificationStep] = useState('email'); // 'email' | 'code'
+  const [pendingEmail, setPendingEmail] = useState(null);
 
   // Check if user is already authenticated on mount
   useEffect(() => {
-    const savedAuth = localStorage.getItem('bjj-auth');
-    if (savedAuth) {
+    const validateSession = async () => {
+      const token = localStorage.getItem('bjj-auth-token');
+      
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+
       try {
-        const authData = JSON.parse(savedAuth);
-        // Check if authentication is still valid
-        if (authData.validUntil && new Date(authData.validUntil) > new Date()) {
+        const response = await fetch(`${API_BASE_URL}/api/auth/validate-session`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
           setIsAuthenticated(true);
-          setUserEmail(authData.email);
+          setUserEmail(data.user.email);
         } else {
-          // Authentication expired
-          localStorage.removeItem('bjj-auth');
+          // Token ungültig - entfernen
+          localStorage.removeItem('bjj-auth-token');
+          localStorage.removeItem('bjj-user-data');
         }
       } catch (err) {
-        console.error('Error parsing auth data:', err);
-        localStorage.removeItem('bjj-auth');
+        console.error('Session validation error:', err);
+        localStorage.removeItem('bjj-auth-token');
+        localStorage.removeItem('bjj-user-data');
       }
-    }
-    setIsLoading(false);
+      
+      setIsLoading(false);
+    };
+
+    validateSession();
   }, []);
 
-  // Verify email against allowed users list
-  const verifyEmail = async (email) => {
+  // Schritt 1: Email eingeben und Verifizierungscode anfordern
+  const requestVerification = async (email) => {
     setError(null);
     setIsLoading(true);
 
     try {
-      // Fetch allowed users from GitHub
-      const response = await fetch('/allowed-users.json', {
-        cache: 'no-cache',
+      const response = await fetch(`${API_BASE_URL}/api/auth/request-verification`, {
+        method: 'POST',
         headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.toLowerCase().trim() }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to load user list');
-      }
-
       const data = await response.json();
-      
-      // Normalize email for comparison (lowercase, trim)
-      const normalizedEmail = email.toLowerCase().trim();
-      
-      // Find user in allowed list
-      const user = data.users.find(u => u.email.toLowerCase() === normalizedEmail);
 
-      if (!user) {
-        setError('Email not authorized. Please contact your professor.');
+      if (!response.ok) {
+        setError(data.error || 'Fehler beim Senden der Email');
         setIsLoading(false);
         return false;
       }
 
-      // Check if access is still valid
-      const validUntil = new Date(user.validUntil);
-      const now = new Date();
-
-      if (validUntil < now) {
-        setError('Your access has expired. Please contact your professor to renew.');
-        setIsLoading(false);
-        return false;
-      }
-
-      // Authentication successful
-      const authData = {
-        email: user.email,
-        validUntil: user.validUntil,
-        authenticatedAt: new Date().toISOString()
-      };
-
-      localStorage.setItem('bjj-auth', JSON.stringify(authData));
-      setIsAuthenticated(true);
-      setUserEmail(user.email);
+      // Erfolg - wechsle zu Code-Eingabe
+      setPendingEmail(email.toLowerCase().trim());
+      setVerificationStep('code');
       setIsLoading(false);
       return true;
 
     } catch (err) {
-      console.error('Authentication error:', err);
-      setError('Error verifying email. Please try again.');
+      console.error('Request verification error:', err);
+      setError('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
       setIsLoading(false);
       return false;
     }
   };
 
+  // Schritt 2: Verifizierungscode eingeben
+  const verifyCode = async (code) => {
+    setError(null);
+    setIsLoading(true);
+
+    if (!pendingEmail) {
+      setError('Keine Email-Adresse vorhanden. Bitte starte erneut.');
+      setIsLoading(false);
+      return false;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/verify-token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          email: pendingEmail, 
+          code: code.trim() 
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || 'Ungültiger Code');
+        setIsLoading(false);
+        return false;
+      }
+
+      // Erfolg - speichere Token und User-Daten
+      localStorage.setItem('bjj-auth-token', data.token);
+      localStorage.setItem('bjj-user-data', JSON.stringify(data.user));
+      
+      setIsAuthenticated(true);
+      setUserEmail(data.user.email);
+      setVerificationStep('email');
+      setPendingEmail(null);
+      setIsLoading(false);
+      return true;
+
+    } catch (err) {
+      console.error('Verify code error:', err);
+      setError('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
+      setIsLoading(false);
+      return false;
+    }
+  };
+
+  // Zurück zur Email-Eingabe
+  const resetVerification = () => {
+    setVerificationStep('email');
+    setPendingEmail(null);
+    setError(null);
+  };
+
   // Logout function
   const logout = () => {
-    localStorage.removeItem('bjj-auth');
+    localStorage.removeItem('bjj-auth-token');
+    localStorage.removeItem('bjj-user-data');
     setIsAuthenticated(false);
     setUserEmail(null);
     setError(null);
+    setVerificationStep('email');
+    setPendingEmail(null);
   };
 
   const value = {
@@ -107,8 +162,12 @@ export function AuthProvider({ children }) {
     userEmail,
     isLoading,
     error,
-    verifyEmail,
-    logout
+    verificationStep,
+    pendingEmail,
+    requestVerification,
+    verifyCode,
+    resetVerification,
+    logout,
   };
 
   return (

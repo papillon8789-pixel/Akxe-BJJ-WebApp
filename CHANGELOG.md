@@ -4,24 +4,84 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-09-26] - Email-Verifizierung implementiert 🔐
+
+### Hinzugefügt
+- **Sichere Email-Verifizierung** - Ersetzt unsichere allowed-users.json Lösung
+  - Cloudflare Worker API für Backend-Authentifizierung
+  - Cloudflare D1 Database für sichere User-Verwaltung
+  - Resend Email Service Integration für Code-Versand
+  - 6-stellige Verifizierungscodes (15 Minuten gültig)
+  - JWT Token Sessions (30 Tage Gültigkeit)
+  - Zweistufiger Login-Prozess (Email → Code)
+
+### Geändert
+- **AuthContext komplett überarbeitet**:
+  - Neue Funktionen: `requestVerification()`, `verifyCode()`, `resetVerification()`
+  - Session-Validierung via Backend API
+  - JWT Token statt localStorage-only Authentifizierung
+  - Datei: `src/context/AuthContext.jsx`
+
+- **LoginScreen modernisiert**:
+  - Zweistufiger Prozess: Email-Eingabe → Code-Eingabe
+  - Visuelles Feedback für jeden Schritt
+  - "Code erneut senden" Funktion
+  - Verbesserte UX mit Auto-Focus und Input-Validierung
+  - Datei: `src/components/LoginScreen.jsx`
+
+### Sicherheitsverbesserungen
+- ✅ User-Daten nicht mehr öffentlich sichtbar
+- ✅ Echte Email-Verifizierung (nur wer Zugang zur Email hat, kann sich anmelden)
+- ✅ Bot-Schutz durch zeitlich begrenzte Codes
+- ✅ Rate Limiting vorbereitet (login_attempts Tabelle)
+- ✅ JWT Token mit Expiration
+- ✅ Server-seitige Validierung
+- ✅ HTTPS only (Cloudflare Workers)
+
+### Neue Dateien
+- `workers/auth-api.js` - Cloudflare Worker mit 3 API Endpoints
+- `workers/schema.sql` - D1 Database Schema (4 Tabellen)
+- `workers/wrangler.toml` - Worker Konfiguration
+- `workers/package.json` - Worker Dependencies
+- `workers/.gitignore` - Git Ignore für Worker
+- `workers/README.md` - Worker Dokumentation
+- `EMAIL-VERIFICATION-SETUP.md` - Vollständige Setup-Anleitung
+- `SECURITY-IMPROVEMENTS.md` - Sicherheitsanalyse & Vergleich
+- `.env.example` - Environment Variables Template
+
+### Dokumentation
+- Detaillierte Setup-Anleitung mit allen Schritten
+- Sicherheitsanalyse: Alt vs. Neu
+- API Dokumentation für alle Endpoints
+- User-Verwaltung Befehle
+- Troubleshooting Guide
+- Migration Guide von allowed-users.json
+
+### Technische Details
+- **Backend**: Cloudflare Workers (Serverless)
+- **Database**: Cloudflare D1 (SQLite)
+- **Email**: Resend API (100 Emails/Tag kostenlos)
+- **Auth**: JWT mit HMAC SHA-256
+- **Kosten**: Kostenlos für < 50 User
+
+### Nächste Schritte
+1. Cloudflare Worker deployen (siehe EMAIL-VERIFICATION-SETUP.md)
+2. D1 Database erstellen und Schema ausführen
+3. Resend API Key konfigurieren
+4. Frontend .env mit Worker URL konfigurieren
+5. User von allowed-users.json zu D1 migrieren
+6. allowed-users.json löschen
+
+---
+
 ## 🔮 Geplante Verbesserungen (Future Ideas)
 
-### Sicherheit & Authentifizierung
-- **Email-Verifizierung statt Allowed-User.json**
-  - **Problem**: Aktuelle Allowed-User.json Lösung ist im Frontend sichtbar und kann von Bots umgangen werden
-  - **Lösung**: Email-Verifizierung mit Bestätigungslink
-  - **Technologie-Stack**:
-    - Cloudflare Workers (Backend API)
-    - Cloudflare D1 Database (User-Datenbank)
-    - Resend Email Service (Email-Versand, 100 Emails/Tag kostenlos)
-  - **Vorteile**:
-    - Deutlich sicherer - echte Identitätsprüfung
-    - Nur Personen mit Zugang zur Email können sich verifizieren
-    - Professioneller Standard
-    - Kostenlos für kleine Teams
-    - Alles im Cloudflare-Ökosystem integriert
-  - **Priorität**: Mittel
-  - **Aufwand**: 2-3 Stunden Implementierung
+### Weitere Sicherheits-Features
+- **Rate Limiting aktivieren** - Schutz vor Brute-Force Angriffen
+- **IP-basiertes Tracking** - Verdächtige Aktivitäten erkennen
+- **Audit Logging** - Compliance & Monitoring
+- **Two-Factor Authentication** - Zusätzliche Sicherheitsebene
+- **Device Fingerprinting** - Login von neuen Geräten erkennen
 
 ---
 
