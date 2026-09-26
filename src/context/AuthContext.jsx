@@ -7,7 +7,9 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://your-worker.your-s
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null); // Full user object with isAdmin, status, etc.
   const [userEmail, setUserEmail] = useState(null);
+  const [token, setToken] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [verificationStep, setVerificationStep] = useState('email'); // 'email' | 'code'
@@ -16,9 +18,9 @@ export function AuthProvider({ children }) {
   // Check if user is already authenticated on mount
   useEffect(() => {
     const validateSession = async () => {
-      const token = localStorage.getItem('bjj-auth-token');
+      const storedToken = localStorage.getItem('bjj-auth-token');
       
-      if (!token) {
+      if (!storedToken) {
         setIsLoading(false);
         return;
       }
@@ -27,7 +29,7 @@ export function AuthProvider({ children }) {
         const response = await fetch(`${API_BASE_URL}/api/auth/validate-session`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${storedToken}`,
             'Content-Type': 'application/json',
           },
         });
@@ -35,7 +37,9 @@ export function AuthProvider({ children }) {
         if (response.ok) {
           const data = await response.json();
           setIsAuthenticated(true);
+          setUser(data.user);
           setUserEmail(data.user.email);
+          setToken(storedToken);
         } else {
           // Token ungültig - entfernen
           localStorage.removeItem('bjj-auth-token');
@@ -120,12 +124,24 @@ export function AuthProvider({ children }) {
         return false;
       }
 
+      // Check if account is pending
+      if (data.status === 'pending') {
+        setError('Your account is pending approval. You will receive an email once activated.');
+        setIsLoading(false);
+        return false;
+      }
+
       // Erfolg - speichere Token und User-Daten
-      localStorage.setItem('bjj-auth-token', data.token);
-      localStorage.setItem('bjj-user-data', JSON.stringify(data.user));
+      if (data.token) {
+        localStorage.setItem('bjj-auth-token', data.token);
+        localStorage.setItem('bjj-user-data', JSON.stringify(data.user));
+        
+        setIsAuthenticated(true);
+        setUser(data.user);
+        setUserEmail(data.user.email);
+        setToken(data.token);
+      }
       
-      setIsAuthenticated(true);
-      setUserEmail(data.user.email);
       setVerificationStep('email');
       setPendingEmail(null);
       setIsLoading(false);
@@ -151,7 +167,9 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('bjj-auth-token');
     localStorage.removeItem('bjj-user-data');
     setIsAuthenticated(false);
+    setUser(null);
     setUserEmail(null);
+    setToken(null);
     setError(null);
     setVerificationStep('email');
     setPendingEmail(null);
@@ -159,7 +177,9 @@ export function AuthProvider({ children }) {
 
   const value = {
     isAuthenticated,
+    user,
     userEmail,
+    token,
     isLoading,
     error,
     verificationStep,

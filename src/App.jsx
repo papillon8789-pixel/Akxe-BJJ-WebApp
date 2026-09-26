@@ -7,6 +7,7 @@ import CategoryAccordion from './components/categories/CategoryAccordion';
 import SplashScreen from './components/SplashScreen';
 import LoginScreen from './components/LoginScreen';
 import Banner from './components/Banner';
+import AdminDashboard from './components/AdminDashboard';
 
 function AppContent() {
   const { groupedTechniques, filteredTechniques } = useTechniques();
@@ -38,9 +39,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-app-bg">
-      <Header />
-      <IconNavigation />
-      
       <main className="container mx-auto px-4 py-6 max-w-4xl">
         <Banner />
         
@@ -115,8 +113,9 @@ function AppContent() {
 }
 
 function AuthenticatedApp() {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
+  const [currentView, setCurrentView] = useState('main'); // 'main' or 'admin'
 
   // Show splash screen first
   if (showSplash) {
@@ -140,10 +139,45 @@ function AuthenticatedApp() {
     return <LoginScreen />;
   }
 
-  // Show main app if authenticated
+  // Admin Dashboard View
+  if (currentView === 'admin' && user?.isAdmin) {
+    return (
+      <div>
+        {/* Simple Navigation Bar */}
+        <div className="bg-primo-black text-white px-4 py-3 border-b border-primo-gold/20 flex items-center justify-between">
+          <h1 className="text-lg font-bold">Admin Dashboard</h1>
+          <button
+            onClick={() => setCurrentView('main')}
+            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+          >
+            ← Back to Techniques
+          </button>
+        </div>
+        <AdminDashboard />
+      </div>
+    );
+  }
+
+  // Main App View
   return (
     <TechniqueProvider>
-      <AppContent />
+      <div>
+        <Header />
+        {/* Admin Button (only for admins) */}
+        {user?.isAdmin && (
+          <div className="bg-card-bg border-b border-gray-800 px-4 py-2">
+            <button
+              onClick={() => setCurrentView('admin')}
+              className="w-full px-4 py-2 bg-primo-red hover:bg-red-700 text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+            >
+              <span>⚙️</span>
+              <span>Admin Dashboard</span>
+            </button>
+          </div>
+        )}
+        <IconNavigation />
+        <AppContent />
+      </div>
     </TechniqueProvider>
   );
 }
