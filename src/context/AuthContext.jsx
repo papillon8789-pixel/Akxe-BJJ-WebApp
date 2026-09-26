@@ -74,7 +74,7 @@ export function AuthProvider({ children }) {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Fehler beim Senden der Email');
+        setError(data.error || 'Failed to send email');
         setIsLoading(false);
         return false;
       }
@@ -87,7 +87,7 @@ export function AuthProvider({ children }) {
 
     } catch (err) {
       console.error('Request verification error:', err);
-      setError('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
+      setError('Network error. Please check your internet connection.');
       setIsLoading(false);
       return false;
     }
@@ -99,7 +99,7 @@ export function AuthProvider({ children }) {
     setIsLoading(true);
 
     if (!pendingEmail) {
-      setError('Keine Email-Adresse vorhanden. Bitte starte erneut.');
+      setError('No email address found. Please start again.');
       setIsLoading(false);
       return false;
     }
@@ -119,7 +119,7 @@ export function AuthProvider({ children }) {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Ungültiger Code');
+        setError(data.error || 'Invalid code');
         setIsLoading(false);
         return false;
       }
@@ -149,7 +149,7 @@ export function AuthProvider({ children }) {
 
     } catch (err) {
       console.error('Verify code error:', err);
-      setError('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
+      setError('Network error. Please check your internet connection.');
       setIsLoading(false);
       return false;
     }
