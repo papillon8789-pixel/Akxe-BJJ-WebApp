@@ -4,14 +4,16 @@ import { useAuth } from '../context/AuthContext';
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
-  const { 
-    requestVerification, 
-    verifyCode, 
+  const {
+    requestVerification,
+    verifyCode,
     resetVerification,
-    isLoading, 
+    isLoading,
     error,
+    info,
     verificationStep,
-    pendingEmail 
+    pendingEmail,
+    isPendingApproval
   } = useAuth();
 
   const handleEmailSubmit = async (e) => {
@@ -60,7 +62,82 @@ export default function LoginScreen() {
 
         {/* Login Card */}
         <div className="bg-card-bg border border-gray-700 rounded-lg p-8 shadow-2xl">
-          {verificationStep === 'email' ? (
+          {verificationStep === 'pending' ? (
+            // Step: Pending Approval
+            <>
+              <div className="mb-6">
+                <button
+                  onClick={handleBackToEmail}
+                  className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
+                >
+                  <span>←</span>
+                  <span>Back</span>
+                </button>
+                
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  Account Pending Approval
+                </h2>
+                <p className="text-gray-400 mb-2">
+                  Your registration for
+                </p>
+                <p className="text-primo-red font-semibold mb-4">
+                  {pendingEmail}
+                </p>
+              </div>
+
+              {/* Info Message */}
+              {info && (
+                <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-400 text-xl">ℹ️</span>
+                    <div className="flex-1">
+                      <p className="text-blue-200 text-sm font-medium">
+                        {info}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Polling Indicator */}
+              {isPendingApproval && (
+                <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-6 text-center">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="relative">
+                      <svg className="animate-spin h-12 w-12 text-primo-red" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Checking for approval...</p>
+                      <p className="text-gray-400 text-sm">We'll automatically detect when your account is activated</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Info Box */}
+              <div className="mt-6">
+                <div className="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-400 text-xl">📧</span>
+                    <div className="flex-1">
+                      <h3 className="text-blue-200 font-semibold mb-1">
+                        What happens next?
+                      </h3>
+                      <ul className="text-blue-300 text-sm space-y-1">
+                        <li>• Your professor will review your registration</li>
+                        <li>• You'll receive an email once approved</li>
+                        <li>• This page will automatically update</li>
+                        <li>• You can close this page and come back later</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : verificationStep === 'email' ? (
             // Step 1: Email Input
             <>
               <h2 className="text-2xl font-bold text-white mb-2">
@@ -197,6 +274,20 @@ export default function LoginScreen() {
                       <div className="flex-1">
                         <p className="text-red-200 text-sm font-medium">
                           {error}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Info Message */}
+                {info && (
+                  <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <span className="text-blue-400 text-xl">ℹ️</span>
+                      <div className="flex-1">
+                        <p className="text-blue-200 text-sm font-medium">
+                          {info}
                         </p>
                       </div>
                     </div>

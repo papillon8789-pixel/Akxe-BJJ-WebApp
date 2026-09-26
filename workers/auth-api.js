@@ -545,14 +545,57 @@ export default {
             `
             <!DOCTYPE html>
             <html>
-              <body style="font-family: Arial, sans-serif; padding: 20px;">
-                <h2>🎉 Welcome to PRIMO BJJ!</h2>
-                <p>Great news! Your account has been approved and is now active.</p>
-                <p><strong>Access Duration:</strong> ${months} month${months > 1 ? 's' : ''}</p>
-                <p><strong>Valid Until:</strong> ${validUntil.toLocaleDateString()}</p>
-                <p>You can now log in to the PRIMO BJJ Technique Library and start learning!</p>
-                <hr>
-                <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München<br>"Together we stand, united we fight"</p>
+              <head>
+                <meta charset="utf-8">
+                <style>
+                  body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                  .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                  .header { background: linear-gradient(135deg, #1a1a1a 0%, #000 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+                  .logo { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+                  .content { padding: 30px; background: white; }
+                  .button { display: inline-block; background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
+                  .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 20px 0; }
+                  .footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 10px 10px; }
+                </style>
+              </head>
+              <body>
+                <div class="container">
+                  <div class="header">
+                    <div class="logo">🦅 PRIMO BJJ</div>
+                    <p style="margin: 0; opacity: 0.9;">Technique Locker</p>
+                  </div>
+                  
+                  <div class="content">
+                    <h2 style="color: #1a1a1a; margin-top: 0;">🎉 Welcome to PRIMO BJJ!</h2>
+                    <p>Great news! Your account has been approved and is now active.</p>
+                    
+                    <div class="info-box">
+                      <strong>📅 Your Access Details:</strong><br>
+                      <strong>Duration:</strong> ${months} month${months > 1 ? 's' : ''}<br>
+                      <strong>Valid Until:</strong> ${validUntil.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </div>
+                    
+                    <p><strong>Ready to start training?</strong></p>
+                    <p>Click the button below to log in to the PRIMO BJJ Technique Library:</p>
+                    
+                    <div style="text-align: center;">
+                      <a href="https://primo-bjj.com" class="button">🔓 Log In Now</a>
+                    </div>
+                    
+                    <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
+                      <strong>How to log in:</strong><br>
+                      1. Click the button above or visit <a href="https://primo-bjj.com">primo-bjj.com</a><br>
+                      2. Enter your email address<br>
+                      3. Check your email for the verification code<br>
+                      4. Enter the code and you're in!
+                    </p>
+                  </div>
+                  
+                  <div class="footer">
+                    <p style="margin: 0;">© 2026 PRIMO BJJ - AKXE München</p>
+                    <p style="margin: 5px 0 0 0;">"Together we stand, united we fight"</p>
+                  </div>
+                </div>
               </body>
             </html>
             `
