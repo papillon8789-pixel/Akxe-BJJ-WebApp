@@ -5,11 +5,15 @@
  * - POST /api/auth/request-verification - Sendet Verifizierungs-Email (auch für neue User)
  * - POST /api/auth/verify-token - Verifiziert Token und gibt JWT zurück
  * - POST /api/auth/validate-session - Validiert JWT Session
- * 
+ *
  * Admin Endpoints:
  * - GET /api/admin/pending-users - Liste aller pending Registrierungen
+ * - GET /api/admin/all-users - Liste aller User (pending, active, suspended)
  * - POST /api/admin/approve-user - Aktiviert einen pending User
  * - POST /api/admin/reject-user - Lehnt einen pending User ab
+ * - POST /api/admin/suspend-user - Sperrt einen aktiven User
+ * - POST /api/admin/reactivate-user - Reaktiviert einen gesperrten User
+ * - POST /api/admin/extend-access - Verlängert Zugang für einen User
  * - GET /api/admin/notifications - Ungelesene Admin-Benachrichtigungen
  */
 
@@ -168,10 +172,11 @@ export default {
           isNewUser = true;
           const validUntil = new Date();
           validUntil.setMonth(validUntil.getMonth() + 1); // 1 Monat Trial
+          const addedDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
           
           await env.DB.prepare(
-            'INSERT INTO allowed_users (email, valid_until, paid_months, status, created_at) VALUES (?, ?, ?, ?, datetime("now"))'
-          ).bind(normalizedEmail, validUntil.toISOString(), 1, 'pending').run();
+            'INSERT INTO allowed_users (email, valid_until, paid_months, status, added_date, created_at) VALUES (?, ?, ?, ?, ?, datetime("now"))'
+          ).bind(normalizedEmail, validUntil.toISOString(), 1, 'pending', addedDate).run();
           
           // Erstelle Admin-Benachrichtigung
           await env.DB.prepare(
@@ -642,6 +647,292 @@ export default {
       } catch (error) {
         console.error('Error fetching notifications:', error);
         return jsonResponse({ error: 'Failed to fetch notifications' }, 500);
+      }
+    }
+    
+    // GET /api/admin/all-users (Admin only)
+    if (url.pathname === '/api/admin/all-users' && request.method === 'GET') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        // Hole alle Users gruppiert nach Status
+        const allUsers = await env.DB.prepare(
+          'SELECT email, status, valid_until, paid_months, added_date, created_at, approved_by, approved_at, is_admin FROM allowed_users ORDER BY created_at DESC'
+        ).all();
+        
+        const users = allUsers.results || [];
+        
+        // Gruppiere nach Status
+        const grouped = {
+          pending: users.filter(u => u.status === 'pending'),
+          active: users.filter(u => u.status === 'active'),
+          suspended: users.filter(u => u.status === 'suspended'),
+        };
+        
+        return jsonResponse({
+          success: true,
+          users: users,
+          grouped: grouped,
+          counts: {
+            total: users.length,
+            pending: grouped.pending.length,
+            active: grouped.active.length,
+            suspended: grouped.suspended.length,
+          }
+        });
+        
+      } catch (error) {
+        console.error('Error fetching all users:', error);
+        return jsonResponse({ error: 'Failed to fetch users' }, 500);
+      }
+    }
+    
+    // POST /api/admin/suspend-user (Admin only)
+    if (url.pathname === '/api/admin/suspend-user' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        const { email, reason } = await request.json();
+        
+        if (!email) {
+          return jsonResponse({ error: 'Email required' }, 400);
+        }
+        
+        const normalizedEmail = email.toLowerCase().trim();
+        
+        // Prüfe ob User existiert und nicht admin ist
+        const user = await env.DB.prepare(
+          'SELECT * FROM allowed_users WHERE email = ?'
+        ).bind(normalizedEmail).first();
+        
+        if (!user) {
+          return jsonResponse({ error: 'User not found' }, 404);
+        }
+        
+        if (user.is_admin === 1) {
+          return jsonResponse({ error: 'Cannot suspend admin users' }, 403);
+        }
+        
+        // Update User Status zu suspended
+        await env.DB.prepare(
+          'UPDATE allowed_users SET status = "suspended" WHERE email = ?'
+        ).bind(normalizedEmail).run();
+        
+        // Lösche alle aktiven Sessions
+        await env.DB.prepare(
+          'DELETE FROM sessions WHERE email = ?'
+        ).bind(normalizedEmail).run();
+        
+        // Erstelle Benachrichtigung
+        await env.DB.prepare(
+          'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind('user_suspended', normalizedEmail, `User suspended by ${payload.email}${reason ? ': ' + reason : ''}`).run();
+        
+        // Sende Email an User
+        try {
+          await sendEmail(
+            env,
+            normalizedEmail,
+            '⚠️ PRIMO BJJ Account Suspended',
+            `
+            <!DOCTYPE html>
+            <html>
+              <body style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2>Account Suspended</h2>
+                <p>Your PRIMO BJJ account has been suspended.</p>
+                ${reason ? `<p><strong>Reason:</strong> ${reason}</p>` : ''}
+                <p>If you believe this is an error, please contact your professor.</p>
+                <hr>
+                <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München</p>
+              </body>
+            </html>
+            `
+          );
+        } catch (emailError) {
+          console.error('Failed to send suspension email:', emailError);
+        }
+        
+        return jsonResponse({
+          success: true,
+          message: `User ${normalizedEmail} suspended successfully`,
+        });
+        
+      } catch (error) {
+        console.error('Error suspending user:', error);
+        return jsonResponse({ error: 'Failed to suspend user' }, 500);
+      }
+    }
+    
+    // POST /api/admin/reactivate-user (Admin only)
+    if (url.pathname === '/api/admin/reactivate-user' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        const { email } = await request.json();
+        
+        if (!email) {
+          return jsonResponse({ error: 'Email required' }, 400);
+        }
+        
+        const normalizedEmail = email.toLowerCase().trim();
+        
+        // Update User Status zu active
+        await env.DB.prepare(
+          'UPDATE allowed_users SET status = "active" WHERE email = ? AND status = "suspended"'
+        ).bind(normalizedEmail).run();
+        
+        // Erstelle Benachrichtigung
+        await env.DB.prepare(
+          'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind('user_reactivated', normalizedEmail, `User reactivated by ${payload.email}`).run();
+        
+        // Sende Email an User
+        try {
+          await sendEmail(
+            env,
+            normalizedEmail,
+            '✅ PRIMO BJJ Account Reactivated',
+            `
+            <!DOCTYPE html>
+            <html>
+              <body style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2>Account Reactivated</h2>
+                <p>Good news! Your PRIMO BJJ account has been reactivated.</p>
+                <p>You can now log in again and access the technique library.</p>
+                <hr>
+                <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München</p>
+              </body>
+            </html>
+            `
+          );
+        } catch (emailError) {
+          console.error('Failed to send reactivation email:', emailError);
+        }
+        
+        return jsonResponse({
+          success: true,
+          message: `User ${normalizedEmail} reactivated successfully`,
+        });
+        
+      } catch (error) {
+        console.error('Error reactivating user:', error);
+        return jsonResponse({ error: 'Failed to reactivate user' }, 500);
+      }
+    }
+    
+    // POST /api/admin/extend-access (Admin only)
+    if (url.pathname === '/api/admin/extend-access' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        const { email, paidMonths, validUntil: customValidUntil } = await request.json();
+        
+        if (!email) {
+          return jsonResponse({ error: 'Email required' }, 400);
+        }
+        
+        const normalizedEmail = email.toLowerCase().trim();
+        
+        let validUntil;
+        let months;
+        
+        // Check if custom date is provided
+        if (customValidUntil) {
+          validUntil = new Date(customValidUntil);
+          const now = new Date();
+          months = Math.round((validUntil - now) / (1000 * 60 * 60 * 24 * 30));
+        } else {
+          months = paidMonths || 3;
+          validUntil = new Date();
+          validUntil.setMonth(validUntil.getMonth() + months);
+        }
+        
+        // Update User
+        await env.DB.prepare(
+          'UPDATE allowed_users SET paid_months = ?, valid_until = ? WHERE email = ?'
+        ).bind(months, validUntil.toISOString(), normalizedEmail).run();
+        
+        // Erstelle Benachrichtigung
+        await env.DB.prepare(
+          'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind('access_extended', normalizedEmail, `Access extended by ${payload.email} to ${validUntil.toISOString()}`).run();
+        
+        // Sende Email an User
+        try {
+          await sendEmail(
+            env,
+            normalizedEmail,
+            '🎉 PRIMO BJJ Access Extended',
+            `
+            <!DOCTYPE html>
+            <html>
+              <body style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2>Access Extended</h2>
+                <p>Great news! Your PRIMO BJJ access has been extended.</p>
+                <p><strong>New Valid Until:</strong> ${validUntil.toLocaleDateString()}</p>
+                <p><strong>Duration:</strong> ${months} month${months > 1 ? 's' : ''}</p>
+                <hr>
+                <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München</p>
+              </body>
+            </html>
+            `
+          );
+        } catch (emailError) {
+          console.error('Failed to send extension email:', emailError);
+        }
+        
+        return jsonResponse({
+          success: true,
+          message: `Access extended for ${normalizedEmail} until ${validUntil.toLocaleDateString()}`,
+        });
+        
+      } catch (error) {
+        console.error('Error extending access:', error);
+        return jsonResponse({ error: 'Failed to extend access' }, 500);
       }
     }
     
