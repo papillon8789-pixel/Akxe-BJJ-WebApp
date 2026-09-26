@@ -29,18 +29,39 @@
 
 ## 👥 User Management
 
-### Approval Options
-- **✓ 1M** - 1 month access
-- **✓ 3M** - 3 months access
-- **✓ 6M** - 6 months access
-- **✓ 12M** - 12 months access
-- **📅 Custom** - Choose any date
-- **✗ Reject** - Delete pending user
+### Admin Dashboard Features
+The admin dashboard has **3 tabs** for complete user management:
+
+#### 1. Pending Tab
+New user registrations waiting for approval:
+- **✓ 1M** - Approve for 1 month
+- **✓ 3M** - Approve for 3 months
+- **✓ 6M** - Approve for 6 months
+- **✓ 12M** - Approve for 12 months
+- **📅 Custom** - Choose any expiry date
+- **✗ Reject** - Delete pending registration
+
+#### 2. Active Tab
+Currently active users with valid access:
+- **+1M, +3M, +6M** - Extend access by months
+- **📅 Custom** - Set new expiry date
+- **🚫 Suspend** - Revoke access (with optional reason)
+- View: Email, expiry date, subscription length, who approved
+
+#### 3. Suspended Tab
+Users with revoked access:
+- **✓ Reactivate** - Restore user access
+- View: Email, previous expiry date
 
 ### User Status
-- `pending` - Waiting for admin approval
+- `pending` - Waiting for admin approval (cannot log in)
 - `active` - Can access the app
-- `suspended` - Access revoked
+- `suspended` - Access revoked (cannot log in)
+
+### Important Notes
+- Admin users cannot be suspended or modified
+- Suspending a user immediately logs them out
+- All actions send email notifications to users
 
 ## 🗄️ Database
 
@@ -97,10 +118,37 @@ POST /api/auth/validate-session
 ### Admin Endpoints (Requires Admin JWT)
 ```
 GET  /api/admin/pending-users
+GET  /api/admin/all-users
 POST /api/admin/approve-user
 POST /api/admin/reject-user
+POST /api/admin/suspend-user
+POST /api/admin/reactivate-user
+POST /api/admin/extend-access
 GET  /api/admin/notifications
 ```
+
+### Endpoint Details
+
+**GET /api/admin/all-users**
+- Returns all users grouped by status (pending, active, suspended)
+- Includes counts for each status
+- Shows: email, status, valid_until, paid_months, is_admin, approved_by, approved_at
+
+**POST /api/admin/suspend-user**
+- Suspends an active user
+- Body: `{ email, reason? }`
+- Deletes all active sessions
+- Sends suspension email to user
+
+**POST /api/admin/reactivate-user**
+- Reactivates a suspended user
+- Body: `{ email }`
+- Sends reactivation email to user
+
+**POST /api/admin/extend-access**
+- Extends access for active user
+- Body: `{ email, paidMonths? OR validUntil? }`
+- Sends extension confirmation email
 
 ## 🛠️ Maintenance
 
