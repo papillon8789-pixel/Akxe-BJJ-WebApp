@@ -61,27 +61,27 @@ export default function LoginScreen() {
         {/* Login Card */}
         <div className="bg-card-bg border border-gray-700 rounded-lg p-8 shadow-2xl">
           {verificationStep === 'email' ? (
-            // Schritt 1: Email-Eingabe
+            // Step 1: Email Input
             <>
               <h2 className="text-2xl font-bold text-white mb-2">
-                Zugang anfordern
+                Request Access
               </h2>
               <p className="text-gray-400 mb-6">
-                Gib deine registrierte Email-Adresse ein. Du erhältst einen Verifizierungscode per Email.
+                Enter your registered email address. You will receive a verification code via email.
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
                 {/* Email Input */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email-Adresse
+                    Email Address
                   </label>
                   <input
                     type="email"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="deine@email.com"
+                    placeholder="your@email.com"
                     required
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primo-red focus:border-transparent transition-all"
                     disabled={isLoading}
@@ -114,10 +114,10 @@ export default function LoginScreen() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      Sende Email...
+                      Sending Email...
                     </span>
                   ) : (
-                    'Code anfordern'
+                    'Request Code'
                   )}
                 </button>
               </form>
@@ -129,10 +129,10 @@ export default function LoginScreen() {
                     <span className="text-blue-400 text-xl">ℹ️</span>
                     <div className="flex-1">
                       <h3 className="text-blue-200 font-semibold mb-1">
-                        Noch kein Zugang?
+                        No Access Yet?
                       </h3>
                       <p className="text-blue-300 text-sm">
-                        Kontaktiere deinen Professor, um Zugang zur Technique Library zu erhalten.
+                        Contact your professor to get access to the Technique Library.
                       </p>
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export default function LoginScreen() {
               </div>
             </>
           ) : (
-            // Schritt 2: Code-Eingabe
+            // Step 2: Code Input
             <>
               <div className="mb-6">
                 <button
@@ -149,20 +149,20 @@ export default function LoginScreen() {
                   disabled={isLoading}
                 >
                   <span>←</span>
-                  <span>Zurück</span>
+                  <span>Back</span>
                 </button>
                 
                 <h2 className="text-2xl font-bold text-white mb-2">
-                  Code eingeben
+                  Enter Code
                 </h2>
                 <p className="text-gray-400 mb-2">
-                  Wir haben einen 6-stelligen Code an
+                  We sent a 6-digit code to
                 </p>
                 <p className="text-primo-red font-semibold mb-2">
                   {pendingEmail}
                 </p>
                 <p className="text-gray-500 text-sm">
-                  gesendet. Der Code ist 15 Minuten gültig.
+                  The code is valid for 15 minutes.
                 </p>
               </div>
 
@@ -170,7 +170,7 @@ export default function LoginScreen() {
                 {/* Code Input */}
                 <div>
                   <label htmlFor="code" className="block text-sm font-medium text-gray-300 mb-2">
-                    Verifizierungscode
+                    Verification Code
                   </label>
                   <input
                     type="text"
@@ -185,7 +185,7 @@ export default function LoginScreen() {
                     autoFocus
                   />
                   <p className="text-gray-500 text-xs mt-2 text-center">
-                    6-stelliger Code aus der Email
+                    6-digit code from the email
                   </p>
                 </div>
 
@@ -215,10 +215,10 @@ export default function LoginScreen() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      Verifiziere...
+                      Verifying...
                     </span>
                   ) : (
-                    'Zugang bestätigen'
+                    'Confirm Access'
                   )}
                 </button>
               </form>
@@ -226,14 +226,14 @@ export default function LoginScreen() {
               {/* Resend Code */}
               <div className="mt-6 pt-6 border-t border-gray-700 text-center">
                 <p className="text-gray-400 text-sm mb-3">
-                  Code nicht erhalten?
+                  Didn't receive the code?
                 </p>
                 <button
                   onClick={handleResendCode}
                   disabled={isLoading}
                   className="text-primo-red hover:text-red-400 font-semibold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Code erneut senden
+                  Resend Code
                 </button>
               </div>
 
@@ -244,10 +244,10 @@ export default function LoginScreen() {
                     <span className="text-green-400 text-xl">🔒</span>
                     <div className="flex-1">
                       <h3 className="text-green-200 font-semibold mb-1 text-sm">
-                        Sicher & Geschützt
+                        Safe & Secure
                       </h3>
                       <p className="text-green-300 text-xs">
-                        Nur du hast Zugang zu deiner Email. Niemand kann sich ohne Zugriff auf dein Email-Konto anmelden.
+                        Only you have access to your email. No one can log in without access to your email account.
                       </p>
                     </div>
                   </div>

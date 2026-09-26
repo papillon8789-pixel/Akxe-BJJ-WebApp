@@ -146,7 +146,7 @@ export default {
           body: JSON.stringify({
             from: 'PRIMO BJJ <noreply@primo-bjj.com>',
             to: [normalizedEmail],
-            subject: 'Dein PRIMO BJJ Verifizierungscode',
+            subject: 'Your PRIMO BJJ Verification Code',
             html: `
             <!DOCTYPE html>
             <html>
@@ -172,23 +172,23 @@ export default {
                   </div>
                   
                   <div class="content">
-                    <h2 style="color: #1a1a1a; margin-top: 0;">Willkommen zurück!</h2>
-                    <p>Du hast Zugang zur PRIMO BJJ Technique Library angefordert.</p>
+                    <h2 style="color: #1a1a1a; margin-top: 0;">Welcome back!</h2>
+                    <p>You requested access to the PRIMO BJJ Technique Library.</p>
                     
-                    <p>Dein Verifizierungscode lautet:</p>
+                    <p>Your verification code is:</p>
                     
                     <div class="code-box">
                       <div class="code">${verificationCode}</div>
                     </div>
                     
                     <div class="warning">
-                      <strong>⚠️ Wichtig:</strong> Dieser Code ist nur 15 Minuten gültig.
+                      <strong>⚠️ Important:</strong> This code is only valid for 15 minutes.
                     </div>
                     
-                    <p>Gib diesen Code in der App ein, um dich anzumelden.</p>
+                    <p>Enter this code in the app to log in.</p>
                     
                     <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
-                      Falls du diese Email nicht angefordert hast, kannst du sie einfach ignorieren.
+                      If you didn't request this email, you can simply ignore it.
                     </p>
                   </div>
                   
