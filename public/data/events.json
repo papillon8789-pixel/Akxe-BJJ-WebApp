@@ -9,5 +9,16 @@
     "color": "gold",
     "location": "https://maps.app.goo.gl/3G5brz76aDMSKP4c6?g_st=ac",
     "enabled": true
+  },
+  {
+    "id": 2,
+    "title": "Event Template",
+    "date": "2027-01-01",
+    "time": "19:00",
+    "description": "Event description here",
+    "icon": "🎉",
+    "color": "blue",
+    "location": "",
+    "enabled": false
   }
 ]
