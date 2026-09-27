@@ -19,8 +19,15 @@ export default function UpcomingEvents() {
   }, []);
 
   // Filter out past events and sort by date
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset to start of day
+  
   const upcomingEvents = events
-    .filter(event => new Date(event.date) >= new Date())
+    .filter(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0);
+      return eventDate >= today;
+    })
     .sort((a, b) => new Date(a.date) - new Date(b.date))
     .slice(0, 3); // Max 3 events
 

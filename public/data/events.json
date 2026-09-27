@@ -2,11 +2,20 @@
   {
     "id": 1,
     "title": "Xmas Party",
-    "date": "2024-12-12",
+    "date": "2026-12-12",
     "time": "19:30",
-    "description": "Xmas OpenMat + Dinner/Drinks",
+    "description": "Xmas OpenMat + Dinner/Drinks at the gym",
     "icon": "🎄",
     "color": "red",
     "location": "https://maps.google.com/?q=PRIMO+BJJ+Munich"
+  },
+  {
+    "id": 2,
+    "title": "New Year Open Mat",
+    "date": "2027-01-01",
+    "time": "10:00",
+    "description": "Start the year with training! All levels welcome",
+    "icon": "🎊",
+    "color": "gold"
   }
 ]
