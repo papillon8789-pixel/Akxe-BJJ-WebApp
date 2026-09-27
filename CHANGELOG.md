@@ -7,14 +7,24 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 ## [2026-09-27] - Analytics Dashboard & Magic Link Login ✨
 
 ### Hinzugefügt
-- **Analytics Dashboard** im Admin-Bereich:
-  - Echtzeit-Statistiken: Active Users Today, Active Users This Week, Logins Today, Total Users
-  - Visuelles Bar Chart für Logins der letzten 7 Tage
-  - Automatisches Login-Tracking bei jeder Anmeldung
-  - Neue D1 Tabelle: `analytics_events` für Event-Tracking
+- **Erweitertes Analytics Dashboard** im Admin-Bereich:
+  - **Echtes Activity-Tracking** statt nur Login-Tracking:
+    - `app_open` - Wird getrackt wenn User die App öffnet (einmal pro Tag)
+    - `video_view` - Wird getrackt wenn User ein Video anschaut (mit Metadaten)
+    - `category_view` - Wird getrackt wenn User eine Kategorie öffnet
+    - `login` - Login-Events (beibehalten)
+  - **Neue Metriken**:
+    - Active Users Today - User die App heute geöffnet haben (nicht nur Logins!)
+    - Active Users This Week - User die App diese Woche genutzt haben
+    - Video Views Today - Anzahl angeschauter Videos heute
+    - Total Users - Gesamtanzahl aktiver User
+  - **Daily Active Users Chart** - Zeigt echte App-Nutzung der letzten 7 Tage
+  - **Analytics Helper** ([`src/utils/analytics.js`](src/utils/analytics.js)) - Zentrale Tracking-Funktionen
+  - **Metadata-Unterstützung** - Speichert Video-IDs, Namen, Kategorien für detaillierte Analysen
+  - Neue D1 Tabelle: `analytics_events` mit `metadata` Spalte
   - Neue API Endpoints:
-    - `POST /api/analytics/track` - Event-Tracking
-    - `GET /api/admin/analytics` - Analytics-Daten abrufen
+    - `POST /api/analytics/track` - Event-Tracking mit Validierung und Duplikat-Prävention
+    - `GET /api/admin/analytics` - Analytics-Daten mit erweiterten Metriken
   - Mobile-responsive Design mit Gradient-Karten
   - Refresh-Button für manuelle Aktualisierung
 
@@ -69,18 +79,29 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - Automatische Erkennung von Magic Link Token in URL beim App-Start
   - Magic Link Login ohne weitere Benutzerinteraktion
   - Polling verwendet jetzt `/check-status` statt `/request-verification` (verhindert mehrfache Code-Generierung)
+  - **App-Open Tracking** bei Session-Validierung und Magic Link Login
   - Automatisches Login-Event-Tracking nach erfolgreicher Anmeldung
   - Polling zeigt jetzt Hinweis auf Magic Link Email statt Code-Eingabe
 
 - **Admin Dashboard** ([`src/components/AdminDashboard.jsx`](src/components/AdminDashboard.jsx)):
-  - Analytics Widget mit Statistiken und Bar Chart hinzugefügt
+  - Analytics Widget mit erweiterten Statistiken und Daily Active Users Chart
+  - Zeigt jetzt echte App-Nutzung statt nur Logins
   - Delete-Button für permanentes Löschen von Usern
   - Vollständig mobile-responsive mit Tailwind Breakpoints
   - Verbesserte Error-Handling-Logik
 
-- **Database Schema** ([`workers/schema-analytics.sql`](workers/schema-analytics.sql)):
-  - Neue Tabelle `analytics_events` für Event-Tracking
-  - Felder: id, event_type, user_email, created_at, date
+- **TechniqueCard** ([`src/components/techniques/TechniqueCard.jsx`](src/components/techniques/TechniqueCard.jsx)):
+  - **Video-View Tracking** beim Abspielen eines Videos
+  - Speichert Video-ID, Name und Kategorie für detaillierte Analysen
+
+- **CategoryAccordion** ([`src/components/categories/CategoryAccordion.jsx`](src/components/categories/CategoryAccordion.jsx)):
+  - **Category-View Tracking** beim Öffnen einer Kategorie
+  - Ermöglicht Analyse welche Kategorien am beliebtesten sind
+
+- **Database Schema**:
+  - [`workers/schema-analytics.sql`](workers/schema-analytics.sql) - Initiales Schema
+  - [`workers/schema-analytics-update.sql`](workers/schema-analytics-update.sql) - Metadata-Spalte hinzugefügt
+  - Tabelle `analytics_events` mit Feldern: id, event_type, user_email, created_at, date, metadata
 
 ### User Experience
 **Vorher (umständlich):**

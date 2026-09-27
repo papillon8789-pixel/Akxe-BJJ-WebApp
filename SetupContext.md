@@ -37,8 +37,8 @@
 - `GET /api/auth/magic-login` - Magic Link Login
 - `POST /api/auth/validate-session` - Session validieren
 - `POST /api/admin/*` - Admin-Funktionen (approve, delete, suspend, etc.)
-- `POST /api/analytics/track` - Event-Tracking (Login, etc.)
-- `GET /api/admin/analytics` - Analytics-Daten abrufen
+- `POST /api/analytics/track` - Event-Tracking (app_open, video_view, category_view, login)
+- `GET /api/admin/analytics` - Analytics-Daten abrufen (Daily Active Users, Video Views, etc.)
 
 ---
 
@@ -64,9 +64,11 @@
    - type, user_email, message, read
 
 5. **`analytics_events`** - Event-Tracking für Analytics
-   - id, event_type (z.B. 'login')
+   - id, event_type ('app_open', 'video_view', 'category_view', 'login')
    - user_email, created_at, date
-   - Verwendet für Login-Statistiken und Aktivitäts-Tracking
+   - metadata (JSON) - Zusätzliche Infos (Video-ID, Name, Kategorie)
+   - Verwendet für Daily Active Users, Video Views, Category Views
+   - `app_open` Events werden nur einmal pro Tag pro User getrackt
 
 ---
 
@@ -229,13 +231,18 @@ Admin öffnet Dashboard → Frontend → Worker → D1 (analytics_events abfrage
 - ✅ Delete users permanently (mit doppelter Bestätigung)
 
 **Analytics Dashboard:**
-- ✅ Active Users Today - Anzahl unique Logins heute
-- ✅ Active Users This Week - Anzahl unique Logins diese Woche
-- ✅ Logins Today - Gesamtanzahl Logins heute
-- ✅ Total Users - Gesamtanzahl registrierter User
-- ✅ Bar Chart - Logins pro Tag (letzte 7 Tage)
-- ✅ Automatisches Tracking bei jedem Login
+- ✅ Active Users Today - User die App heute geöffnet haben (echte Nutzung!)
+- ✅ Active Users This Week - User die App diese Woche genutzt haben
+- ✅ Video Views Today - Anzahl angeschauter Videos heute
+- ✅ Total Users - Gesamtanzahl aktiver User
+- ✅ Daily Active Users Chart - App-Nutzung pro Tag (letzte 7 Tage)
+- ✅ Automatisches Activity-Tracking:
+  - App-Open (einmal pro Tag)
+  - Video-Views (mit Metadaten)
+  - Category-Views (mit Metadaten)
+  - Logins (beibehalten)
 - ✅ Refresh-Button für manuelle Aktualisierung
+- ✅ Analytics Helper ([`src/utils/analytics.js`](src/utils/analytics.js)) für zentrale Tracking-Funktionen
 
 **Notifications:**
 - Neue Registrierungen
