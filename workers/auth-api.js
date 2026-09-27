@@ -453,6 +453,46 @@ export default {
       }
     }
     
+    // GET /api/auth/check-status - Check user status without sending code
+    if (url.pathname === '/api/auth/check-status' && request.method === 'POST') {
+      try {
+        const { email } = await request.json();
+        
+        if (!email || !email.includes('@')) {
+          return jsonResponse({ error: 'Invalid email address' }, 400);
+        }
+        
+        const normalizedEmail = email.toLowerCase().trim();
+        
+        // Check if user exists
+        const user = await env.DB.prepare(
+          'SELECT email, status, valid_until, paid_months, is_admin FROM allowed_users WHERE email = ?'
+        ).bind(normalizedEmail).first();
+        
+        if (!user) {
+          return jsonResponse({
+            exists: false,
+            status: 'not_found'
+          });
+        }
+        
+        return jsonResponse({
+          exists: true,
+          status: user.status,
+          user: user.status === 'active' ? {
+            email: user.email,
+            validUntil: user.valid_until,
+            paidMonths: user.paid_months,
+            isAdmin: user.is_admin === 1,
+          } : null
+        });
+        
+      } catch (error) {
+        console.error('Error checking status:', error);
+        return jsonResponse({ error: 'Failed to check status' }, 500);
+      }
+    }
+    
     // GET /api/admin/pending-users (Admin only)
     if (url.pathname === '/api/admin/pending-users' && request.method === 'GET') {
       try {

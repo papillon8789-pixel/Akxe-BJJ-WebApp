@@ -214,8 +214,8 @@ export function AuthProvider({ children }) {
     // Poll every 10 seconds
     pollingIntervalRef.current = setInterval(async () => {
       try {
-        // Request a new verification code to check status
-        const response = await fetch(`${API_BASE_URL}/api/auth/request-verification`, {
+        // Check status WITHOUT generating a new code
+        const response = await fetch(`${API_BASE_URL}/api/auth/check-status`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
