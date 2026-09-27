@@ -18,12 +18,17 @@ export default function UpcomingEvents() {
       });
   }, []);
 
-  // Filter out past events and sort by date
+  // Filter out past events, disabled events, and sort by date
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Reset to start of day
   
   const upcomingEvents = events
     .filter(event => {
+      // Check if event is enabled (default to true if not specified)
+      const isEnabled = event.enabled !== false;
+      if (!isEnabled) return false;
+      
+      // Check if event is in the future
       const eventDate = new Date(event.date);
       eventDate.setHours(0, 0, 0, 0);
       return eventDate >= today;
