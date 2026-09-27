@@ -1177,6 +1177,104 @@ export default {
       }
     }
     
+    // POST /api/analytics/track - Track analytics event
+    if (url.pathname === '/api/analytics/track' && request.method === 'POST') {
+      try {
+        const { eventType, userEmail } = await request.json();
+        
+        if (!eventType || !userEmail) {
+          return jsonResponse({ error: 'Event type and user email required' }, 400);
+        }
+        
+        const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+        
+        // Insert analytics event
+        await env.DB.prepare(
+          'INSERT INTO analytics_events (event_type, user_email, date) VALUES (?, ?, ?)'
+        ).bind(eventType, userEmail.toLowerCase().trim(), date).run();
+        
+        return jsonResponse({ success: true });
+        
+      } catch (error) {
+        console.error('Error tracking analytics:', error);
+        // Don't fail the request if analytics fails
+        return jsonResponse({ success: true });
+      }
+    }
+    
+    // GET /api/admin/analytics - Get analytics data (Admin only)
+    if (url.pathname === '/api/admin/analytics' && request.method === 'GET') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        const today = new Date().toISOString().split('T')[0];
+        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        
+        // Get logins per day for last 7 days
+        const loginsPerDay = await env.DB.prepare(`
+          SELECT date, COUNT(*) as count
+          FROM analytics_events
+          WHERE event_type = 'login' AND date >= ?
+          GROUP BY date
+          ORDER BY date ASC
+        `).bind(sevenDaysAgo).all();
+        
+        // Get active users today
+        const activeToday = await env.DB.prepare(`
+          SELECT COUNT(DISTINCT user_email) as count
+          FROM analytics_events
+          WHERE date = ?
+        `).bind(today).all();
+        
+        // Get active users this week
+        const activeThisWeek = await env.DB.prepare(`
+          SELECT COUNT(DISTINCT user_email) as count
+          FROM analytics_events
+          WHERE date >= ?
+        `).bind(sevenDaysAgo).all();
+        
+        // Get total logins today
+        const loginsToday = await env.DB.prepare(`
+          SELECT COUNT(*) as count
+          FROM analytics_events
+          WHERE event_type = 'login' AND date = ?
+        `).bind(today).all();
+        
+        // Get total users count
+        const totalUsers = await env.DB.prepare(`
+          SELECT COUNT(*) as count
+          FROM allowed_users
+          WHERE status = 'active'
+        `).all();
+        
+        return jsonResponse({
+          success: true,
+          stats: {
+            activeToday: activeToday.results[0]?.count || 0,
+            activeThisWeek: activeThisWeek.results[0]?.count || 0,
+            loginsToday: loginsToday.results[0]?.count || 0,
+            totalUsers: totalUsers.results[0]?.count || 0,
+          },
+          loginsPerDay: loginsPerDay.results || [],
+        });
+        
+      } catch (error) {
+        console.error('Error fetching analytics:', error);
+        return jsonResponse({ error: 'Failed to fetch analytics' }, 500);
+      }
+    }
+    
     return jsonResponse({ error: 'Endpoint not found' }, 404);
   },
 };

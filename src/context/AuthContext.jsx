@@ -189,6 +189,21 @@ export function AuthProvider({ children }) {
         setUser(data.user);
         setUserEmail(data.user.email);
         setToken(data.token);
+        
+        // Track login event
+        try {
+          await fetch(`${API_BASE_URL}/api/analytics/track`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventType: 'login',
+              userEmail: data.user.email,
+            }),
+          });
+        } catch (err) {
+          console.error('Analytics tracking failed:', err);
+          // Don't fail login if analytics fails
+        }
       }
       
       setVerificationStep('email');

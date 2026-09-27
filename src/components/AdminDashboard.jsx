@@ -12,6 +12,8 @@ export default function AdminDashboard() {
   const [customDateEmail, setCustomDateEmail] = useState(null);
   const [customDate, setCustomDate] = useState('');
   const [extendEmail, setExtendEmail] = useState(null);
+  const [analytics, setAnalytics] = useState(null);
+  const [analyticsLoading, setAnalyticsLoading] = useState(true);
 
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -44,9 +46,36 @@ export default function AdminDashboard() {
     }
   };
 
+  // Fetch analytics data
+  const fetchAnalytics = async () => {
+    try {
+      setAnalyticsLoading(true);
+      const response = await fetch(`${API_URL}/api/admin/analytics`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch analytics');
+      }
+
+      const data = await response.json();
+      setAnalytics(data);
+    } catch (err) {
+      console.error('Error fetching analytics:', err);
+      // Don't show error to user - analytics is optional
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (user?.isAdmin && token) {
       fetchAllUsers();
+      fetchAnalytics();
     }
   }, [user, token]);
 
@@ -333,6 +362,70 @@ export default function AdminDashboard() {
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">User Management</h1>
           <p className="text-sm md:text-base text-gray-400">Manage all users and their access</p>
         </div>
+
+        {/* Analytics Widget */}
+        {!analyticsLoading && analytics && (
+          <div className="mb-6 bg-card-bg border border-gray-700 rounded-lg p-4 md:p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg md:text-xl font-bold text-white">📊 Analytics</h2>
+              <button
+                onClick={fetchAnalytics}
+                className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs rounded-lg transition-colors"
+              >
+                🔄 Refresh
+              </button>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+              <div className="bg-gradient-to-br from-green-600/20 to-green-700/20 border border-green-600/30 rounded-lg p-3 md:p-4">
+                <div className="text-green-400 text-xs md:text-sm font-medium mb-1">Active Today</div>
+                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.activeToday || 0}</div>
+              </div>
+              <div className="bg-gradient-to-br from-blue-600/20 to-blue-700/20 border border-blue-600/30 rounded-lg p-3 md:p-4">
+                <div className="text-blue-400 text-xs md:text-sm font-medium mb-1">Active This Week</div>
+                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.activeThisWeek || 0}</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-600/20 to-purple-700/20 border border-purple-600/30 rounded-lg p-3 md:p-4">
+                <div className="text-purple-400 text-xs md:text-sm font-medium mb-1">Logins Today</div>
+                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.loginsToday || 0}</div>
+              </div>
+              <div className="bg-gradient-to-br from-primo-red/20 to-red-700/20 border border-primo-red/30 rounded-lg p-3 md:p-4">
+                <div className="text-red-400 text-xs md:text-sm font-medium mb-1">Total Users</div>
+                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.totalUsers || 0}</div>
+              </div>
+            </div>
+
+            {/* Logins Chart */}
+            {analytics.loginsPerDay && analytics.loginsPerDay.length > 0 && (
+              <div>
+                <h3 className="text-white font-semibold mb-3 text-sm md:text-base">Logins (Last 7 Days)</h3>
+                <div className="flex items-end justify-between gap-2 h-32 md:h-40">
+                  {analytics.loginsPerDay.map((day, index) => {
+                    const maxLogins = Math.max(...analytics.loginsPerDay.map(d => d.count), 1);
+                    const heightPercent = (day.count / maxLogins) * 100;
+                    const date = new Date(day.date);
+                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                    
+                    return (
+                      <div key={index} className="flex-1 flex flex-col items-center gap-2">
+                        <div className="w-full flex flex-col items-center justify-end h-24 md:h-32">
+                          <div className="text-white text-xs font-semibold mb-1">{day.count}</div>
+                          <div
+                            className="w-full bg-gradient-to-t from-primo-red to-red-600 rounded-t transition-all duration-300 hover:from-red-500 hover:to-red-500"
+                            style={{ height: `${heightPercent}%`, minHeight: day.count > 0 ? '8px' : '0px' }}
+                            title={`${day.count} logins on ${day.date}`}
+                          ></div>
+                        </div>
+                        <div className="text-gray-400 text-xs font-medium">{dayName}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Error Message */}
         {error && (

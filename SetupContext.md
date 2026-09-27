@@ -9,11 +9,12 @@
 - Zeigt BJJ Techniken (Videos, Beschreibungen)
 - Login-Screen für User-Authentifizierung
 - Admin Dashboard für User-Verwaltung
+- Analytics Dashboard für Login-Statistiken
 - PWA (Progressive Web App) - kann als App installiert werden
 
 **Wichtige Dateien:**
-- `src/context/AuthContext.jsx` - Login-Logik, Session-Management
-- `src/components/AdminDashboard.jsx` - Admin-Interface
+- `src/context/AuthContext.jsx` - Login-Logik, Session-Management, Login-Tracking
+- `src/components/AdminDashboard.jsx` - Admin-Interface mit Analytics Widget
 - `src/components/LoginScreen.jsx` - Login-UI
 
 ---
@@ -36,13 +37,15 @@
 - `GET /api/auth/magic-login` - Magic Link Login
 - `POST /api/auth/validate-session` - Session validieren
 - `POST /api/admin/*` - Admin-Funktionen (approve, delete, suspend, etc.)
+- `POST /api/analytics/track` - Event-Tracking (Login, etc.)
+- `GET /api/admin/analytics` - Analytics-Daten abrufen
 
 ---
 
 ## 🗄️ **DATABASE (Cloudflare D1)**
 **Wo:** Cloudflare D1 (SQLite)
 **Name:** `bjj-auth-db`
-**Schema:** `bjj-app/workers/schema.sql`
+**Schema:** `bjj-app/workers/schema.sql` + `bjj-app/workers/schema-analytics.sql`
 **Was speichert es:**
 
 **Tabellen:**
@@ -59,6 +62,11 @@
 
 4. **`admin_notifications`** - Admin-Benachrichtigungen
    - type, user_email, message, read
+
+5. **`analytics_events`** - Event-Tracking für Analytics
+   - id, event_type (z.B. 'login')
+   - user_email, created_at, date
+   - Verwendet für Login-Statistiken und Aktivitäts-Tracking
 
 ---
 
@@ -188,6 +196,7 @@ Admin → Frontend → Worker → D1 (User status: active)
 User klickt Link → Frontend (erkennt ?magic=TOKEN)
                 → Worker (validiert Token)
                 → D1 (erstellt Session)
+                → D1 (analytics_events: Login-Event tracken)
                 → Frontend (speichert JWT, logged in)
 ```
 
@@ -196,7 +205,15 @@ User klickt Link → Frontend (erkennt ?magic=TOKEN)
 User → Frontend → Worker → D1 (Code generieren)
                          → Resend (Code Email)
 User gibt Code ein → Worker → D1 (Code validieren, Session erstellen)
+                            → D1 (analytics_events: Login-Event tracken)
                             → Frontend (JWT speichern)
+```
+
+### **Analytics Dashboard:**
+```
+Admin öffnet Dashboard → Frontend → Worker → D1 (analytics_events abfragen)
+                                           → Aggregation: Active Users, Logins
+                                           → Frontend (Statistiken + Chart anzeigen)
 ```
 
 ---
@@ -210,6 +227,15 @@ User gibt Code ein → Worker → D1 (Code validieren, Session erstellen)
 - ✅ Suspend active users
 - ✅ Reactivate suspended users
 - ✅ Delete users permanently (mit doppelter Bestätigung)
+
+**Analytics Dashboard:**
+- ✅ Active Users Today - Anzahl unique Logins heute
+- ✅ Active Users This Week - Anzahl unique Logins diese Woche
+- ✅ Logins Today - Gesamtanzahl Logins heute
+- ✅ Total Users - Gesamtanzahl registrierter User
+- ✅ Bar Chart - Logins pro Tag (letzte 7 Tage)
+- ✅ Automatisches Tracking bei jedem Login
+- ✅ Refresh-Button für manuelle Aktualisierung
 
 **Notifications:**
 - Neue Registrierungen

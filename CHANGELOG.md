@@ -4,21 +4,20 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
-## [2026-09-27] - Magic Link Login & Admin Dashboard Verbesserungen ✨
-
-### Verbessert
-- **Vereinfachter Login-Flow nach Account-Genehmigung**:
-  - Neue User erhalten nach Admin-Genehmigung eine Email mit **direktem Login-Link (Magic Link)**
-  - Kein erneutes Eingeben von Email + Code mehr nötig
-  - Magic Link ist 24 Stunden gültig und einmalig verwendbar
-  - Nach Magic Link Login wird automatisch eine reguläre 60-Tage Session erstellt
-
-- **Session-Dauer erhöht**:
-  - JWT Token Gültigkeit von 30 auf **60 Tage** erhöht
-  - Gilt für alle Login-Methoden (Code-Verifizierung und Magic Link)
-  - User müssen sich seltener neu anmelden
+## [2026-09-27] - Analytics Dashboard & Magic Link Login ✨
 
 ### Hinzugefügt
+- **Analytics Dashboard** im Admin-Bereich:
+  - Echtzeit-Statistiken: Active Users Today, Active Users This Week, Logins Today, Total Users
+  - Visuelles Bar Chart für Logins der letzten 7 Tage
+  - Automatisches Login-Tracking bei jeder Anmeldung
+  - Neue D1 Tabelle: `analytics_events` für Event-Tracking
+  - Neue API Endpoints:
+    - `POST /api/analytics/track` - Event-Tracking
+    - `GET /api/admin/analytics` - Analytics-Daten abrufen
+  - Mobile-responsive Design mit Gradient-Karten
+  - Refresh-Button für manuelle Aktualisierung
+
 - **Delete User Funktion** im Admin Dashboard:
   - Permanentes Löschen von Usern aus der Datenbank
   - Doppelte Bestätigung erforderlich (Confirm + "DELETE" tippen)
@@ -34,16 +33,54 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - Tab-Labels verkürzt auf kleinen Bildschirmen
   - Bessere Touch-Targets für mobile Bedienung
 
+### Verbessert
+- **Vereinfachter Login-Flow nach Account-Genehmigung**:
+  - Neue User erhalten nach Admin-Genehmigung eine Email mit **direktem Login-Link (Magic Link)**
+  - Kein erneutes Eingeben von Email + Code mehr nötig
+  - Magic Link ist 24 Stunden gültig und einmalig verwendbar
+  - Nach Magic Link Login wird automatisch eine reguläre 60-Tage Session erstellt
+
+- **Session-Dauer erhöht**:
+  - JWT Token Gültigkeit von 30 auf **60 Tage** erhöht
+  - Gilt für alle Login-Methoden (Code-Verifizierung und Magic Link)
+  - User müssen sich seltener neu anmelden
+
+- **Splash Screen Optimierung**:
+  - Splash Screen wird nur noch einmal pro Browser-Session angezeigt
+  - Verwendet sessionStorage statt localStorage
+  - Bessere User Experience bei App-Nutzung
+
+- **Error Handling im Admin Dashboard**:
+  - Falsche Fehlermeldungen bei erfolgreichen Operationen behoben
+  - Delete und Extend Access zeigen keine Fehler mehr wenn Operation erfolgreich war
+  - Automatischer Page Reload wenn Refresh fehlschlägt aber Operation erfolgreich war
+
 ### Geändert
 - **Worker API** ([`workers/auth-api.js`](workers/auth-api.js)):
   - Neuer Endpoint: `GET /api/auth/magic-login` - Verarbeitet Magic Link Tokens
+  - Neuer Endpoint: `POST /api/auth/check-status` - Status-Check ohne Code-Generierung
+  - Neuer Endpoint: `POST /api/analytics/track` - Event-Tracking
+  - Neuer Endpoint: `GET /api/admin/analytics` - Analytics-Daten abrufen
+  - Neuer Endpoint: `POST /api/admin/delete-user` - User permanent löschen
   - `POST /api/admin/approve-user` - Generiert jetzt Magic Link statt Verifizierungscode
   - Approval-Email enthält direkten Login-Link statt Anleitung für Code-Eingabe
   
 - **AuthContext** ([`src/context/AuthContext.jsx`](src/context/AuthContext.jsx)):
   - Automatische Erkennung von Magic Link Token in URL beim App-Start
   - Magic Link Login ohne weitere Benutzerinteraktion
+  - Polling verwendet jetzt `/check-status` statt `/request-verification` (verhindert mehrfache Code-Generierung)
+  - Automatisches Login-Event-Tracking nach erfolgreicher Anmeldung
   - Polling zeigt jetzt Hinweis auf Magic Link Email statt Code-Eingabe
+
+- **Admin Dashboard** ([`src/components/AdminDashboard.jsx`](src/components/AdminDashboard.jsx)):
+  - Analytics Widget mit Statistiken und Bar Chart hinzugefügt
+  - Delete-Button für permanentes Löschen von Usern
+  - Vollständig mobile-responsive mit Tailwind Breakpoints
+  - Verbesserte Error-Handling-Logik
+
+- **Database Schema** ([`workers/schema-analytics.sql`](workers/schema-analytics.sql)):
+  - Neue Tabelle `analytics_events` für Event-Tracking
+  - Felder: id, event_type, user_email, created_at, date
 
 ### User Experience
 **Vorher (umständlich):**
