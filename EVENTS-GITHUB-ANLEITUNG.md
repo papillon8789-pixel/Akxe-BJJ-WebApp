@@ -4,11 +4,13 @@
 
 Du kannst Events jetzt genauso einfach wie den Banner direkt auf GitHub bearbeiten!
 
-### 📍 Datei-Location
-**`public/data/events.json`**
+### 📍 Datei-Locations
+**Events**: `public/data/events.json`
+**Emoji Library**: `public/data/emoji-library.txt`
 
-### 🔗 Direkter Link
-https://github.com/papillon8789-pixel/Akxe-BJJ-WebApp/blob/main/public/data/events.json
+### 🔗 Direkte Links
+📝 **Events bearbeiten**: https://github.com/papillon8789-pixel/Akxe-BJJ-WebApp/blob/main/public/data/events.json
+😀 **Emoji Library**: https://github.com/papillon8789-pixel/Akxe-BJJ-WebApp/blob/main/public/data/emoji-library.txt
 
 ---
 
@@ -77,16 +79,18 @@ Jedes Event hat diese Felder:
 
 ### Emoji-Vorschläge
 
-- 🎄 Weihnachten
-- 🎊 Neujahr
-- 🥋 Training/Seminare
-- 🏆 Wettkämpfe
-- 🍕 Social Events
-- 🎉 Parties
-- 📚 Workshops
-- 🌟 Special Events
-- 🔥 Intensive Camps
-- 🎯 Zielorientierte Events
+**📖 Vollständige Emoji-Library**: [`emoji-library.txt`](https://github.com/papillon8789-pixel/Akxe-BJJ-WebApp/blob/main/public/data/emoji-library.txt)
+
+**Beliebte Emojis**:
+- 🎄 Weihnachten | 🎊 Neujahr | 🎉 Parties
+- 🥋 Training | 🏆 Wettkämpfe | 🏅 Erfolge
+- 🍕 Social Events | 🍻 Drinks | 🥂 Cheers
+- 📚 Workshops | 🎓 Graduierung | 💡 Seminare
+- 🌟 Special Events | 🔥 Intensive Camps | 💪 Power
+- 🏔️ Outdoor | ⛺ Camping | 🏖️ Beach
+- 🦅 AKXE Eagle | 🐉 Dragon | 🦁 Lion
+
+**💡 Tipp**: Öffne die [`emoji-library.txt`](https://github.com/papillon8789-pixel/Akxe-BJJ-WebApp/blob/main/public/data/emoji-library.txt) und kopiere einfach das gewünschte Emoji!
 
 ---
 
