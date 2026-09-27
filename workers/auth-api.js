@@ -1180,18 +1180,37 @@ export default {
     // POST /api/analytics/track - Track analytics event
     if (url.pathname === '/api/analytics/track' && request.method === 'POST') {
       try {
-        const { eventType, userEmail } = await request.json();
+        const { eventType, userEmail, metadata } = await request.json();
         
         if (!eventType || !userEmail) {
           return jsonResponse({ error: 'Event type and user email required' }, 400);
         }
         
         const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+        const normalizedEmail = userEmail.toLowerCase().trim();
         
-        // Insert analytics event
+        // Validate event type
+        const validEventTypes = ['login', 'app_open', 'video_view', 'category_view'];
+        if (!validEventTypes.includes(eventType)) {
+          return jsonResponse({ error: 'Invalid event type' }, 400);
+        }
+        
+        // For app_open events, check if user already has an event today (only track once per day)
+        if (eventType === 'app_open') {
+          const existingEvent = await env.DB.prepare(
+            'SELECT id FROM analytics_events WHERE event_type = ? AND user_email = ? AND date = ?'
+          ).bind(eventType, normalizedEmail, date).first();
+          
+          if (existingEvent) {
+            // Already tracked today, don't insert duplicate
+            return jsonResponse({ success: true, message: 'Already tracked today' });
+          }
+        }
+        
+        // Insert analytics event with metadata as JSON string
         await env.DB.prepare(
-          'INSERT INTO analytics_events (event_type, user_email, date) VALUES (?, ?, ?)'
-        ).bind(eventType, userEmail.toLowerCase().trim(), date).run();
+          'INSERT INTO analytics_events (event_type, user_email, date, metadata) VALUES (?, ?, ?, ?)'
+        ).bind(eventType, normalizedEmail, date, metadata ? JSON.stringify(metadata) : null).run();
         
         return jsonResponse({ success: true });
         
@@ -1221,34 +1240,34 @@ export default {
         const today = new Date().toISOString().split('T')[0];
         const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         
-        // Get logins per day for last 7 days
-        const loginsPerDay = await env.DB.prepare(`
-          SELECT date, COUNT(*) as count
+        // Get active users per day for last 7 days (based on app_open events)
+        const activeUsersPerDay = await env.DB.prepare(`
+          SELECT date, COUNT(DISTINCT user_email) as count
           FROM analytics_events
-          WHERE event_type = 'login' AND date >= ?
+          WHERE event_type = 'app_open' AND date >= ?
           GROUP BY date
           ORDER BY date ASC
         `).bind(sevenDaysAgo).all();
         
-        // Get active users today
+        // Get active users today (app_open events)
         const activeToday = await env.DB.prepare(`
           SELECT COUNT(DISTINCT user_email) as count
           FROM analytics_events
-          WHERE date = ?
+          WHERE event_type = 'app_open' AND date = ?
         `).bind(today).all();
         
         // Get active users this week
         const activeThisWeek = await env.DB.prepare(`
           SELECT COUNT(DISTINCT user_email) as count
           FROM analytics_events
-          WHERE date >= ?
+          WHERE event_type = 'app_open' AND date >= ?
         `).bind(sevenDaysAgo).all();
         
-        // Get total logins today
-        const loginsToday = await env.DB.prepare(`
+        // Get total video views today
+        const videoViewsToday = await env.DB.prepare(`
           SELECT COUNT(*) as count
           FROM analytics_events
-          WHERE event_type = 'login' AND date = ?
+          WHERE event_type = 'video_view' AND date = ?
         `).bind(today).all();
         
         // Get total users count
@@ -1258,15 +1277,63 @@ export default {
           WHERE status = 'active'
         `).all();
         
+        // Get most viewed videos (last 7 days)
+        const mostViewedVideos = await env.DB.prepare(`
+          SELECT metadata, COUNT(*) as count
+          FROM analytics_events
+          WHERE event_type = 'video_view' AND date >= ? AND metadata IS NOT NULL
+          GROUP BY metadata
+          ORDER BY count DESC
+          LIMIT 5
+        `).bind(sevenDaysAgo).all();
+        
+        // Parse video metadata
+        const topVideos = (mostViewedVideos.results || []).map(row => {
+          try {
+            const meta = JSON.parse(row.metadata);
+            return {
+              videoId: meta.videoId,
+              videoName: meta.videoName,
+              category: meta.category,
+              views: row.count
+            };
+          } catch (e) {
+            return null;
+          }
+        }).filter(v => v !== null);
+        
+        // Get most viewed categories (last 7 days)
+        const mostViewedCategories = await env.DB.prepare(`
+          SELECT metadata, COUNT(*) as count
+          FROM analytics_events
+          WHERE event_type = 'category_view' AND date >= ? AND metadata IS NOT NULL
+          GROUP BY metadata
+          ORDER BY count DESC
+          LIMIT 5
+        `).bind(sevenDaysAgo).all();
+        
+        // Parse category metadata
+        const topCategories = (mostViewedCategories.results || []).map(row => {
+          try {
+            const meta = JSON.parse(row.metadata);
+            return {
+              category: meta.category,
+              views: row.count
+            };
+          } catch (e) {
+            return null;
+          }
+        }).filter(c => c !== null);
+        
         return jsonResponse({
           success: true,
-          stats: {
-            activeToday: activeToday.results[0]?.count || 0,
-            activeThisWeek: activeThisWeek.results[0]?.count || 0,
-            loginsToday: loginsToday.results[0]?.count || 0,
-            totalUsers: totalUsers.results[0]?.count || 0,
-          },
-          loginsPerDay: loginsPerDay.results || [],
+          activeToday: activeToday.results[0]?.count || 0,
+          activeThisWeek: activeThisWeek.results[0]?.count || 0,
+          videoViewsToday: videoViewsToday.results[0]?.count || 0,
+          totalUsers: totalUsers.results[0]?.count || 0,
+          activeUsersPerDay: activeUsersPerDay.results || [],
+          topVideos: topVideos,
+          topCategories: topCategories,
         });
         
       } catch (error) {

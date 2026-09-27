@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTechniques } from '../../context/TechniqueContext';
+import { useAuth } from '../../context/AuthContext';
+import { trackVideoView, trackCategoryView } from '../../utils/analytics';
 
 export default function TechniqueCard({ technique }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -7,6 +9,7 @@ export default function TechniqueCard({ technique }) {
   const [hasPlayed, setHasPlayed] = useState(false);
   const videoRef = useRef(null);
   const { incrementViewCount } = useTechniques();
+  const { user } = useAuth();
 
   // Format seconds to MM:SS
   const formatDuration = (seconds) => {
@@ -29,6 +32,16 @@ export default function TechniqueCard({ technique }) {
     if (!hasPlayed) {
       incrementViewCount(technique.id);
       setHasPlayed(true);
+      
+      // Track video view in analytics
+      if (user?.email) {
+        trackVideoView(
+          user.email,
+          technique.id,
+          technique.title,
+          technique.category || technique.subCategory || 'Unknown'
+        );
+      }
     }
   };
 

@@ -387,8 +387,8 @@ export default function AdminDashboard() {
                 <div className="text-white text-2xl md:text-3xl font-bold">{analytics.activeThisWeek || 0}</div>
               </div>
               <div className="bg-gradient-to-br from-purple-600/20 to-purple-700/20 border border-purple-600/30 rounded-lg p-3 md:p-4">
-                <div className="text-purple-400 text-xs md:text-sm font-medium mb-1">Logins Today</div>
-                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.loginsToday || 0}</div>
+                <div className="text-purple-400 text-xs md:text-sm font-medium mb-1">Video Views Today</div>
+                <div className="text-white text-2xl md:text-3xl font-bold">{analytics.videoViewsToday || 0}</div>
               </div>
               <div className="bg-gradient-to-br from-primo-red/20 to-red-700/20 border border-primo-red/30 rounded-lg p-3 md:p-4">
                 <div className="text-red-400 text-xs md:text-sm font-medium mb-1">Total Users</div>
@@ -396,14 +396,14 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            {/* Logins Chart */}
-            {analytics.loginsPerDay && analytics.loginsPerDay.length > 0 && (
+            {/* Active Users Chart */}
+            {analytics.activeUsersPerDay && analytics.activeUsersPerDay.length > 0 && (
               <div>
-                <h3 className="text-white font-semibold mb-3 text-sm md:text-base">Logins (Last 7 Days)</h3>
+                <h3 className="text-white font-semibold mb-3 text-sm md:text-base">Daily Active Users (Last 7 Days)</h3>
                 <div className="flex items-end justify-between gap-2 h-32 md:h-40">
-                  {analytics.loginsPerDay.map((day, index) => {
-                    const maxLogins = Math.max(...analytics.loginsPerDay.map(d => d.count), 1);
-                    const heightPercent = (day.count / maxLogins) * 100;
+                  {analytics.activeUsersPerDay.map((day, index) => {
+                    const maxUsers = Math.max(...analytics.activeUsersPerDay.map(d => d.count), 1);
+                    const heightPercent = (day.count / maxUsers) * 100;
                     const date = new Date(day.date);
                     const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
                     
@@ -412,9 +412,9 @@ export default function AdminDashboard() {
                         <div className="w-full flex flex-col items-center justify-end h-24 md:h-32">
                           <div className="text-white text-xs font-semibold mb-1">{day.count}</div>
                           <div
-                            className="w-full bg-gradient-to-t from-primo-red to-red-600 rounded-t transition-all duration-300 hover:from-red-500 hover:to-red-500"
+                            className="w-full bg-gradient-to-t from-green-600 to-green-500 rounded-t transition-all duration-300 hover:from-green-500 hover:to-green-400"
                             style={{ height: `${heightPercent}%`, minHeight: day.count > 0 ? '8px' : '0px' }}
-                            title={`${day.count} logins on ${day.date}`}
+                            title={`${day.count} active users on ${day.date}`}
                           ></div>
                         </div>
                         <div className="text-gray-400 text-xs font-medium">{dayName}</div>

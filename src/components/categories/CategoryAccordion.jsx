@@ -1,14 +1,27 @@
 import { useState } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
+import { useAuth } from '../../context/AuthContext';
+import { trackCategoryView } from '../../utils/analytics';
 
 export default function CategoryAccordion({ category, techniques, isNewest, isLegacy }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+
+  const handleToggle = () => {
+    const newState = !isOpen;
+    setIsOpen(newState);
+    
+    // Track category view when opening
+    if (newState && user?.email) {
+      trackCategoryView(user.email, category);
+    }
+  };
 
   return (
     <div className="mb-4">
       {/* Header */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className="w-full bg-card-bg hover:bg-card-hover p-4 rounded-lg flex items-center justify-between transition-colors group"
       >
         <div className="flex items-center gap-3">

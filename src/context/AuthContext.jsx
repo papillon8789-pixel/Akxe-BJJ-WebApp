@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { trackAppOpen } from '../utils/analytics';
 
 const AuthContext = createContext();
 
@@ -43,6 +44,9 @@ export function AuthProvider({ children }) {
             // Entferne magic token aus URL
             window.history.replaceState({}, document.title, window.location.pathname);
             
+            // Track app open
+            trackAppOpen(data.user.email);
+            
             setInfo('🎉 Welcome! Your account has been activated.');
           } else {
             setError(data.error || 'Invalid or expired magic link');
@@ -83,6 +87,9 @@ export function AuthProvider({ children }) {
           setUser(data.user);
           setUserEmail(data.user.email);
           setToken(storedToken);
+          
+          // Track app open (once per day per user)
+          trackAppOpen(data.user.email);
         } else {
           // Token ungültig - entfernen
           localStorage.removeItem('bjj-auth-token');
