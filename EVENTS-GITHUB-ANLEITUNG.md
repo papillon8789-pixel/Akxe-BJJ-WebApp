@@ -59,15 +59,16 @@ Jedes Event hat diese Felder:
 
 ### Feld-Erklärung
 
-| Feld | Beschreibung | Beispiel |
-|------|--------------|----------|
-| `id` | Eindeutige Nummer (1, 2, 3, ...) | `1` |
-| `title` | Event-Name | `"Xmas Party"` |
-| `date` | Datum (YYYY-MM-DD) | `"2024-12-12"` |
-| `time` | Uhrzeit (HH:MM) | `"19:30"` |
-| `description` | Event-Details | `"OpenMat + Dinner"` |
-| `icon` | Emoji-Icon | `"🎄"` |
-| `color` | Farbe (siehe unten) | `"red"` |
+| Feld | Beschreibung | Beispiel | Pflicht |
+|------|--------------|----------|---------|
+| `id` | Eindeutige Nummer (1, 2, 3, ...) | `1` | ✅ Ja |
+| `title` | Event-Name | `"Xmas Party"` | ✅ Ja |
+| `date` | Datum (YYYY-MM-DD) | `"2024-12-12"` | ✅ Ja |
+| `time` | Uhrzeit (HH:MM) | `"19:30"` | ✅ Ja |
+| `description` | Event-Details | `"OpenMat + Dinner"` | ✅ Ja |
+| `icon` | Emoji-Icon | `"🎄"` | ✅ Ja |
+| `color` | Farbe (siehe unten) | `"red"` | ✅ Ja |
+| `location` | Google Maps Link | `"https://maps.google.com/..."` | ⭕ Optional |
 
 ### Verfügbare Farben
 
@@ -96,7 +97,7 @@ Jedes Event hat diese Felder:
 
 ## 📝 Beispiele
 
-### Beispiel 1: Ein Event
+### Beispiel 1: Ein Event (ohne Location)
 
 ```json
 [
@@ -112,7 +113,7 @@ Jedes Event hat diese Felder:
 ]
 ```
 
-### Beispiel 2: Mehrere Events
+### Beispiel 1b: Ein Event (mit Location)
 
 ```json
 [
@@ -123,7 +124,25 @@ Jedes Event hat diese Felder:
     "time": "19:30",
     "description": "Xmas OpenMat + Dinner/Drinks",
     "icon": "🎄",
-    "color": "red"
+    "color": "red",
+    "location": "https://maps.google.com/?q=PRIMO+BJJ+Munich"
+  }
+]
+```
+
+### Beispiel 2: Mehrere Events (mit verschiedenen Locations)
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Xmas Party",
+    "date": "2024-12-12",
+    "time": "19:30",
+    "description": "Xmas OpenMat + Dinner/Drinks",
+    "icon": "🎄",
+    "color": "red",
+    "location": "https://maps.google.com/?q=PRIMO+BJJ+Munich"
   },
   {
     "id": 2,
@@ -141,7 +160,8 @@ Jedes Event hat diese Felder:
     "time": "08:00",
     "description": "Team competition - Register by Feb 1st",
     "icon": "🏆",
-    "color": "purple"
+    "color": "purple",
+    "location": "https://maps.google.com/?q=Olympiapark+Munich"
   }
 ]
 ```
@@ -163,6 +183,7 @@ Jedes Event hat diese Felder:
 - **Datum-Format** - Immer `YYYY-MM-DD` (z.B. `2024-12-25`)
 - **Zeit-Format** - Immer `HH:MM` im 24h-Format (z.B. `19:30`)
 - **IDs eindeutig** - Jedes Event braucht eine eigene ID (1, 2, 3, ...)
+- **Location optional** - Kann weggelassen werden wenn keine Location bekannt
 
 ### ❌ DON'Ts (Vermeide das)
 
@@ -185,6 +206,44 @@ Falls du unsicher bist, ob dein JSON korrekt ist:
 
 ---
 
+## 📍 Google Maps Link hinzufügen
+
+### So bekommst du den Google Maps Link:
+
+1. **Öffne Google Maps** (maps.google.com)
+2. **Suche die Location** (z.B. "PRIMO BJJ Munich")
+3. **Klicke auf "Teilen"** oder kopiere die URL aus der Adressleiste
+4. **Kopiere den Link** (z.B. `https://maps.google.com/?q=PRIMO+BJJ+Munich`)
+5. **Füge ihn in die JSON ein** als `"location": "DEIN_LINK"`
+
+### Beispiel-Links:
+
+```json
+"location": "https://maps.google.com/?q=PRIMO+BJJ+Munich"
+"location": "https://goo.gl/maps/ABC123"
+"location": "https://maps.app.goo.gl/XYZ789"
+```
+
+### Wichtig:
+- ✅ Link muss mit `https://` beginnen
+- ✅ In Anführungszeichen `"..."`
+- ✅ Komma am Ende (außer beim letzten Feld)
+- ⭕ **Optional** - Kann weggelassen werden
+
+### Wenn Location weggelassen wird:
+```json
+{
+  "id": 1,
+  "title": "Event ohne Location",
+  "date": "2025-01-01",
+  "time": "10:00",
+  "description": "Location wird später bekannt gegeben",
+  "icon": "🎉",
+  "color": "gold"
+}
+```
+Kein Problem! Der "View Location" Link wird einfach nicht angezeigt.
+
 ## 🚀 Automatische Features
 
 ### Vergangene Events werden automatisch ausgeblendet
@@ -201,6 +260,11 @@ Falls du unsicher bist, ob dein JSON korrekt ist:
 - Wenn keine kommenden Events existieren
 - Keine leere Section sichtbar
 - Sauberes UI
+
+### Location Link (optional)
+- Wenn `location` Feld vorhanden: Zeigt "📍 View Location" Link
+- Wenn nicht vorhanden: Kein Link, alles funktioniert normal
+- Link öffnet in neuem Tab
 
 ---
 

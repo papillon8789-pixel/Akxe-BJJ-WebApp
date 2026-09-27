@@ -137,9 +137,22 @@ export default function UpcomingEvents() {
                       </div>
                     </div>
                     
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-2">
                       {event.description}
                     </p>
+                    
+                    {/* Location Link */}
+                    {event.location && (
+                      <a
+                        href={event.location}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1 ${colors.textAccent} hover:underline text-sm font-medium transition-colors`}
+                      >
+                        <span>📍</span>
+                        <span>View Location</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
