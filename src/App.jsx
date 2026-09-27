@@ -114,12 +114,24 @@ function AppContent() {
 
 function AuthenticatedApp() {
   const { isAuthenticated, isLoading, user } = useAuth();
-  const [showSplash, setShowSplash] = useState(true);
   const [currentView, setCurrentView] = useState('main'); // 'main' or 'admin'
+  
+  // Check if splash screen has been shown before (in this session)
+  const [showSplash, setShowSplash] = useState(() => {
+    // Only show splash if not shown in this session
+    const hasSeenSplash = sessionStorage.getItem('bjj-splash-shown');
+    return !hasSeenSplash;
+  });
 
-  // Show splash screen first
+  // Mark splash as shown when it finishes
+  const handleSplashFinish = () => {
+    sessionStorage.setItem('bjj-splash-shown', 'true');
+    setShowSplash(false);
+  };
+
+  // Show splash screen first (only on first visit in this session)
   if (showSplash) {
-    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+    return <SplashScreen onFinish={handleSplashFinish} />;
   }
 
   // Show loading state while checking authentication
