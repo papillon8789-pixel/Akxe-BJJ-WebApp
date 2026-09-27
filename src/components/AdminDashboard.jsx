@@ -277,12 +277,21 @@ export default function AdminDashboard() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to extend access');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to extend access');
       }
 
-      await fetchAllUsers();
+      // Access successfully extended - refresh list
       setExtendEmail(null);
       setCustomDate('');
+      
+      try {
+        await fetchAllUsers();
+      } catch (refreshErr) {
+        console.error('Error refreshing user list:', refreshErr);
+        // Don't show error - extension was successful
+        window.location.reload();
+      }
     } catch (err) {
       console.error('Error extending access:', err);
       setError(err.message);
