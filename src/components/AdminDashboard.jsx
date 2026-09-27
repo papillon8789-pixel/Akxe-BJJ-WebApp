@@ -233,10 +233,19 @@ export default function AdminDashboard() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to delete user');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to delete user');
       }
 
-      await fetchAllUsers();
+      // User successfully deleted - refresh list
+      try {
+        await fetchAllUsers();
+      } catch (refreshErr) {
+        console.error('Error refreshing user list:', refreshErr);
+        // Don't show error to user - deletion was successful
+        // Just force a page reload to show updated list
+        window.location.reload();
+      }
     } catch (err) {
       console.error('Error deleting user:', err);
       setError(err.message);
