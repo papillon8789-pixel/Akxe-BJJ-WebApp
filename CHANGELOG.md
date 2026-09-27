@@ -4,6 +4,49 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-09-27] - Upcoming Events Feature 🎉
+
+### Hinzugefügt
+- **Upcoming Events Section** unterhalb des Training Schedules:
+  - Zeigt bis zu 3 kommende Events an
+  - Automatisches Filtern von vergangenen Events
+  - Sortierung nach Datum (nächstes Event zuerst)
+  - **Calendar Icon Design** mit Datum-Highlighting:
+    - Großes Kalender-Icon zeigt Tag und Monat
+    - Farbcodierung für verschiedene Event-Typen (rot, gold, blau, grün, lila)
+  - **Event Cards** mit Gradient-Design:
+    - Event-Icon (z.B. 🎄 für Xmas Party)
+    - Event-Titel und Beschreibung
+    - Datum und Uhrzeit
+    - Hover-Effekte und Animationen
+  - **Mobile-Responsive Design**:
+    - Optimierte Darstellung auf allen Bildschirmgrößen
+    - Flexible Layouts mit Tailwind Breakpoints
+  - Neue Komponente: [`src/components/UpcomingEvents.jsx`](src/components/UpcomingEvents.jsx)
+  - Integration in [`src/App.jsx`](src/App.jsx) unterhalb des Training Schedules
+
+### Technische Details
+- Events werden als Array im Component State verwaltet
+- Einfache Erweiterung für zukünftige Admin-Integration
+- Automatisches Ausblenden wenn keine Events vorhanden
+- 5 Farbvarianten für Event-Kategorisierung
+- Datum-Formatierung mit JavaScript Intl API
+
+### Beispiel Event
+```javascript
+{
+  id: 1,
+  title: 'Xmas Party',
+  date: '2024-12-12',
+  time: '19:30',
+  description: 'Xmas OpenMat + Dinner/Drinks',
+  icon: '🎄',
+  color: 'red'
+}
+```
+
+---
+
 ## [2026-09-27] - Analytics Dashboard & Magic Link Login ✨
 
 ### Hinzugefügt

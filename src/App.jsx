@@ -8,6 +8,7 @@ import SplashScreen from './components/SplashScreen';
 import LoginScreen from './components/LoginScreen';
 import Banner from './components/Banner';
 import AdminDashboard from './components/AdminDashboard';
+import UpcomingEvents from './components/UpcomingEvents';
 
 function AppContent() {
   const { groupedTechniques, filteredTechniques } = useTechniques();
@@ -108,6 +109,9 @@ function AppContent() {
           </div>
         </div>
       </section>
+
+      {/* Upcoming Events Section */}
+      <UpcomingEvents />
     </div>
   );
 }
