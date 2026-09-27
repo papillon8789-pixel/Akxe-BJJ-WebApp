@@ -22,28 +22,38 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - **Mobile-Responsive Design**:
     - Optimierte Darstellung auf allen Bildschirmgrößen
     - Flexible Layouts mit Tailwind Breakpoints
+  - **GitHub-Bearbeitung möglich**:
+    - Events in JSON-Datei ausgelagert: [`public/data/events.json`](public/data/events.json)
+    - Direkte Bearbeitung auf GitHub wie beim Banner
+    - Automatisches Deployment nach Änderungen
   - Neue Komponente: [`src/components/UpcomingEvents.jsx`](src/components/UpcomingEvents.jsx)
   - Integration in [`src/App.jsx`](src/App.jsx) unterhalb des Training Schedules
+  - Dokumentation: [`EVENTS-GITHUB-ANLEITUNG.md`](EVENTS-GITHUB-ANLEITUNG.md)
 
 ### Technische Details
-- Events werden als Array im Component State verwaltet
-- Einfache Erweiterung für zukünftige Admin-Integration
+- Events werden aus JSON-Datei geladen (fetch API)
 - Automatisches Ausblenden wenn keine Events vorhanden
 - 5 Farbvarianten für Event-Kategorisierung
 - Datum-Formatierung mit JavaScript Intl API
+- Loading-State während Daten geladen werden
 
 ### Beispiel Event
-```javascript
+```json
 {
-  id: 1,
-  title: 'Xmas Party',
-  date: '2024-12-12',
-  time: '19:30',
-  description: 'Xmas OpenMat + Dinner/Drinks',
-  icon: '🎄',
-  color: 'red'
+  "id": 1,
+  "title": "Xmas Party",
+  "date": "2024-12-12",
+  "time": "19:30",
+  "description": "Xmas OpenMat + Dinner/Drinks",
+  "icon": "🎄",
+  "color": "red"
 }
 ```
+
+### Verwaltung
+- **Einfach**: Bearbeite [`public/data/events.json`](public/data/events.json) direkt auf GitHub
+- **Anleitung**: Siehe [`EVENTS-GITHUB-ANLEITUNG.md`](EVENTS-GITHUB-ANLEITUNG.md)
+- **Technisch**: Siehe [`EVENTS-MANAGEMENT.md`](EVENTS-MANAGEMENT.md)
 
 ---
 

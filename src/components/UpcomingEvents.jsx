@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 
 export default function UpcomingEvents() {
-  // In the future, this could come from an API or admin dashboard
-  // For now, we'll use static data that can be easily updated
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      title: 'Xmas Party',
-      date: '2024-12-12',
-      time: '19:30',
-      description: 'Xmas OpenMat + Dinner/Drinks',
-      icon: '🎄',
-      color: 'red' // red, gold, blue, green, purple
-    },
-    // Add more events here as needed (max 3)
-  ]);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load events from JSON file
+  useEffect(() => {
+    fetch('/data/events.json')
+      .then(response => response.json())
+      .then(data => {
+        setEvents(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading events:', error);
+        setLoading(false);
+      });
+  }, []);
 
   // Filter out past events and sort by date
   const upcomingEvents = events
@@ -22,8 +24,8 @@ export default function UpcomingEvents() {
     .sort((a, b) => new Date(a.date) - new Date(b.date))
     .slice(0, 3); // Max 3 events
 
-  // Don't render if no upcoming events
-  if (upcomingEvents.length === 0) {
+  // Don't render if loading or no upcoming events
+  if (loading || upcomingEvents.length === 0) {
     return null;
   }
 
