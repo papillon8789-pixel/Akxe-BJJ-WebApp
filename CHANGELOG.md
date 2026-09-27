@@ -4,6 +4,68 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-09-27] - Magic Link Login & Admin Dashboard Verbesserungen ✨
+
+### Verbessert
+- **Vereinfachter Login-Flow nach Account-Genehmigung**:
+  - Neue User erhalten nach Admin-Genehmigung eine Email mit **direktem Login-Link (Magic Link)**
+  - Kein erneutes Eingeben von Email + Code mehr nötig
+  - Magic Link ist 24 Stunden gültig und einmalig verwendbar
+  - Nach Magic Link Login wird automatisch eine reguläre 60-Tage Session erstellt
+
+- **Session-Dauer erhöht**:
+  - JWT Token Gültigkeit von 30 auf **60 Tage** erhöht
+  - Gilt für alle Login-Methoden (Code-Verifizierung und Magic Link)
+  - User müssen sich seltener neu anmelden
+
+### Hinzugefügt
+- **Delete User Funktion** im Admin Dashboard:
+  - Permanentes Löschen von Usern aus der Datenbank
+  - Doppelte Bestätigung erforderlich (Confirm + "DELETE" tippen)
+  - Löscht alle User-Daten: Sessions, Verification Codes, User-Eintrag
+  - Admin-User können nicht gelöscht werden
+  - Verfügbar für Active und Suspended Users
+  - Neuer API Endpoint: `POST /api/admin/delete-user`
+
+- **Mobile Responsive Design** für Admin Dashboard:
+  - Optimierte Darstellung auf Smartphones und Tablets
+  - Flexible Button-Layouts mit Wrapping
+  - Kleinere Schriftgrößen und Abstände auf Mobile
+  - Tab-Labels verkürzt auf kleinen Bildschirmen
+  - Bessere Touch-Targets für mobile Bedienung
+
+### Geändert
+- **Worker API** ([`workers/auth-api.js`](workers/auth-api.js)):
+  - Neuer Endpoint: `GET /api/auth/magic-login` - Verarbeitet Magic Link Tokens
+  - `POST /api/admin/approve-user` - Generiert jetzt Magic Link statt Verifizierungscode
+  - Approval-Email enthält direkten Login-Link statt Anleitung für Code-Eingabe
+  
+- **AuthContext** ([`src/context/AuthContext.jsx`](src/context/AuthContext.jsx)):
+  - Automatische Erkennung von Magic Link Token in URL beim App-Start
+  - Magic Link Login ohne weitere Benutzerinteraktion
+  - Polling zeigt jetzt Hinweis auf Magic Link Email statt Code-Eingabe
+
+### User Experience
+**Vorher (umständlich):**
+1. Neuer User → Email + Code eingeben
+2. Account auf "pending"
+3. Admin genehmigt
+4. User bekommt Email → **muss nochmal Email + neuen Code eingeben** ❌
+
+**Jetzt (optimiert):**
+1. Neuer User → Email + Code eingeben
+2. Account auf "pending"
+3. Admin genehmigt
+4. User bekommt Email mit **direktem Login-Link** → Ein Klick und fertig! ✅
+
+### Sicherheit
+- Magic Link Token sind JWT-basiert mit 24h Gültigkeit
+- Einmalige Verwendung (Token wird nach Login gelöscht)
+- Nach Magic Link Login wird reguläre 60-Tage Session erstellt
+- Alle bestehenden Sicherheitsfeatures bleiben erhalten
+
+---
+
 ## [2026-09-26] - Email-Verifizierung implementiert 🔐
 
 ### Hinzugefügt

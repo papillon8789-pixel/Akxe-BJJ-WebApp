@@ -13,6 +13,7 @@ database_id = "9db9f3c0-7a6e-41d8-a440-3322e56725b0"
 # Environment Variables (Secrets via: wrangler secret put SECRET_NAME)
 [vars]
 ENVIRONMENT = "production"
+FRONTEND_URL = "https://primo-bjj.com"
 
 # Secrets (nicht hier eintragen, sondern via CLI):
 # wrangler secret put RESEND_API_KEY
@@ -36,6 +37,7 @@ name = "bjj-auth-api-dev"
 
 [env.development.vars]
 ENVIRONMENT = "development"
+FRONTEND_URL = "http://localhost:5173"
 
 # Staging Configuration
 [env.staging]
@@ -43,3 +45,4 @@ name = "bjj-auth-api-staging"
 
 [env.staging.vars]
 ENVIRONMENT = "staging"
+FRONTEND_URL = "https://staging.primo-bjj.com"

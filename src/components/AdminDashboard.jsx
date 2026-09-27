@@ -207,6 +207,44 @@ export default function AdminDashboard() {
     }
   };
 
+  // Delete user permanently
+  const handleDelete = async (email) => {
+    if (!confirm(`⚠️ PERMANENT DELETE\n\nAre you sure you want to permanently delete ${email}?\n\nThis will:\n• Remove the user from the database\n• Delete all their sessions\n• Cannot be undone\n\nType "DELETE" to confirm.`)) {
+      return;
+    }
+
+    const confirmation = prompt('Type DELETE to confirm:');
+    if (confirmation !== 'DELETE') {
+      alert('Deletion cancelled - confirmation text did not match');
+      return;
+    }
+
+    try {
+      setProcessingEmail(email);
+      setError(null);
+
+      const response = await fetch(`${API_URL}/api/admin/delete-user`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete user');
+      }
+
+      await fetchAllUsers();
+    } catch (err) {
+      console.error('Error deleting user:', err);
+      setError(err.message);
+    } finally {
+      setProcessingEmail(null);
+    }
+  };
+
   // Extend access for active user
   const handleExtendAccess = async (email, paidMonths = null, validUntilDate = null) => {
     try {
@@ -273,9 +311,9 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">User Management</h1>
-          <p className="text-gray-400">Manage all users and their access</p>
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">User Management</h1>
+          <p className="text-sm md:text-base text-gray-400">Manage all users and their access</p>
         </div>
 
         {/* Error Message */}
@@ -296,53 +334,53 @@ export default function AdminDashboard() {
           <div className="flex border-b border-gray-700">
             <button
               onClick={() => setActiveTab('pending')}
-              className={`flex-1 px-6 py-4 font-semibold transition-colors ${
+              className={`flex-1 px-3 md:px-6 py-3 md:py-4 text-xs md:text-base font-semibold transition-colors ${
                 activeTab === 'pending'
                   ? 'bg-primo-red text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-750'
               }`}
             >
-              Pending ({counts.pending})
+              <span className="hidden sm:inline">Pending </span>({counts.pending})
             </button>
             <button
               onClick={() => setActiveTab('active')}
-              className={`flex-1 px-6 py-4 font-semibold transition-colors ${
+              className={`flex-1 px-3 md:px-6 py-3 md:py-4 text-xs md:text-base font-semibold transition-colors ${
                 activeTab === 'active'
                   ? 'bg-green-600 text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-750'
               }`}
             >
-              Active ({counts.active})
+              <span className="hidden sm:inline">Active </span>({counts.active})
             </button>
             <button
               onClick={() => setActiveTab('suspended')}
-              className={`flex-1 px-6 py-4 font-semibold transition-colors ${
+              className={`flex-1 px-3 md:px-6 py-3 md:py-4 text-xs md:text-base font-semibold transition-colors ${
                 activeTab === 'suspended'
                   ? 'bg-orange-600 text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-750'
               }`}
             >
-              Suspended ({counts.suspended})
+              <span className="hidden sm:inline">Suspended </span>({counts.suspended})
             </button>
           </div>
 
           {/* Tab Header */}
-          <div className="p-6 border-b border-gray-700 bg-gray-800/50">
-            <div className="flex items-center justify-between">
+          <div className="p-4 md:p-6 border-b border-gray-700 bg-gray-800/50">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-lg md:text-xl font-bold text-white">
                   {activeTab === 'pending' && 'Pending Registrations'}
                   {activeTab === 'active' && 'Active Users'}
                   {activeTab === 'suspended' && 'Suspended Users'}
                 </h2>
-                <p className="text-gray-400 text-sm mt-1">
+                <p className="text-gray-400 text-xs md:text-sm mt-1">
                   {currentUsers.length} user{currentUsers.length !== 1 ? 's' : ''}
                 </p>
               </div>
               <button
                 onClick={fetchAllUsers}
                 disabled={loading}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="px-3 md:px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded-lg transition-colors disabled:opacity-50 w-full sm:w-auto"
               >
                 {loading ? '🔄 Refreshing...' : '🔄 Refresh'}
               </button>
@@ -378,37 +416,37 @@ export default function AdminDashboard() {
             /* Users List */
             <div className="divide-y divide-gray-700">
               {currentUsers.map((u) => (
-                <div key={u.email} className="p-6 hover:bg-gray-800/50 transition-colors">
-                  <div className="flex items-start justify-between gap-4">
+                <div key={u.email} className="p-4 md:p-6 hover:bg-gray-800/50 transition-colors">
+                  <div className="flex flex-col md:flex-row items-start md:items-start justify-between gap-3 md:gap-4">
                     {/* User Info */}
-                    <div className="flex-1">
+                    <div className="flex-1 w-full">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${
+                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base ${
                           activeTab === 'pending' ? 'bg-gradient-to-br from-primo-red to-red-700' :
                           activeTab === 'active' ? 'bg-gradient-to-br from-green-600 to-green-700' :
                           'bg-gradient-to-br from-orange-600 to-orange-700'
                         }`}>
                           {u.email.charAt(0).toUpperCase()}
                         </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <h3 className="text-white font-semibold">{u.email}</h3>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="text-white font-semibold text-sm md:text-base truncate">{u.email}</h3>
                             {u.is_admin === 1 && (
                               <span className="px-2 py-0.5 bg-purple-600 text-white text-xs font-bold rounded">ADMIN</span>
                             )}
                           </div>
-                          <div className="flex gap-4 text-gray-400 text-sm mt-1">
+                          <div className="flex flex-col sm:flex-row sm:gap-4 text-gray-400 text-xs md:text-sm mt-1">
                             {activeTab === 'pending' && (
                               <span>Registered: {new Date(u.created_at).toLocaleDateString()}</span>
                             )}
                             {activeTab === 'active' && (
                               <>
                                 <span>Valid Until: {new Date(u.valid_until).toLocaleDateString()}</span>
-                                <span>•</span>
+                                <span className="hidden sm:inline">•</span>
                                 <span>{u.paid_months} month{u.paid_months > 1 ? 's' : ''}</span>
                                 {u.approved_by && (
                                   <>
-                                    <span>•</span>
+                                    <span className="hidden sm:inline">•</span>
                                     <span>Approved by: {u.approved_by}</span>
                                   </>
                                 )}
@@ -419,7 +457,7 @@ export default function AdminDashboard() {
                                 <span>Suspended</span>
                                 {u.valid_until && (
                                   <>
-                                    <span>•</span>
+                                    <span className="hidden sm:inline">•</span>
                                     <span>Was valid until: {new Date(u.valid_until).toLocaleDateString()}</span>
                                   </>
                                 )}
@@ -431,50 +469,50 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full md:w-auto">
                       {activeTab === 'pending' && (
                         <>
                           {customDateEmail === u.email ? (
-                            <div className="flex gap-2 items-center">
+                            <div className="flex gap-2 items-center flex-wrap">
                               <input
                                 type="date"
                                 value={customDate}
                                 onChange={(e) => setCustomDate(e.target.value)}
                                 min={new Date().toISOString().split('T')[0]}
-                                className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-primo-red"
+                                className="flex-1 min-w-[140px] px-2 md:px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-primo-red"
                               />
                               <button
                                 onClick={() => handleCustomDateSubmit(u.email)}
                                 disabled={processingEmail === u.email || !customDate}
-                                className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-all"
+                                className="px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-xs md:text-sm font-semibold rounded-lg transition-all"
                               >
                                 ✓
                               </button>
                               <button
                                 onClick={() => { setCustomDateEmail(null); setCustomDate(''); }}
-                                className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm font-semibold rounded-lg transition-all"
+                                className="px-3 md:px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg transition-all"
                               >
                                 ✕
                               </button>
                             </div>
                           ) : (
-                            <div className="flex gap-2">
-                              <button onClick={() => handleApprove(u.email, 1)} disabled={processingEmail === u.email} className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="1 month">
+                            <div className="flex gap-1 md:gap-2 flex-wrap">
+                              <button onClick={() => handleApprove(u.email, 1)} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="1 month">
                                 {processingEmail === u.email ? '⏳' : '✓ 1M'}
                               </button>
-                              <button onClick={() => handleApprove(u.email, 3)} disabled={processingEmail === u.email} className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="3 months">
+                              <button onClick={() => handleApprove(u.email, 3)} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="3 months">
                                 {processingEmail === u.email ? '⏳' : '✓ 3M'}
                               </button>
-                              <button onClick={() => handleApprove(u.email, 6)} disabled={processingEmail === u.email} className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="6 months">
+                              <button onClick={() => handleApprove(u.email, 6)} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="6 months">
                                 {processingEmail === u.email ? '⏳' : '✓ 6M'}
                               </button>
-                              <button onClick={() => handleApprove(u.email, 12)} disabled={processingEmail === u.email} className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="12 months">
+                              <button onClick={() => handleApprove(u.email, 12)} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="12 months">
                                 {processingEmail === u.email ? '⏳' : '✓ 12M'}
                               </button>
-                              <button onClick={() => { setCustomDateEmail(u.email); setCustomDate(''); }} disabled={processingEmail === u.email} className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Custom date">
+                              <button onClick={() => { setCustomDateEmail(u.email); setCustomDate(''); }} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Custom date">
                                 📅
                               </button>
-                              <button onClick={() => handleReject(u.email)} disabled={processingEmail === u.email} className="px-3 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg">
+                              <button onClick={() => handleReject(u.email)} disabled={processingEmail === u.email} className="px-2 md:px-3 py-1.5 md:py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg">
                                 {processingEmail === u.email ? '⏳' : '✗'}
                               </button>
                             </div>
@@ -485,44 +523,47 @@ export default function AdminDashboard() {
                       {activeTab === 'active' && (
                         <>
                           {extendEmail === u.email ? (
-                            <div className="flex gap-2 items-center">
+                            <div className="flex gap-2 items-center flex-wrap">
                               <input
                                 type="date"
                                 value={customDate}
                                 onChange={(e) => setCustomDate(e.target.value)}
                                 min={new Date().toISOString().split('T')[0]}
-                                className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-600"
+                                className="flex-1 min-w-[140px] px-2 md:px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-green-600"
                               />
                               <button
                                 onClick={() => handleCustomDateSubmit(u.email)}
                                 disabled={processingEmail === u.email || !customDate}
-                                className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg"
+                                className="px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg"
                               >
                                 ✓
                               </button>
                               <button
                                 onClick={() => { setExtendEmail(null); setCustomDate(''); }}
-                                className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm font-semibold rounded-lg"
+                                className="px-3 md:px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg"
                               >
                                 ✕
                               </button>
                             </div>
                           ) : (
-                            <div className="flex gap-2">
-                              <button onClick={() => handleExtendAccess(u.email, 1)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Extend 1 month">
+                            <div className="flex gap-1 md:gap-2 flex-wrap">
+                              <button onClick={() => handleExtendAccess(u.email, 1)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Extend 1 month">
                                 +1M
                               </button>
-                              <button onClick={() => handleExtendAccess(u.email, 3)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Extend 3 months">
+                              <button onClick={() => handleExtendAccess(u.email, 3)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Extend 3 months">
                                 +3M
                               </button>
-                              <button onClick={() => handleExtendAccess(u.email, 6)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Extend 6 months">
+                              <button onClick={() => handleExtendAccess(u.email, 6)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Extend 6 months">
                                 +6M
                               </button>
-                              <button onClick={() => { setExtendEmail(u.email); setCustomDate(''); }} disabled={processingEmail === u.email || u.is_admin === 1} className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Custom date">
+                              <button onClick={() => { setExtendEmail(u.email); setCustomDate(''); }} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Custom date">
                                 📅
                               </button>
-                              <button onClick={() => handleSuspend(u.email)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-3 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg" title="Suspend user">
+                              <button onClick={() => handleSuspend(u.email)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Suspend user">
                                 🚫
+                              </button>
+                              <button onClick={() => handleDelete(u.email)} disabled={processingEmail === u.email || u.is_admin === 1} className="px-2 md:px-3 py-1.5 md:py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg" title="Delete user permanently">
+                                🗑️
                               </button>
                             </div>
                           )}
@@ -530,13 +571,23 @@ export default function AdminDashboard() {
                       )}
 
                       {activeTab === 'suspended' && (
-                        <button
-                          onClick={() => handleReactivate(u.email)}
-                          disabled={processingEmail === u.email}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-sm font-semibold rounded-lg"
-                        >
-                          {processingEmail === u.email ? '⏳ Processing...' : '✓ Reactivate'}
-                        </button>
+                        <div className="flex gap-2 flex-wrap">
+                          <button
+                            onClick={() => handleReactivate(u.email)}
+                            disabled={processingEmail === u.email}
+                            className="flex-1 px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg"
+                          >
+                            {processingEmail === u.email ? '⏳ Processing...' : '✓ Reactivate'}
+                          </button>
+                          <button
+                            onClick={() => handleDelete(u.email)}
+                            disabled={processingEmail === u.email || u.is_admin === 1}
+                            className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 text-white text-xs md:text-sm font-semibold rounded-lg"
+                            title="Delete user permanently"
+                          >
+                            🗑️
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -551,12 +602,13 @@ export default function AdminDashboard() {
           <div className="flex items-start gap-3">
             <span className="text-blue-400 text-xl">ℹ️</span>
             <div className="flex-1">
-              <h3 className="text-blue-200 font-semibold mb-1">User Management Guide</h3>
-              <ul className="text-blue-300 text-sm space-y-1">
+              <h3 className="text-blue-200 font-semibold mb-1 text-sm md:text-base">User Management Guide</h3>
+              <ul className="text-blue-300 text-xs md:text-sm space-y-1">
                 <li>• <strong>Pending:</strong> New registrations waiting for approval</li>
                 <li>• <strong>Active:</strong> Users with valid access - extend or suspend</li>
                 <li>• <strong>Suspended:</strong> Blocked users - can be reactivated</li>
-                <li>• Admin users cannot be suspended or have their access modified</li>
+                <li>• <strong>Delete (🗑️):</strong> Permanently remove user from database</li>
+                <li>• Admin users cannot be suspended or deleted</li>
               </ul>
             </div>
           </div>

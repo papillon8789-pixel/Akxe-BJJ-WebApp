@@ -48,7 +48,7 @@ async function generateJWT(email, secret, additionalData = {}) {
   const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
   const payload = btoa(JSON.stringify({
     email,
-    exp: Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60), // 30 Tage
+    exp: Math.floor(Date.now() / 1000) + (60 * 24 * 60 * 60), // 60 Tage
     iat: Math.floor(Date.now() / 1000),
     ...additionalData,
   }));
@@ -376,7 +376,7 @@ export default {
         
         // Speichere Session
         await env.DB.prepare(
-          'INSERT INTO sessions (email, token, created_at, expires_at) VALUES (?, ?, datetime("now"), datetime("now", "+30 days"))'
+          'INSERT INTO sessions (email, token, created_at, expires_at) VALUES (?, ?, datetime("now"), datetime("now", "+60 days"))'
         ).bind(normalizedEmail, token).run();
         
         return jsonResponse({
@@ -536,7 +536,23 @@ export default {
           'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
         ).bind('user_approved', normalizedEmail, `User approved by ${payload.email}`).run();
         
-        // Sende Approval-Email an User
+        // Generiere Magic Link Token (gültig für 24 Stunden)
+        const magicToken = await generateJWT(normalizedEmail, env.JWT_SECRET, {
+          type: 'magic_link',
+          status: 'active',
+          isAdmin: false,
+        });
+        
+        // Speichere Magic Link Token
+        await env.DB.prepare(
+          'INSERT INTO sessions (email, token, created_at, expires_at) VALUES (?, ?, datetime("now"), datetime("now", "+1 day"))'
+        ).bind(normalizedEmail, magicToken).run();
+        
+        // Frontend URL (anpassen an deine Domain)
+        const frontendUrl = env.FRONTEND_URL || 'https://primo-bjj.com';
+        const magicLink = `${frontendUrl}?magic=${encodeURIComponent(magicToken)}`;
+        
+        // Sende Approval-Email mit Magic Link an User
         try {
           await sendEmail(
             env,
@@ -555,6 +571,7 @@ export default {
                   .content { padding: 30px; background: white; }
                   .button { display: inline-block; background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
                   .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 20px 0; }
+                  .warning-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 15px; margin: 20px 0; }
                   .footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 10px 10px; }
                 </style>
               </head>
@@ -576,15 +593,19 @@ export default {
                     </div>
                     
                     <p><strong>Ready to start training?</strong></p>
-                    <p>Click the button below to log in to the PRIMO BJJ Technique Library:</p>
+                    <p>Click the button below to log in directly - no code needed!</p>
                     
                     <div style="text-align: center;">
-                      <a href="https://primo-bjj.com" class="button">🔓 Log In Now</a>
+                      <a href="${magicLink}" class="button">🔓 Log In Now</a>
+                    </div>
+                    
+                    <div class="warning-box">
+                      <strong>⚠️ Important:</strong> This login link is valid for 24 hours and can only be used once.
                     </div>
                     
                     <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
-                      <strong>How to log in:</strong><br>
-                      1. Click the button above or visit <a href="https://primo-bjj.com">primo-bjj.com</a><br>
+                      <strong>For future logins:</strong><br>
+                      1. Visit <a href="${frontendUrl}">${frontendUrl.replace('https://', '')}</a><br>
                       2. Enter your email address<br>
                       3. Check your email for the verification code<br>
                       4. Enter the code and you're in!
@@ -657,6 +678,74 @@ export default {
       } catch (error) {
         console.error('Error rejecting user:', error);
         return jsonResponse({ error: 'Failed to reject user' }, 500);
+      }
+    }
+    
+    // POST /api/admin/delete-user (Admin only) - Permanent deletion
+    if (url.pathname === '/api/admin/delete-user' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        const { email } = await request.json();
+        
+        if (!email) {
+          return jsonResponse({ error: 'Email required' }, 400);
+        }
+        
+        const normalizedEmail = email.toLowerCase().trim();
+        
+        // Prüfe ob User existiert und nicht admin ist
+        const user = await env.DB.prepare(
+          'SELECT * FROM allowed_users WHERE email = ?'
+        ).bind(normalizedEmail).first();
+        
+        if (!user) {
+          return jsonResponse({ error: 'User not found' }, 404);
+        }
+        
+        if (user.is_admin === 1) {
+          return jsonResponse({ error: 'Cannot delete admin users' }, 403);
+        }
+        
+        // Lösche alle Sessions des Users
+        await env.DB.prepare(
+          'DELETE FROM sessions WHERE email = ?'
+        ).bind(normalizedEmail).run();
+        
+        // Lösche alle Verification Codes
+        await env.DB.prepare(
+          'DELETE FROM verification_codes WHERE email = ?'
+        ).bind(normalizedEmail).run();
+        
+        // Lösche User permanent
+        await env.DB.prepare(
+          'DELETE FROM allowed_users WHERE email = ?'
+        ).bind(normalizedEmail).run();
+        
+        // Erstelle Benachrichtigung
+        await env.DB.prepare(
+          'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind('user_deleted', normalizedEmail, `User permanently deleted by ${payload.email}`).run();
+        
+        return jsonResponse({
+          success: true,
+          message: `User ${normalizedEmail} permanently deleted`,
+        });
+        
+      } catch (error) {
+        console.error('Error deleting user:', error);
+        return jsonResponse({ error: 'Failed to delete user' }, 500);
       }
     }
     
@@ -976,6 +1065,75 @@ export default {
       } catch (error) {
         console.error('Error extending access:', error);
         return jsonResponse({ error: 'Failed to extend access' }, 500);
+      }
+    }
+    
+    // GET /api/auth/magic-login (Magic Link Login)
+    if (url.pathname === '/api/auth/magic-login' && request.method === 'GET') {
+      try {
+        const magicToken = url.searchParams.get('token');
+        
+        if (!magicToken) {
+          return jsonResponse({ error: 'No magic token provided' }, 400);
+        }
+        
+        // Verifiziere Magic Token
+        const payload = await verifyJWT(magicToken, env.JWT_SECRET);
+        
+        if (!payload || payload.type !== 'magic_link') {
+          return jsonResponse({ error: 'Invalid magic link' }, 401);
+        }
+        
+        // Prüfe ob Session noch existiert (Magic Link nur einmal verwendbar)
+        const session = await env.DB.prepare(
+          'SELECT * FROM sessions WHERE token = ? AND expires_at > datetime("now")'
+        ).bind(magicToken).first();
+        
+        if (!session) {
+          return jsonResponse({ error: 'Magic link expired or already used' }, 401);
+        }
+        
+        // Lösche Magic Link Session (einmalige Verwendung)
+        await env.DB.prepare(
+          'DELETE FROM sessions WHERE token = ?'
+        ).bind(magicToken).run();
+        
+        // Hole User-Daten
+        const user = await env.DB.prepare(
+          'SELECT * FROM allowed_users WHERE email = ? AND valid_until > datetime("now") AND status = "active"'
+        ).bind(payload.email).first();
+        
+        if (!user) {
+          return jsonResponse({ error: 'User not found or access expired' }, 403);
+        }
+        
+        // Generiere neuen regulären JWT Token für die Session
+        const newToken = await generateJWT(payload.email, env.JWT_SECRET, {
+          status: user.status,
+          isAdmin: user.is_admin === 1,
+        });
+        
+        // Speichere neue Session
+        await env.DB.prepare(
+          'INSERT INTO sessions (email, token, created_at, expires_at) VALUES (?, ?, datetime("now"), datetime("now", "+60 days"))'
+        ).bind(payload.email, newToken).run();
+        
+        return jsonResponse({
+          success: true,
+          status: 'active',
+          token: newToken,
+          user: {
+            email: user.email,
+            validUntil: user.valid_until,
+            paidMonths: user.paid_months,
+            status: user.status,
+            isAdmin: user.is_admin === 1,
+          }
+        });
+        
+      } catch (error) {
+        console.error('Error with magic login:', error);
+        return jsonResponse({ error: 'Magic login failed' }, 500);
       }
     }
     

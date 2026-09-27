@@ -18,6 +18,46 @@ export function AuthProvider({ children }) {
   const [isPendingApproval, setIsPendingApproval] = useState(false);
   const pollingIntervalRef = useRef(null);
 
+  // Check for magic link token in URL
+  useEffect(() => {
+    const checkMagicLink = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const magicToken = urlParams.get('magic');
+      
+      if (magicToken) {
+        setIsLoading(true);
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/auth/magic-login?token=${encodeURIComponent(magicToken)}`);
+          const data = await response.json();
+          
+          if (response.ok && data.token) {
+            // Magic link erfolgreich - speichere Token
+            localStorage.setItem('bjj-auth-token', data.token);
+            localStorage.setItem('bjj-user-data', JSON.stringify(data.user));
+            
+            setIsAuthenticated(true);
+            setUser(data.user);
+            setUserEmail(data.user.email);
+            setToken(data.token);
+            
+            // Entferne magic token aus URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+            
+            setInfo('🎉 Welcome! Your account has been activated.');
+          } else {
+            setError(data.error || 'Invalid or expired magic link');
+          }
+        } catch (err) {
+          console.error('Magic link error:', err);
+          setError('Failed to process magic link');
+        }
+        setIsLoading(false);
+      }
+    };
+    
+    checkMagicLink();
+  }, []);
+
   // Check if user is already authenticated on mount
   useEffect(() => {
     const validateSession = async () => {
@@ -174,7 +214,7 @@ export function AuthProvider({ children }) {
     // Poll every 10 seconds
     pollingIntervalRef.current = setInterval(async () => {
       try {
-        // Request a new verification code
+        // Request a new verification code to check status
         const response = await fetch(`${API_BASE_URL}/api/auth/request-verification`, {
           method: 'POST',
           headers: {
@@ -190,10 +230,10 @@ export function AuthProvider({ children }) {
           clearInterval(pollingIntervalRef.current);
           pollingIntervalRef.current = null;
           
-          // Show success message and prompt for new code
-          setInfo('🎉 Your account has been approved! Please check your email for a new login code.');
+          // Show success message - user should check email for magic link
+          setInfo('🎉 Your account has been approved! Please check your email for a direct login link.');
           setIsPendingApproval(false);
-          setVerificationStep('code');
+          setVerificationStep('pending'); // Keep on pending screen with new message
         }
       } catch (err) {
         console.error('Polling error:', err);
