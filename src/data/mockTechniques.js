@@ -1655,6 +1655,121 @@ export const mockTechniques = [
     "isBookmarked": false,
     "viewCount": 0,
     "notes": ""
+  },
+  {
+    "id": "79",
+    "title": "Deep Half - Technique 1",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_1.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_1.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%201",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "80",
+    "title": "Deep Half - Technique 2",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_2.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_2.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%202",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "81",
+    "title": "Deep Half - Technique 3",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_3.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_3.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%203",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "82",
+    "title": "Deep Half - Technique 4",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_4.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_4.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%204",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "83",
+    "title": "Deep Half - Technique 5",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_5.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_5.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%205",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
   }
 ];
 
@@ -1671,7 +1786,7 @@ export const categories = [
 ];
 
 export const subCategories = {
-  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso'],
+  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso', 'Deep Half'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   sweep: ['Sweep'],
   mount: ['Mount'],

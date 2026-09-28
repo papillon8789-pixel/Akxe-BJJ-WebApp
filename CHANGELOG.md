@@ -4,6 +4,33 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-09-28] - Deep Half Guard Techniken hinzugefügt 🥋
+
+### Hinzugefügt
+- **Deep Half Guard Kategorie** - Neue Guard-Unterkategorie mit 5 Techniken:
+  - Deep Half - Technique 1 (ID 79)
+  - Deep Half - Technique 2 (ID 80)
+  - Deep Half - Technique 3 (ID 81)
+  - Deep Half - Technique 4 (ID 82)
+  - Deep Half - Technique 5 (ID 83)
+  - Videos: `DeepHalf_Technique_1.mp4` bis `DeepHalf_Technique_5.mp4`
+  - Alle Videos im Cloudflare R2 Bucket verfügbar
+  - Tags: "Deep Half", "Guard"
+
+### Geändert
+- **subCategories Array erweitert**:
+  - "Deep Half" zu guard-Unterkategorien hinzugefügt
+  - Datei: [`src/data/mockTechniques.js`](src/data/mockTechniques.js)
+  - Neue Reihenfolge: Z Guard, 50/50 Guard, Octopus Guard, Half-lasso Guard, Spider Lasso, Deep Half
+
+### Technische Details
+- Datei: [`src/data/mockTechniques.js`](src/data/mockTechniques.js) - 5 neue Techniken hinzugefügt
+- **Gesamt: 83 Techniken** in der Datenbank (vorher 78)
+- Alle Videos verwenden R2_BASE_URL: `https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev`
+- dateAdded: "2026-09-28"
+
+---
+
 ## [2026-09-27] - Upcoming Events Feature 🎉
 
 ### Hinzugefügt
