@@ -111,6 +111,29 @@ export const mockTechniques = [
   },
   {
     "id": "6",
+    "title": "Deep Half - Technique 6",
+    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Deep Half",
+    "videoId": "DeepHalf_Technique_6.mp4",
+    "videoUrl": `${R2_BASE_URL}/DeepHalf_Technique_6.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Deep%20Half%206",
+    "duration": null,
+    "tags": [
+      "Deep Half",
+      "Guard"
+    ],
+    "dateAdded": "2026-09-28",
+    "month": "2026-09",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "7",
     "title": "Z Guard - Technique 1",
     "description": "parallel top side sleeve control - elbow punch through sit up - dive to far side leg under hook - roll over",
     "category": "guard",
