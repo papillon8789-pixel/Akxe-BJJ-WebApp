@@ -169,7 +169,7 @@ export default {
         let isNewUser = false;
         
         if (!existingUser) {
-          // Neuer User - erstelle pending Account
+          // Neuer User - erstelle pending Account (OHNE Admin-Email zu senden)
           isNewUser = true;
           const validUntil = new Date();
           validUntil.setMonth(validUntil.getMonth() + 1); // 1 Monat Trial
@@ -179,36 +179,7 @@ export default {
             'INSERT INTO allowed_users (email, valid_until, paid_months, status, added_date, created_at) VALUES (?, ?, ?, ?, ?, datetime("now"))'
           ).bind(normalizedEmail, validUntil.toISOString(), 1, 'pending', addedDate).run();
           
-          // Erstelle Admin-Benachrichtigung
-          await env.DB.prepare(
-            'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
-          ).bind('new_registration', normalizedEmail, `New user registration: ${normalizedEmail}`).run();
-          
-          // Sende Benachrichtigung an Admin
-          try {
-            await sendEmail(
-              env,
-              ADMIN_EMAIL,
-              '🔔 New User Registration - PRIMO BJJ',
-              `
-              <!DOCTYPE html>
-              <html>
-                <body style="font-family: Arial, sans-serif; padding: 20px;">
-                  <h2>New User Registration</h2>
-                  <p>A new user has registered for PRIMO BJJ Technique Library:</p>
-                  ${userName ? `<p><strong>Name:</strong> ${userName}</p>` : ''}
-                  <p><strong>Email:</strong> ${normalizedEmail}</p>
-                  <p>Please log in to the admin dashboard to approve or reject this registration.</p>
-                  <hr>
-                  <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München</p>
-                </body>
-              </html>
-              `
-            );
-          } catch (emailError) {
-            console.error('Failed to send admin notification:', emailError);
-            // Continue anyway - user registration is more important
-          }
+          // Admin-Email wird NICHT hier gesendet, sondern erst nach Code-Verifizierung
         } else if (existingUser.status === 'suspended') {
           return jsonResponse({ 
             error: 'Your account has been suspended. Please contact your professor.' 
@@ -219,10 +190,11 @@ export default {
         const verificationCode = generateVerificationCode();
         const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 Minuten
         
-        // Speichere Code in DB
+        // Speichere Code in DB (mit Name als JSON in metadata falls vorhanden)
+        const metadata = userName ? JSON.stringify({ name: userName, isNewUser }) : null;
         await env.DB.prepare(
-          'INSERT INTO verification_codes (email, code, expires_at, created_at) VALUES (?, ?, ?, datetime("now"))'
-        ).bind(normalizedEmail, verificationCode, expiresAt.toISOString()).run();
+          'INSERT INTO verification_codes (email, code, expires_at, metadata, created_at) VALUES (?, ?, ?, ?, datetime("now"))'
+        ).bind(normalizedEmail, verificationCode, expiresAt.toISOString(), metadata).run();
         
         // Lösche alte Codes für diese Email
         await env.DB.prepare(
@@ -353,6 +325,54 @@ export default {
         
         // Prüfe User-Status
         if (user.status === 'pending') {
+          // Neuer User hat Code verifiziert - JETZT Admin-Email senden
+          // Hole Name aus verification metadata
+          let userName = null;
+          let isNewRegistration = false;
+          if (verification.metadata) {
+            try {
+              const meta = JSON.parse(verification.metadata);
+              userName = meta.name;
+              isNewRegistration = meta.isNewUser;
+            } catch (e) {
+              // Ignore parsing errors
+            }
+          }
+          
+          // Sende Admin-Benachrichtigung NUR wenn es eine neue Registrierung ist
+          if (isNewRegistration) {
+            // Erstelle Admin-Benachrichtigung
+            await env.DB.prepare(
+              'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+            ).bind('new_registration', normalizedEmail, `New user registration: ${normalizedEmail}`).run();
+            
+            // Sende Benachrichtigung an Admin
+            try {
+              await sendEmail(
+                env,
+                ADMIN_EMAIL,
+                '🔔 New User Registration - PRIMO BJJ',
+                `
+                <!DOCTYPE html>
+                <html>
+                  <body style="font-family: Arial, sans-serif; padding: 20px;">
+                    <h2>New User Registration</h2>
+                    <p>A new user has registered for PRIMO BJJ Technique Library and verified their email:</p>
+                    ${userName ? `<p><strong>Name:</strong> ${userName}</p>` : ''}
+                    <p><strong>Email:</strong> ${normalizedEmail}</p>
+                    <p>Please log in to the admin dashboard to approve or reject this registration.</p>
+                    <hr>
+                    <p style="color: #666; font-size: 12px;">PRIMO BJJ - AKXE München</p>
+                  </body>
+                </html>
+                `
+              );
+            } catch (emailError) {
+              console.error('Failed to send admin notification:', emailError);
+              // Continue anyway - user verification is more important
+            }
+          }
+          
           return jsonResponse({
             success: true,
             status: 'pending',
