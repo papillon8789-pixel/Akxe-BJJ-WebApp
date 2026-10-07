@@ -146,7 +146,7 @@ export default function LoginScreen() {
                 Request Access
               </h2>
               <p className="text-gray-400 mb-6">
-                Enter your registered email address. You will receive a verification code via email.
+                Enter your email address to request access. You will receive a verification code via email.
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
