@@ -4,6 +4,43 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-07] - Optionales Namensfeld bei Registrierung 👤
+
+### Hinzugefügt
+- **Namensfeld im Registrierungsformular**:
+  - Optionales Feld "Your Name" im Login-Screen
+  - Erscheint oberhalb des Email-Feldes
+  - Placeholder: "First name"
+  - Hilft Admin bei der Identifikation neuer Registrierungen
+
+### Geändert
+- **Admin-Benachrichtigungs-Email erweitert**:
+  - Zeigt jetzt den Namen des Users an (falls angegeben)
+  - Format: "**Name:** [Name]" über der Email-Adresse
+  - Erleichtert die Zuordnung von Email-Adressen zu Personen
+  
+- **API Endpoint `/api/auth/request-verification`**:
+  - Akzeptiert jetzt optionalen `name` Parameter
+  - Name wird **nicht in der Datenbank gespeichert**
+  - Dient nur zur besseren Identifikation in Admin-Emails
+
+### Technische Details
+- Datei: [`src/components/LoginScreen.jsx`](src/components/LoginScreen.jsx) - Namensfeld hinzugefügt
+- Datei: [`src/context/AuthContext.jsx`](src/context/AuthContext.jsx) - `requestVerification()` mit `name` Parameter erweitert
+- Datei: [`workers/auth-api.js`](workers/auth-api.js) - Admin-Email zeigt Namen an
+- Abwärtskompatibel - funktioniert auch ohne Namenseingabe
+
+### User Experience
+**Vorher:**
+- Admin erhält Email nur mit: `Email: max@example.com`
+- Schwierig zu erkennen, wer sich registriert hat
+
+**Jetzt:**
+- Admin erhält Email mit: `Name: Max` + `Email: max@example.com`
+- Sofortige Zuordnung möglich
+
+---
+
 ## [2026-09-28] - Deep Half Guard Techniken hinzugefügt 🥋
 
 ### Hinzugefügt
