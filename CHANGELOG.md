@@ -4,7 +4,7 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
-## [2026-10-07] - Optionales Namensfeld bei Registrierung 👤
+## [2026-10-07] - Verbesserter Registrierungsflow & Namensfeld 👤
 
 ### Hinzugefügt
 - **Namensfeld im Registrierungsformular**:
@@ -13,31 +13,57 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
   - Placeholder: "First name"
   - Hilft Admin bei der Identifikation neuer Registrierungen
 
+- **Database Migration**:
+  - Neue `metadata` Spalte in `verification_codes` Tabelle
+  - Speichert temporär Name und isNewUser Flag während Verifizierung
+  - Migration: [`workers/schema-verification-codes-update.sql`](workers/schema-verification-codes-update.sql)
+
 ### Geändert
+- **Optimierter Registrierungsflow** (wichtige Verbesserung!):
+  - **Vorher:** Admin-Email wurde sofort bei Email-Eingabe gesendet
+  - **Jetzt:** Admin-Email wird erst **nach Code-Verifizierung** gesendet
+  - Verhindert Spam und Race Conditions
+  - Admin erhält nur Benachrichtigungen von Usern mit verifizierten Emails
+  
 - **Admin-Benachrichtigungs-Email erweitert**:
   - Zeigt jetzt den Namen des Users an (falls angegeben)
   - Format: "**Name:** [Name]" über der Email-Adresse
+  - Text: "A new user has registered for PRIMO BJJ Technique Library **and verified their email**"
   - Erleichtert die Zuordnung von Email-Adressen zu Personen
   
-- **API Endpoint `/api/auth/request-verification`**:
-  - Akzeptiert jetzt optionalen `name` Parameter
-  - Name wird **nicht in der Datenbank gespeichert**
-  - Dient nur zur besseren Identifikation in Admin-Emails
+- **Login-Screen Text verbessert**:
+  - Von "Enter your registered email address" zu "Enter your email address to request access"
+  - Passt besser für neue User, die sich noch nicht registriert haben
 
 ### Technische Details
-- Datei: [`src/components/LoginScreen.jsx`](src/components/LoginScreen.jsx) - Namensfeld hinzugefügt
+- Datei: [`src/components/LoginScreen.jsx`](src/components/LoginScreen.jsx) - Namensfeld hinzugefügt, Text verbessert
 - Datei: [`src/context/AuthContext.jsx`](src/context/AuthContext.jsx) - `requestVerification()` mit `name` Parameter erweitert
-- Datei: [`workers/auth-api.js`](workers/auth-api.js) - Admin-Email zeigt Namen an
+- Datei: [`workers/auth-api.js`](workers/auth-api.js) - Admin-Email wird erst nach Code-Verifizierung gesendet
+- Datei: [`workers/schema-verification-codes-update.sql`](workers/schema-verification-codes-update.sql) - Database Migration
 - Abwärtskompatibel - funktioniert auch ohne Namenseingabe
 
-### User Experience
-**Vorher:**
-- Admin erhält Email nur mit: `Email: max@example.com`
-- Schwierig zu erkennen, wer sich registriert hat
+### Registrierungsflow
+**Vorher (problematisch):**
+1. User gibt Email ein → Admin-Email sofort gesendet ❌
+2. User gibt Code ein → Wartet auf Approval
+3. Problem: Admin könnte schneller approven als User Code eingibt (Race Condition)
 
-**Jetzt:**
-- Admin erhält Email mit: `Name: Max` + `Email: max@example.com`
-- Sofortige Zuordnung möglich
+**Jetzt (optimiert):**
+1. User gibt Name + Email ein → Verifizierungscode gesendet
+2. User gibt Code ein → **Jetzt erst** Admin-Email gesendet ✅
+3. Admin approved → Login Link an User gesendet
+4. Vorteile: Nur verifizierte Emails, keine Race Conditions, bessere Spam-Prävention
+
+### User Experience
+**Admin-Seite:**
+- Erhält Email erst nach Email-Verifizierung des Users
+- Sieht Name (falls angegeben) + Email
+- Kann sicher sein, dass User Zugang zu dieser Email hat
+
+**User-Seite:**
+- Kann optional Namen angeben für bessere Identifikation
+- Muss Email verifizieren bevor Admin benachrichtigt wird
+- Erhält nach Approval direkten Login-Link
 
 ---
 
