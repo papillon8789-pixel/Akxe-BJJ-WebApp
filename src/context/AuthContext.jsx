@@ -108,7 +108,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   // Schritt 1: Email eingeben und Verifizierungscode anfordern
-  const requestVerification = async (email) => {
+  const requestVerification = async (email, name = null) => {
     setError(null);
     setIsLoading(true);
 
@@ -118,7 +118,10 @@ export function AuthProvider({ children }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email.toLowerCase().trim() }),
+        body: JSON.stringify({
+          email: email.toLowerCase().trim(),
+          name: name
+        }),
       });
 
       const data = await response.json();

@@ -152,13 +152,14 @@ export default {
     // POST /api/auth/request-verification (Self-Service)
     if (url.pathname === '/api/auth/request-verification' && request.method === 'POST') {
       try {
-        const { email } = await request.json();
+        const { email, name } = await request.json();
         
         if (!email || !email.includes('@')) {
           return jsonResponse({ error: 'Invalid email address' }, 400);
         }
         
         const normalizedEmail = email.toLowerCase().trim();
+        const userName = name ? name.trim() : null;
         
         // Prüfe ob Email bereits existiert
         const existingUser = await env.DB.prepare(
@@ -195,6 +196,7 @@ export default {
                 <body style="font-family: Arial, sans-serif; padding: 20px;">
                   <h2>New User Registration</h2>
                   <p>A new user has registered for PRIMO BJJ Technique Library:</p>
+                  ${userName ? `<p><strong>Name:</strong> ${userName}</p>` : ''}
                   <p><strong>Email:</strong> ${normalizedEmail}</p>
                   <p>Please log in to the admin dashboard to approve or reject this registration.</p>
                   <hr>

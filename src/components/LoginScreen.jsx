@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [code, setCode] = useState('');
   const {
     requestVerification,
@@ -19,7 +20,7 @@ export default function LoginScreen() {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     if (email.trim()) {
-      await requestVerification(email);
+      await requestVerification(email, name.trim() || null);
     }
   };
 
@@ -32,7 +33,7 @@ export default function LoginScreen() {
 
   const handleResendCode = async () => {
     if (pendingEmail) {
-      await requestVerification(pendingEmail);
+      await requestVerification(pendingEmail, name.trim() || null);
       setCode(''); // Reset code input
     }
   };
@@ -40,6 +41,7 @@ export default function LoginScreen() {
   const handleBackToEmail = () => {
     resetVerification();
     setCode('');
+    setName('');
   };
 
   return (
@@ -148,6 +150,22 @@ export default function LoginScreen() {
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
+                {/* Name Input */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    Your Name <span className="text-gray-500 text-xs">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="First name"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primo-red focus:border-transparent transition-all"
+                    disabled={isLoading}
+                  />
+                </div>
+
                 {/* Email Input */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
