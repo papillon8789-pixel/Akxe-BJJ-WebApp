@@ -8,18 +8,21 @@ const MECHANIC_TYPES = {
 };
 
 const TakeDownFilter = ({ activeFilter, onFilterChange, counts }) => {
+  console.log('TakeDownFilter rendering with counts:', counts);
+  
   const filters = [
-    { id: MECHANIC_TYPES.ALL, label: 'All', color: 'bg-gradient-to-r from-gray-700 to-gray-600' },
-    { id: MECHANIC_TYPES.HIPS, label: 'Hips', color: 'bg-gradient-to-r from-orange-600 to-red-600' },
-    { id: MECHANIC_TYPES.ARMS, label: 'Arms', color: 'bg-gradient-to-r from-blue-600 to-cyan-600' },
-    { id: MECHANIC_TYPES.UNCATEGORIZED, label: 'Other', color: 'bg-gradient-to-r from-gray-600 to-gray-500' }
+    { id: MECHANIC_TYPES.ALL, label: 'All', color: 'from-gray-700 to-gray-600' },
+    { id: MECHANIC_TYPES.HIPS, label: 'Hips', color: 'from-orange-600 to-red-600' },
+    { id: MECHANIC_TYPES.ARMS, label: 'Arms', color: 'from-blue-600 to-cyan-600' },
+    { id: MECHANIC_TYPES.UNCATEGORIZED, label: 'Other', color: 'from-gray-600 to-gray-500' }
   ];
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 p-4 bg-gray-900 rounded-lg">
+      <h3 className="text-white text-lg font-bold mb-3">Filter by Mechanic Type:</h3>
       <div className="flex flex-wrap gap-2 sm:gap-3">
         {filters.map(filter => {
-          const count = counts[filter.id] || 0;
+          const count = counts?.[filter.id] || 0;
           const isActive = activeFilter === filter.id;
           
           return (
@@ -28,12 +31,11 @@ const TakeDownFilter = ({ activeFilter, onFilterChange, counts }) => {
               onClick={() => onFilterChange(filter.id)}
               className={`
                 px-4 py-2 rounded-lg font-semibold text-sm sm:text-base
-                transition-all duration-200 transform
-                ${isActive 
-                  ? `${filter.color} text-white shadow-lg scale-105` 
+                transition-all duration-200
+                ${isActive
+                  ? `bg-gradient-to-r ${filter.color} text-white shadow-lg`
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
                 }
-                hover:scale-105 active:scale-95
                 flex items-center gap-2
               `}
             >
@@ -41,7 +43,7 @@ const TakeDownFilter = ({ activeFilter, onFilterChange, counts }) => {
               {count > 0 && (
                 <span className={`
                   px-2 py-0.5 rounded-full text-xs font-bold
-                  ${isActive ? 'bg-white/20' : 'bg-gray-700'}
+                  ${isActive ? 'bg-white bg-opacity-20' : 'bg-gray-700'}
                 `}>
                   {count}
                 </span>

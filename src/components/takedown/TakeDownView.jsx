@@ -52,6 +52,8 @@ const TakeDownView = ({ techniques }) => {
     }));
   };
 
+  console.log('TakeDownView rendering:', { groups: groups.length, counts });
+  
   return (
     <div className="space-y-6">
       {/* Filter Buttons */}
