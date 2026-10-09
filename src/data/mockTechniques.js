@@ -5,7 +5,7 @@ const R2_BASE_URL = 'https://pub-333effaca17f49c9b80b42fa7b22c347.r2.dev';
 export const mockTechniques = [
   {"id": "1",
     "title": "Deep Half - Technique 1",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "parallel inside arm sleeve grip - cross side outside arm collar grip - scissor and roll to inside",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_1.mp4",
@@ -14,7 +14,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Sweep"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -26,7 +27,7 @@ export const mockTechniques = [
     "notes": ""},
   {"id": "2",
     "title": "Deep Half - Technique 2",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "parallel inside arm sleeve grip - cross side outside arm collar grip - scissor and roll to outside",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_2.mp4",
@@ -35,7 +36,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Sweep"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -47,7 +49,7 @@ export const mockTechniques = [
     "notes": ""},
   {"id": "3",
     "title": "Deep Half - Technique 3",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "shift knees to outside and under hook trapped leg - position knee joint against knee joint - pendulum free leg and roll to inside",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_3.mp4",
@@ -56,7 +58,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Sweep"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -68,7 +71,7 @@ export const mockTechniques = [
     "notes": ""},
   {"id": "4",
     "title": "Deep Half - Technique 4",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "around the head to inverted half guard - cross face and grip pants of top leg - hip scape and pass to side control",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_4.mp4",
@@ -77,7 +80,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Pass"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -89,7 +93,7 @@ export const mockTechniques = [
     "notes": ""},
   {"id": "5",
     "title": "Deep Half - Technique 5",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "around the head to inverted half guard - post on elbow and elevate hip - pull trapped leg and roll knee to the ground - crops free leg over the body and double hook - straighten both legs and slide into mounted position",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_5.mp4",
@@ -98,7 +102,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Pass"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -112,7 +117,7 @@ export const mockTechniques = [
   {
     "id": "6",
     "title": "Deep Half - Technique 6",
-    "description": "Deep Half guard technique from PRIMO BJJ Training",
+    "description": "arm scoop and elbow to solar plexus - collar stiff arm to neck/chin - slide backwards and bring both knees to the ground for base - push opponent's knees close together and sprawl - arm weave and pivot to side control",
     "category": "guard",
     "subCategory": "Deep Half",
     "videoId": "DeepHalf_Technique_6.mp4",
@@ -121,7 +126,8 @@ export const mockTechniques = [
     "duration": null,
     "tags": [
       "Deep Half",
-      "Guard"
+      "Guard",
+      "Pass"
     ],
     "dateAdded": "2026-09-28",
     "month": "2026-09",
@@ -1077,20 +1083,23 @@ export const mockTechniques = [
     "viewCount": 0,
     "notes": ""},
   {"id": "51",
-    "title": "TakeDown - Technique 1",
-    "description": "TakeDown technique from PRIMO BJJ Training",
+    "title": "Harai Goshi - Original",
+    "description": "under hook with belt grip - sideway movement - sweep",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Harai Goshi",
+    "variant": "Original",
+    "mechanicType": "hips",
     "videoId": "TakeDown_Technique_1.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_1.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%201",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Harai%20Goshi%20-%20Original",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Harai Goshi",
+      "Hips Techniques"
     ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
+    "dateAdded": "2026-10-09",
+    "month": "2026-10",
     "isLegacy": false,
     "isFavorite": false,
     "isDownloaded": false,
@@ -1098,20 +1107,23 @@ export const mockTechniques = [
     "viewCount": 0,
     "notes": ""},
   {"id": "52",
-    "title": "TakeDown - Technique 2",
-    "description": "TakeDown technique from PRIMO BJJ Training",
+    "title": "Harai Goshi - Standard",
+    "description": "lapel grip or collar grip - off balance pulling",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Harai Goshi",
+    "variant": "Standard",
+    "mechanicType": "hips",
     "videoId": "TakeDown_Technique_2.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_2.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%202",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Harai%20Goshi%20-%20Standard",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Harai Goshi",
+      "Hips Techniques"
     ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
+    "dateAdded": "2026-10-09",
+    "month": "2026-10",
     "isLegacy": false,
     "isFavorite": false,
     "isDownloaded": false,
@@ -1119,20 +1131,23 @@ export const mockTechniques = [
     "viewCount": 0,
     "notes": ""},
   {"id": "53",
-    "title": "TakeDown - Technique 3",
-    "description": "TakeDown technique from PRIMO BJJ Training",
+    "title": "Seoi Nage - Ippon",
+    "description": "only sleeve grip - off balance pulling",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Seoi Nage",
+    "variant": "Ippon",
+    "mechanicType": "arms",
     "videoId": "TakeDown_Technique_3.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_3.mp4`,
-    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%203",
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Seoi%20Nage%20-%20Ippon",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Seoi Nage",
+      "Arms Techniques"
     ],
-    "dateAdded": "2026-09-09",
-    "month": "2026-09",
+    "dateAdded": "2026-10-09",
+    "month": "2026-10",
     "isLegacy": false,
     "isFavorite": false,
     "isDownloaded": false,
@@ -1143,14 +1158,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 4",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_4.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_4.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%204",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1164,14 +1181,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 5",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_5.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_5.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%205",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1185,14 +1204,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 6",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_6.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_6.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%206",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1206,14 +1227,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 7",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_7.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_7.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%207",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1227,14 +1250,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 8",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_8.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_8.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%208",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1248,14 +1273,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 9",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_9.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_9.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%209",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1269,14 +1296,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 10",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_10.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_10.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2010",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1290,14 +1319,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 11",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_11.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_11.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2011",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1311,14 +1342,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 12",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_12.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_12.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2012",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1332,14 +1365,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 13",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_13.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_13.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2013",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1353,14 +1388,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 14",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_14.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_14.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2014",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1374,14 +1411,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 15",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_15.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_15.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2015",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1395,14 +1434,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 16",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_16.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_16.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2016",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1416,14 +1457,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 17",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_17.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_17.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2017",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1437,14 +1480,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 18",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_18.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_18.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2018",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1458,14 +1503,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 19",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_19.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_19.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2019",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1479,14 +1526,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 20",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_20.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_20.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2020",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1500,14 +1549,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 21",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_21.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_21.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2021",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1521,14 +1572,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 22",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_22.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_22.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2022",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1542,14 +1595,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 23",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_23.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_23.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2023",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1563,14 +1618,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 24",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_24.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_24.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2024",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1584,14 +1641,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 25",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_25.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_25.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2025",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1605,14 +1664,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 26",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_26.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_26.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2026",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1626,14 +1687,16 @@ export const mockTechniques = [
     "title": "TakeDown - Technique 27",
     "description": "TakeDown technique from PRIMO BJJ Training",
     "category": "takedown",
-    "subCategory": "TakeDown",
+    "subCategory": "Uncategorized",
+    "variant": null,
+    "mechanicType": "uncategorized",
     "videoId": "TakeDown_Technique_27.mp4",
     "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_27.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=TakeDown%2027",
     "duration": null,
     "tags": [
       "TakeDown",
-      "Standing"
+      "Uncategorized"
     ],
     "dateAdded": "2026-09-09",
     "month": "2026-09",
@@ -1666,6 +1729,6 @@ export const subCategories = {
   side: ['Side Control', 'North South', 'Knee on Belly'],
   back: ['Back Control', 'Turtle'],
   submissions: ['Armlocks', 'Chokes', 'Leglocks'],
-  takedown: ['TakeDown']
+  takedown: ['Harai Goshi', 'Seoi Nage', 'Uncategorized']
 };
 

@@ -4,6 +4,84 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-09] - TakeDown Struktur mit Filter & Gruppierung 🥋
+
+### Hinzugefügt
+- **Neue TakeDown-Struktur mit Mechanik-basierter Organisation**:
+  - Drei-Ebenen System: TakeDown → Mechanik-Typ → Technik-Varianten
+  - Filter-Buttons: All, Hips, Arms, Other (Uncategorized)
+  - Gruppierung nach Technik-Namen (Harai Goshi, Seoi Nage, etc.)
+  - Varianten innerhalb jeder Technik-Gruppe
+  
+- **Erste 3 TakeDown Techniken kategorisiert**:
+  - **Harai Goshi** (Hips Technique):
+    - Original: "under hook with belt grip - sideway movement - sweep"
+    - Standard: "lapel grip or collar grip - off balance pulling"
+  - **Seoi Nage** (Arms Technique):
+    - Ippon: "only sleeve grip - off balance pulling"
+  
+- **Neue Komponenten**:
+  - [`TakeDownFilter.jsx`](src/components/takedown/TakeDownFilter.jsx) - Filter-Buttons mit Zählern
+  - [`TakeDownAccordion.jsx`](src/components/takedown/TakeDownAccordion.jsx) - Gruppierung von Varianten
+  - [`TakeDownView.jsx`](src/components/takedown/TakeDownView.jsx) - Hauptansicht mit Filter-Logik
+  
+- **Neue Datenfelder in mockTechniques.js**:
+  - `variant`: Name der Variante (z.B. "Original", "Standard", "Ippon")
+  - `mechanicType`: Mechanik-Typ ("hips", "arms", "uncategorized")
+  - Erweiterte Tags für bessere Filterung
+
+### Geändert
+- **mockTechniques.js aktualisiert**:
+  - Tech 1-3: Neue Struktur mit Harai Goshi und Seoi Nage
+  - Tech 4-27: Temporär als "Uncategorized" geparkt
+  - subCategories für takedown: `['Harai Goshi', 'Seoi Nage', 'Uncategorized']`
+  
+- **CategoryAccordion.jsx erweitert**:
+  - Spezielle Behandlung für TakeDown-Kategorie
+  - Zeigt TakeDownView statt einfacher Technik-Liste
+  - Andere Kategorien bleiben unverändert
+
+### Technische Details
+- **Filter-System**:
+  - Mechanik-basierte Filterung (hips/arms/uncategorized)
+  - Automatische Zähler für jede Filter-Kategorie
+  - Responsive Design für Mobile und Desktop
+  
+- **Badge-System**:
+  - Hips: Orange/Red Gradient
+  - Arms: Blue/Cyan Gradient
+  - Other: Gray Gradient
+  
+- **Accordion-Gruppierung**:
+  - Techniken nach Namen gruppiert
+  - Varianten als expandierbare Liste
+  - Visueller Indikator für Mechanik-Typ
+
+### User Experience
+**TakeDown Navigation:**
+1. User klickt auf TAKEDOWN Kategorie
+2. Sieht Filter-Buttons: All (27) | Hips (2) | Arms (1) | Other (24)
+3. Kann nach Mechanik-Typ filtern
+4. Sieht gruppierte Techniken (Harai Goshi, Seoi Nage, Uncategorized)
+5. Klickt auf Gruppe um Varianten zu sehen
+6. Spielt Video direkt ab
+
+### Migration & Skalierung
+- **Schrittweise Kategorisierung**: 24 Techniken warten auf Kategorisierung
+- **Einfache Migration**: Technik aus "Uncategorized" verschieben durch Update von:
+  - `subCategory`: "Uncategorized" → "Technik-Name"
+  - `variant`: null → "Varianten-Name"
+  - `mechanicType`: "uncategorized" → "hips" oder "arms"
+  - `tags`: Update entsprechend
+- **Zukunftssicher**: Unbegrenzt viele Techniken und Varianten möglich
+
+### Nächste Schritte
+- Kategorisierung der verbleibenden 24 TakeDown Techniken
+- Weitere Mechanik-Typen hinzufügen (z.B. "legs", "sacrifice")
+- Spezifische Technik-Namen definieren
+
+---
+
 ## [2026-10-07] - Verbesserter Registrierungsflow & Namensfeld 👤
 
 ### Hinzugefügt

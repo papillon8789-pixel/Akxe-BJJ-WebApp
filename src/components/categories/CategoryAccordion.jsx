@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
+import TakeDownView from '../takedown/TakeDownView';
 import { useAuth } from '../../context/AuthContext';
 import { trackCategoryView } from '../../utils/analytics';
 
@@ -16,6 +17,9 @@ export default function CategoryAccordion({ category, techniques, isNewest, isLe
       trackCategoryView(user.email, category);
     }
   };
+
+  // Check if this is the TakeDown category
+  const isTakeDownCategory = category.toLowerCase() === 'takedown';
 
   return (
     <div className="mb-4">
@@ -40,10 +44,10 @@ export default function CategoryAccordion({ category, techniques, isNewest, isLe
             </span>
           )}
         </div>
-        <svg 
+        <svg
           className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none" 
-          stroke="currentColor" 
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -53,9 +57,15 @@ export default function CategoryAccordion({ category, techniques, isNewest, isLe
       {/* Content */}
       {isOpen && (
         <div className="mt-3 space-y-3">
-          {techniques.map((tech) => (
-            <TechniqueCard key={tech.id} technique={tech} />
-          ))}
+          {isTakeDownCategory ? (
+            // Special TakeDown view with filters and grouping
+            <TakeDownView techniques={techniques} />
+          ) : (
+            // Regular technique list for other categories
+            techniques.map((tech) => (
+              <TechniqueCard key={tech.id} technique={tech} />
+            ))
+          )}
         </div>
       )}
     </div>
