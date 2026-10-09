@@ -136,17 +136,6 @@ export default function TechniqueCard({ technique }) {
       {/* Expanded Content */}
       {isExpanded && (
         <div className="mt-4 pt-4 border-t border-gray-700 space-y-4">
-          {/* Thumbnail */}
-          {technique.thumbnail && (
-            <div className="rounded-lg overflow-hidden">
-              <img
-                src={technique.thumbnail}
-                alt={technique.title}
-                className="w-full h-auto"
-              />
-            </div>
-          )}
-
           {/* Additional Info */}
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
