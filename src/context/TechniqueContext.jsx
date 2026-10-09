@@ -28,10 +28,15 @@ export function TechniqueProvider({ children }) {
   // Filter techniques based on category (tags) and search
   const filteredTechniques = useMemo(() => {
     return techniques.filter(tech => {
-      // Match by category field OR tags
+      // SPECIAL CASE: TakeDown techniques should ONLY appear in takedown category, NOT in "all"
+      if (tech.category === 'takedown' && selectedCategory !== 'takedown') {
+        return false; // Hide takedown techniques from ALL other views including "all"
+      }
+      
+      // Match by category field OR tags (but not for takedown)
       const matchesCategory = selectedCategory === 'all' ||
         tech.category === selectedCategory ||
-        tech.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase());
+        (tech.category !== 'takedown' && tech.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase()));
       
       const matchesSearch = tech.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            tech.description.toLowerCase().includes(searchQuery.toLowerCase()) ||

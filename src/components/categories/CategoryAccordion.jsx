@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TechniqueCard from '../techniques/TechniqueCard';
 import TakeDownView from '../takedown/TakeDownView';
 import { useAuth } from '../../context/AuthContext';
 import { trackCategoryView } from '../../utils/analytics';
 
 export default function CategoryAccordion({ category, techniques, isNewest, isLegacy }) {
-  const [isOpen, setIsOpen] = useState(false);
+  // Check if this is the TakeDown category
+  const isTakeDownCategory = category.toLowerCase() === 'takedown';
+  
+  // TakeDown category is always open, others start closed
+  const [isOpen, setIsOpen] = useState(isTakeDownCategory);
   const { user } = useAuth();
 
+  // Auto-open TakeDown category when it appears
+  useEffect(() => {
+    if (isTakeDownCategory) {
+      setIsOpen(true);
+      // Track category view for TakeDown
+      if (user?.email) {
+        trackCategoryView(user.email, category);
+      }
+    }
+  }, [isTakeDownCategory, user?.email, category]);
+
   const handleToggle = () => {
+    // Don't allow closing TakeDown category
+    if (isTakeDownCategory) return;
+    
     const newState = !isOpen;
     setIsOpen(newState);
     
@@ -18,9 +36,16 @@ export default function CategoryAccordion({ category, techniques, isNewest, isLe
     }
   };
 
-  // Check if this is the TakeDown category
-  const isTakeDownCategory = category.toLowerCase() === 'takedown';
+  // For TakeDown, render directly without accordion wrapper
+  if (isTakeDownCategory) {
+    return (
+      <div className="mb-4">
+        <TakeDownView techniques={techniques} />
+      </div>
+    );
+  }
 
+  // Regular accordion for other categories
   return (
     <div className="mb-4">
       {/* Header */}
@@ -57,15 +82,9 @@ export default function CategoryAccordion({ category, techniques, isNewest, isLe
       {/* Content */}
       {isOpen && (
         <div className="mt-3 space-y-3">
-          {isTakeDownCategory ? (
-            // Special TakeDown view with filters and grouping
-            <TakeDownView techniques={techniques} />
-          ) : (
-            // Regular technique list for other categories
-            techniques.map((tech) => (
-              <TechniqueCard key={tech.id} technique={tech} />
-            ))
-          )}
+          {techniques.map((tech) => (
+            <TechniqueCard key={tech.id} technique={tech} />
+          ))}
         </div>
       )}
     </div>
