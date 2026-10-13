@@ -54,14 +54,31 @@ export default function TechniqueCard({ technique }) {
     return colors[difficulty?.toLowerCase()] || 'bg-gray-500 text-white';
   };
 
+  // Check if technique is new (added in current month)
+  const isNew = () => {
+    if (!technique.dateAdded) return false;
+    const addedDate = new Date(technique.dateAdded);
+    const now = new Date();
+    const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
+    return addedDate >= thirtyDaysAgo;
+  };
+
   return (
     <div className="bg-card-bg hover:bg-card-hover rounded-lg p-4 transition-all duration-200 border border-gray-700">
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-white mb-2">
-            {technique.title}
-          </h3>
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="text-lg font-semibold text-white">
+              {technique.title}
+            </h3>
+            {/* NEW Badge */}
+            {isNew() && (
+              <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-2 py-1 rounded-full text-xs font-bold uppercase animate-pulse">
+                NEW!
+              </span>
+            )}
+          </div>
           
           <div className="flex flex-wrap gap-2 mb-3">
             {/* Difficulty Badge */}
