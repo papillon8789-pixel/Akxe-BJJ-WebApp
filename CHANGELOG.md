@@ -4,6 +4,77 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-13] - TakeDown Erweiterung & NEW Badge Feature 🆕
+
+### Hinzugefügt
+- **5 neue Seoi Nage Varianten kategorisiert** (Techniques 4-8):
+  - **Seoi Nage - Ippon Lapel Side**: "only lapel grip - off balance pulling"
+  - **Seoi Nage - Morote Version**: "sleeve plus lapel grips - off balance pulling"
+  - **Seoi Nage - Eri Version**: "sleeve and lapen on the same side - off balance pulling"
+  - **Seoi Nage - Drop on Knees Version**: "only sleeve grip - wait for the opponent to push - drop on knees"
+  - **Seoi Nage - Low Version**: "only sleeve grip - wait for the opponent to push - go very low"
+  - Alle mit `mechanicType: "arms"` und detaillierten Beschreibungen
+  - Tags: #takedown #standing #seoi-nage #arms-technique
+
+- **2 neue unkategorisierte TakeDown-Techniken** (Techniques 28 & 29):
+  - TakeDown - Technique 28 (Takedown_Technique_28.mp4)
+  - TakeDown - Technique 29 (TakeDown_Technique_29.mp4)
+  - Beide mit `dateAdded: "2026-10-13"` für NEW Badge
+
+- **"NEW!" Badge Feature**:
+  - Automatischer Badge für Techniken der letzten 30 Tage
+  - Erscheint neben dem Titel in [`TechniqueCard.jsx`](src/components/techniques/TechniqueCard.jsx)
+  - Gelb-Orange Gradient mit Pulse-Animation
+  - Funktioniert kategorie-übergreifend
+  - Neue `isNew()` Funktion prüft `dateAdded` Feld
+
+### Geändert
+- **mockTechniques.js aktualisiert**:
+  - Techniques 4-8: Von "Uncategorized" zu "Seoi Nage" Varianten migriert
+  - `subCategory` bleibt "TakeDown" (Gruppierung erfolgt über Title)
+  - Gesamt: 29 TakeDown-Techniken (vorher 27)
+  
+- **TechniqueCard.jsx erweitert**:
+  - NEW Badge neben Titel hinzugefügt
+  - 30-Tage-Regel für "neu" Status
+  - Responsive Design mit Flexbox
+
+### Technische Details
+- **Seoi Nage Gruppe**:
+  - 6 Varianten total (Ippon, Ippon Lapel Side, Morote, Eri, Drop on Knees, Low)
+  - Alle unter "Seoi Nage" Accordion gruppiert
+  - Mechanik-Typ: Arms
+
+- **Filter-Update**:
+  - All (29) - vorher 27
+  - Hips (2) - unverändert
+  - Arms (6) - vorher 1
+  - Other (21) - vorher 24
+
+- **NEW Badge Logik**:
+  ```javascript
+  const isNew = () => {
+    if (!technique.dateAdded) return false;
+    const addedDate = new Date(technique.dateAdded);
+    const now = new Date();
+    const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
+    return addedDate >= thirtyDaysAgo;
+  };
+  ```
+
+### User Experience
+- User sieht jetzt 6 Seoi Nage Varianten im Arms Filter
+- Neue Techniken (28 & 29) haben auffälligen NEW Badge
+- Badge verschwindet automatisch nach 30 Tagen
+- Bessere Übersicht durch detaillierte Beschreibungen
+
+### Aktueller Stand
+- **Kategorisiert**: 8 von 29 Techniken (2 Harai Goshi + 6 Seoi Nage)
+- **Unkategorisiert**: 21 Techniken (inkl. 2 neue)
+- **Nächste Schritte**: Kategorisierung der verbleibenden 19 Techniken
+
+---
+
 ## [2026-10-09] - TakeDown Struktur mit Filter & Gruppierung 🥋
 
 ### Hinzugefügt
