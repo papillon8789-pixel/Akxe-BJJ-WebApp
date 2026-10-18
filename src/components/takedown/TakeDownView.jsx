@@ -57,6 +57,7 @@ const TakeDownView = ({ techniques }) => {
       [MECHANIC_TYPES.ALL]: allTechniques.length,
       [MECHANIC_TYPES.HIPS]: allTechniques.filter(t => t.mechanicType === 'hips').length,
       [MECHANIC_TYPES.ARMS]: allTechniques.filter(t => t.mechanicType === 'arms').length,
+      [MECHANIC_TYPES.LEGS]: allTechniques.filter(t => t.mechanicType === 'legs').length,
       [MECHANIC_TYPES.UNCATEGORIZED]: allTechniques.filter(t => t.mechanicType === 'uncategorized').length
     };
     

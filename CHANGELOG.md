@@ -4,6 +4,73 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-18] - Ko Uchi Gake & O Uchi Gari Techniken + Legs Filter 🦵
+
+### Hinzugefügt
+- **7 neue Legs-Techniken kategorisiert** (Techniques 9-15):
+  - **Ko Uchi Gake - Pushing Version**: "sleeve and lapel grip - push and fall on top of the opponent"
+  - **Ko Uchi Gake - Pull and Hug Version**: "starting with only sleeve grip - pull and hug the Uke - fall on top of the Uke"
+  - **Ko Uchi Gake - Common Error in Pull and Hug Version**: "starting with only sleeve grip - pull the Uke - error not hugging the Uke"
+  - **Ko Uchi Gake - Rotation Version**: "50-50 over-under - hook the leg and rotate"
+  - **Ko Uchi Gake - Basic concepts**: "off-balance with the upper body - upper body and leg move at the same time"
+  - **O Uchi Gari - Standard Version**: "sleeve and lapel grip - off-balance with the upper body - big circle with the leg"
+  - **O Uchi Gari - Front Version**: "sleeve and lapel grip - both feet parallel looking forward - off-balance with the upper body - big circle with the leg"
+  - Alle mit `mechanicType: "legs"` und detaillierten Beschreibungen
+  - Tags: #takedown #ko-uchi-gake #o-uchi-gari #legs-technique
+
+- **Neuer "Legs" Filter im TakeDown-Bereich**:
+  - Grün-Emerald Gradient für Legs-Techniken
+  - Erscheint zwischen Arms und Other Filter
+  - Automatische Zählung der Legs-Techniken
+
+### Geändert
+- **mockTechniques.js aktualisiert**:
+  - Techniques 9-15: Von "Uncategorized" zu kategorisierten Legs-Techniken migriert
+  - `subCategory` bleibt "TakeDown" (Gruppierung erfolgt über Title)
+  - Gesamt: 29 TakeDown-Techniken (unverändert)
+  
+- **TakeDownFilter.jsx erweitert**:
+  - Neuer MECHANIC_TYPES.LEGS hinzugefügt
+  - Legs Filter mit grün-emerald Gradient
+  - Filter-Reihenfolge: All, Hips, Arms, Legs, Other
+
+- **TakeDownView.jsx erweitert**:
+  - Legs-Count in Filter-Statistiken integriert
+  - Automatische Filterung nach mechanicType: "legs"
+
+### Technische Details
+- **Ko Uchi Gake Gruppe**:
+  - 5 Varianten (Pushing, Pull and Hug, Common Error, Rotation, Basic concepts)
+  - Alle unter "Ko Uchi Gake" Accordion gruppiert
+  - Mechanik-Typ: Legs
+  - Includes Common Errors Variante für Lernzwecke
+
+- **O Uchi Gari Gruppe**:
+  - 2 Varianten (Standard, Front)
+  - Alle unter "O Uchi Gari" Accordion gruppiert
+  - Mechanik-Typ: Legs
+
+- **Filter-Update**:
+  - All (29) - unverändert
+  - Hips (2) - unverändert
+  - Arms (6) - unverändert
+  - **Legs (7) - NEU** 🆕
+  - Other (14) - vorher 21
+
+### User Experience
+- User sieht jetzt 7 Legs-Techniken im neuen Legs Filter
+- Ko Uchi Gake: 5 Varianten mit verschiedenen Ausführungen und Fehleranalyse
+- O Uchi Gari: 2 Varianten (Standard und Front)
+- Neue Techniken haben NEW Badge (dateAdded: "2026-10-18")
+- Bessere Übersicht durch detaillierte Beschreibungen und Gruppierung
+
+### Aktueller Stand
+- **Kategorisiert**: 15 von 29 Techniken (2 Harai Goshi + 6 Seoi Nage + 7 Legs)
+- **Unkategorisiert**: 14 Techniken
+- **Nächste Schritte**: Kategorisierung der verbleibenden 14 Techniken
+
+---
+
 ## [2026-10-13] - TakeDown Erweiterung & NEW Badge Feature 🆕
 
 ### Hinzugefügt
