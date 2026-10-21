@@ -39,6 +39,7 @@ export default function TrainingLog() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   // Generate month options (Sep 2026 to Jun 2027)
   const generateMonthOptions = () => {
@@ -187,6 +188,9 @@ export default function TrainingLog() {
     if (!confirm('Are you sure you want to delete this training log?')) return;
 
     try {
+      setDeletingId(id);
+      setError(null);
+      
       const response = await fetch(`${API_URL}/api/training-log/delete`, {
         method: 'DELETE',
         headers: {
@@ -196,12 +200,20 @@ export default function TrainingLog() {
         body: JSON.stringify({ id }),
       });
 
-      if (!response.ok) throw new Error('Failed to delete log');
-      fetchData();
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to delete log');
+      }
+      
+      // Refresh data after successful delete
+      await fetchData();
 
     } catch (err) {
       console.error('Error deleting log:', err);
-      setError(err.message);
+      setError(`Delete failed: ${err.message}`);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -588,10 +600,15 @@ export default function TrainingLog() {
 
                         <button
                           onClick={() => handleDelete(log.id)}
-                          className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-900/20 rounded-lg transition-all"
+                          disabled={deletingId === log.id}
+                          className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-900/20 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                           title="Delete log"
                         >
-                          <Trash2 className="w-5 h-5" />
+                          {deletingId === log.id ? (
+                            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-red-500"></div>
+                          ) : (
+                            <Trash2 className="w-5 h-5" />
+                          )}
                         </button>
                       </div>
                     </div>
