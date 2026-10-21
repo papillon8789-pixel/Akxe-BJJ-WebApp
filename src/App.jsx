@@ -8,6 +8,7 @@ import SplashScreen from './components/SplashScreen';
 import LoginScreen from './components/LoginScreen';
 import Banner from './components/Banner';
 import AdminDashboard from './components/AdminDashboard';
+import TrainingLog from './components/TrainingLog';
 import UpcomingEvents from './components/UpcomingEvents';
 
 function AppContent() {
@@ -118,7 +119,7 @@ function AppContent() {
 
 function AuthenticatedApp() {
   const { isAuthenticated, isLoading, user } = useAuth();
-  const [currentView, setCurrentView] = useState('main'); // 'main' or 'admin'
+  const [currentView, setCurrentView] = useState('main'); // 'main', 'admin', or 'training'
   
   // Check if splash screen has been shown before (in this session)
   const [showSplash, setShowSplash] = useState(() => {
@@ -155,6 +156,25 @@ function AuthenticatedApp() {
     return <LoginScreen />;
   }
 
+  // Training Log View
+  if (currentView === 'training' && user?.isAdmin) {
+    return (
+      <div>
+        {/* Simple Navigation Bar */}
+        <div className="bg-primo-black text-white px-4 py-3 border-b border-primo-gold/20 flex items-center justify-between">
+          <h1 className="text-lg font-bold">Training Analytics</h1>
+          <button
+            onClick={() => setCurrentView('main')}
+            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+          >
+            ← Back to Techniques
+          </button>
+        </div>
+        <TrainingLog />
+      </div>
+    );
+  }
+
   // Admin Dashboard View
   if (currentView === 'admin' && user?.isAdmin) {
     return (
@@ -179,12 +199,19 @@ function AuthenticatedApp() {
     <TechniqueProvider>
       <div>
         <Header />
-        {/* Admin Button (only for admins) */}
+        {/* Admin Buttons (only for admins) */}
         {user?.isAdmin && (
-          <div className="bg-card-bg border-b border-gray-800 px-4 py-2">
+          <div className="bg-card-bg border-b border-gray-800 px-4 py-2 space-y-2">
+            <button
+              onClick={() => setCurrentView('training')}
+              className="w-full px-4 py-2 bg-transparent border-2 border-[#FF3C00] hover:border-[#FF5500] text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+            >
+              <span>📊</span>
+              <span>Training Analytics</span>
+            </button>
             <button
               onClick={() => setCurrentView('admin')}
-              className="w-full px-4 py-2 bg-primo-red hover:bg-red-700 text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+              className="w-full px-4 py-2 bg-transparent border-2 border-[#8B6F47] hover:border-[#A0826B] text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
             >
               <span>⚙️</span>
               <span>Admin Dashboard</span>

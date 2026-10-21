@@ -1364,6 +1364,219 @@ export default {
       }
     }
     
+    // ==================== TRAINING LOG ENDPOINTS ====================
+    
+    // POST /api/training-log/add - Add new training log entry
+    if (url.pathname === '/api/training-log/add' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload) {
+          return jsonResponse({ error: 'Invalid token' }, 401);
+        }
+        
+        const body = await request.json();
+        const { date, weekday, sessionType, durationMinutes, giType, caloriesBurned, notes } = body;
+        
+        // Validation
+        if (!date || !weekday || !sessionType || !durationMinutes || !giType || !caloriesBurned) {
+          return jsonResponse({ error: 'Missing required fields' }, 400);
+        }
+        
+        if (!['Gi', 'NoGi'].includes(giType)) {
+          return jsonResponse({ error: 'Invalid gi_type. Must be Gi or NoGi' }, 400);
+        }
+        
+        // Insert training log
+        await env.DB.prepare(`
+          INSERT INTO training_logs (user_email, date, weekday, session_type, duration_minutes, gi_type, calories_burned, notes)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          payload.email,
+          date,
+          weekday,
+          sessionType,
+          durationMinutes,
+          giType,
+          caloriesBurned,
+          notes || null
+        ).run();
+        
+        return jsonResponse({ success: true, message: 'Training log added successfully' });
+        
+      } catch (error) {
+        console.error('Error adding training log:', error);
+        return jsonResponse({ error: 'Failed to add training log' }, 500);
+      }
+    }
+    
+    // GET /api/training-log/list - Get training logs for user (with optional month filter)
+    if (url.pathname === '/api/training-log/list' && request.method === 'GET') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload) {
+          return jsonResponse({ error: 'Invalid token' }, 401);
+        }
+        
+        // Get month filter from query params (format: YYYY-MM)
+        const month = url.searchParams.get('month');
+        
+        let query = 'SELECT * FROM training_logs WHERE user_email = ?';
+        let params = [payload.email];
+        
+        if (month) {
+          query += ' AND date LIKE ?';
+          params.push(`${month}%`);
+        }
+        
+        query += ' ORDER BY date DESC';
+        
+        const logs = await env.DB.prepare(query).bind(...params).all();
+        
+        return jsonResponse({
+          success: true,
+          logs: logs.results || []
+        });
+        
+      } catch (error) {
+        console.error('Error fetching training logs:', error);
+        return jsonResponse({ error: 'Failed to fetch training logs' }, 500);
+      }
+    }
+    
+    // GET /api/training-log/analytics - Get analytics for user's training logs
+    if (url.pathname === '/api/training-log/analytics' && request.method === 'GET') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload) {
+          return jsonResponse({ error: 'Invalid token' }, 401);
+        }
+        
+        // Get month filter from query params (format: YYYY-MM)
+        const month = url.searchParams.get('month');
+        
+        let whereClause = 'WHERE user_email = ?';
+        let params = [payload.email];
+        
+        if (month) {
+          whereClause += ' AND date LIKE ?';
+          params.push(`${month}%`);
+        }
+        
+        // Total duration and session count
+        const summary = await env.DB.prepare(`
+          SELECT
+            SUM(duration_minutes) as total_minutes,
+            COUNT(*) as session_count,
+            AVG(duration_minutes) as avg_duration
+          FROM training_logs
+          ${whereClause}
+        `).bind(...params).first();
+        
+        // Gi vs NoGi breakdown
+        const giBreakdown = await env.DB.prepare(`
+          SELECT
+            gi_type,
+            SUM(duration_minutes) as total_minutes,
+            COUNT(*) as session_count
+          FROM training_logs
+          ${whereClause}
+          GROUP BY gi_type
+        `).bind(...params).all();
+        
+        // Total calories
+        const calories = await env.DB.prepare(`
+          SELECT SUM(calories_burned) as total_calories
+          FROM training_logs
+          ${whereClause}
+        `).bind(...params).first();
+        
+        // Session type breakdown
+        const sessionTypes = await env.DB.prepare(`
+          SELECT
+            session_type,
+            COUNT(*) as count,
+            SUM(duration_minutes) as total_minutes
+          FROM training_logs
+          ${whereClause}
+          GROUP BY session_type
+          ORDER BY count DESC
+        `).bind(...params).all();
+        
+        return jsonResponse({
+          success: true,
+          summary: {
+            totalMinutes: summary?.total_minutes || 0,
+            sessionCount: summary?.session_count || 0,
+            avgDuration: Math.round(summary?.avg_duration || 0),
+            totalCalories: calories?.total_calories || 0
+          },
+          giBreakdown: giBreakdown.results || [],
+          sessionTypes: sessionTypes.results || []
+        });
+        
+      } catch (error) {
+        console.error('Error fetching training analytics:', error);
+        return jsonResponse({ error: 'Failed to fetch training analytics' }, 500);
+      }
+    }
+    
+    // DELETE /api/training-log/delete - Delete a training log entry
+    if (url.pathname === '/api/training-log/delete' && request.method === 'DELETE') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload) {
+          return jsonResponse({ error: 'Invalid token' }, 401);
+        }
+        
+        const body = await request.json();
+        const { id } = body;
+        
+        if (!id) {
+          return jsonResponse({ error: 'Missing log ID' }, 400);
+        }
+        
+        // Delete only if it belongs to the user
+        await env.DB.prepare(`
+          DELETE FROM training_logs
+          WHERE id = ? AND user_email = ?
+        `).bind(id, payload.email).run();
+        
+        return jsonResponse({ success: true, message: 'Training log deleted successfully' });
+        
+      } catch (error) {
+        console.error('Error deleting training log:', error);
+        return jsonResponse({ error: 'Failed to delete training log' }, 500);
+      }
+    }
+    
     return jsonResponse({ error: 'Endpoint not found' }, 404);
   },
 };

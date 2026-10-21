@@ -4,6 +4,150 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## 🔮 Geplante Verbesserungen (Future Ideas)
+
+### UI/UX Design Refresh
+- **Elegantes monochromes Design** für die gesamte App
+  - Inspiration: Training Analytics Seite (Schwarz/Weiß/Grau Schema)
+  - Admin Buttons: Von Grün/Rot zu Weiß/Grau
+  - Category Icons: Transparente Rahmen statt farbige Hintergründe
+  - Technique Cards: Monochrome Badges statt bunte (NEW, Kategorie-Badges)
+  - Accordion Headers: Grau/Weiß statt Rot
+  - Minimale Akzentfarben nur wo nötig
+  - Professionelleres, weniger "buntes" Erscheinungsbild
+
+---
+
+## [2026-10-21] - Training Analytics / Mat Log Feature 📊
+
+### Hinzugefügt
+- **Training Analytics Dashboard** - Admin-only feature to track BJJ training sessions
+  - **Quick Entry Form** mit Preset Session Types:
+    - "Gi Basic" → 60 Min, Typ: Gi
+    - "Gi BJJ" → 90 Min, Typ: Gi
+    - "Gi Takedown" → 60 Min, Typ: Gi
+    - "Sparring" → 120 Min (Gi oder NoGi wählbar)
+    - "OpenMat" → 120 Min (Gi oder NoGi wählbar)
+    - "Custom" → Freie Eingabe von Dauer und Typ
+  
+  - **Month Timeline Filter** - Horizontaler Zeitstrahl (6 Monate zurück + 6 Monate voraus)
+    - Dynamische Filterung aller Statistiken nach ausgewähltem Monat
+    - Responsive Design mit horizontalem Scrolling auf Mobile
+  
+  - **Analytics Dashboard Widgets**:
+    - **Donut Chart** - Gi vs NoGi Verteilung in Prozent
+      - Farbkodierung: Gi = Orange (#FF8C00), NoGi = Braun (#A0522D)
+      - Zeigt Anzahl Sessions in der Mitte
+    - **Total Duration Card** - Gesamtstunden & Minuten im Monat
+    - **Avg Session Length Card** - Durchschnittliche Trainingsdauer pro Einheit
+    - **Calories Burned Card** - Geschätzte verbrannte Gesamtkalorien
+  
+  - **Training History List**:
+    - Chronologische Liste aller Trainings im ausgewählten Monat
+    - Zeigt Datum, Wochentag, Session Type, Dauer, Kalorien
+    - Gi/NoGi Badge mit Farbkodierung
+    - Optional: Notizen zu jeder Session
+    - Delete-Button mit Bestätigung
+  
+  - **Automatische Kalorien-Berechnung**:
+    - Basis: ca. 700 kcal pro Stunde (11.6 kcal/Minute)
+    - Automatisch berechnet basierend auf Dauer
+    - Manuell anpassbar im Formular
+
+- **Database Schema**:
+  - Neue `training_logs` Tabelle in Cloudflare D1
+  - Felder: user_email, date, weekday, session_type, duration_minutes, gi_type, calories_burned, notes
+  - Indizes für schnelle Abfragen nach User und Datum
+  - Automatische Timestamps (created_at, updated_at)
+  - Datei: [`workers/schema-training-logs.sql`](workers/schema-training-logs.sql)
+
+- **API Endpoints** (4 neue Endpoints in workers/auth-api.js):
+  - `POST /api/training-log/add` - Neuen Training Log hinzufügen
+  - `GET /api/training-log/list?month=YYYY-MM` - Training Logs abrufen (mit optionalem Monatsfilter)
+  - `GET /api/training-log/analytics?month=YYYY-MM` - Analytics-Daten abrufen
+  - `DELETE /api/training-log/delete` - Training Log löschen
+
+### Geändert
+- **App.jsx erweitert**:
+  - Neue View: `training` für Training Analytics
+  - Neuer "Training Analytics" Button (grün) für Admin-User
+  - Navigation zwischen Main, Training Analytics und Admin Dashboard
+  - Datei: [`src/App.jsx`](src/App.jsx)
+
+- **workers/auth-api.js erweitert**:
+  - 4 neue Training Log Endpoints hinzugefügt (Zeilen 1367-1550)
+  - JWT-basierte Authentifizierung für alle Endpoints
+  - User-spezifische Datenabfragen (nur eigene Logs sichtbar)
+  - Datei: [`workers/auth-api.js`](workers/auth-api.js)
+
+### Technische Details
+- **Neue Komponente**: [`src/components/TrainingLog.jsx`](src/components/TrainingLog.jsx)
+  - React Hooks: useState, useEffect
+  - Lucide React Icons: Activity, Calendar, Clock, Flame, TrendingUp, Trash2, Plus, X
+  - Tailwind CSS für Dark Theme Design
+  - SVG-basierter Donut Chart (keine externe Chart-Bibliothek nötig)
+  
+- **Access Control**:
+  - Admin-only Feature (Frontend + Backend)
+  - Non-admin User sehen "Admin Only" Nachricht
+  - JWT Token Validierung auf allen Endpoints
+  
+- **Responsive Design**:
+  - Mobile-first Approach
+  - Breakpoints: sm, md, lg
+  - Horizontales Scrolling für Month Timeline auf Mobile
+  - Grid Layout passt sich an Bildschirmgröße an
+  
+- **Datenhaltung**:
+  - Cloudflare D1 Database (SQLite)
+  - User-spezifische Logs (user_email als Foreign Key)
+  - Monatliche Filterung für Performance
+  - Automatische Cleanup-Queries vorbereitet (optional)
+
+### User Experience
+**Admin-User:**
+1. Sieht neuen "Training Analytics" Button (grün) unterhalb des Headers
+2. Klickt auf Button → Training Analytics Dashboard öffnet sich
+3. Wählt Monat aus Timeline (z.B. "Oct 2026")
+4. Klickt "Add Training Session" → Formular öffnet sich
+5. Wählt Session Type (z.B. "Gi BJJ") → Dauer und Typ werden automatisch gesetzt
+6. Passt optional Dauer, Kalorien oder Notizen an
+7. Klickt "Add Training Log" → Session wird gespeichert
+8. Sieht sofort aktualisierte Analytics Widgets und History List
+9. Kann Sessions mit Trash-Icon löschen (mit Bestätigung)
+10. Navigiert zurück zu Techniques mit "← Back to Techniques" Button
+
+**Analytics Widgets zeigen:**
+- Donut Chart: z.B. 70% Gi, 30% NoGi
+- Total Duration: z.B. "8h 0m" (5 sessions)
+- Avg Session: z.B. "96m" per training
+- Calories: z.B. "5,568 kcal" total
+
+### Dokumentation
+- **Setup Guide**: [`TRAINING-ANALYTICS-SETUP.md`](TRAINING-ANALYTICS-SETUP.md)
+  - Vollständige Installationsanleitung
+  - Database Setup mit wrangler Befehlen
+  - API Endpoint Dokumentation
+  - Feature-Übersicht mit Screenshots
+  - Troubleshooting Guide
+  - Testing Checklist
+  - Future Enhancement Ideas
+
+### Deployment
+1. Database Schema ausführen: `wrangler d1 execute bjj-auth-db --file=./workers/schema-training-logs.sql`
+2. Worker deployen: `cd workers && wrangler deploy`
+3. Frontend bauen: `npm run build`
+4. Frontend deployen (Cloudflare Pages / Vercel)
+
+### Aktueller Stand
+- **Training Analytics**: Vollständig implementiert und einsatzbereit
+- **Admin-only**: Nur für Admin-User zugänglich
+- **Database**: Neue Tabelle `training_logs` erstellt
+- **API**: 4 neue Endpoints verfügbar
+- **UI**: Dark Theme, Mobile-responsive, SVG Donut Chart
+
+---
+
 ## [2026-10-18] - Ko Uchi Gake & O Uchi Gari Techniken + Legs Filter 🦵
 
 ### Hinzugefügt
