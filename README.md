@@ -26,6 +26,7 @@ Eine Mobile-First Web-App zur Verwaltung und Anzeige von Brazilian Jiu-Jitsu Tec
 - ✅ **Training Analytics** - Admin-only Dashboard zum Tracking von Trainingseinheiten
 - ✅ **Email-Verifizierung** - Sichere Authentifizierung mit Cloudflare Workers + D1
 - ✅ **Admin Dashboard** - User-Verwaltung, Analytics, Session-Management
+- ✅ **Newsletter System** - Admin kann Newsletter an alle aktiven User versenden 📧
 - ✅ **Upcoming Events** - Event-Management mit GitHub-Bearbeitung
 - ✅ **NEW Badge System** - Automatische Markierung neuer Techniken (7 Tage)
 

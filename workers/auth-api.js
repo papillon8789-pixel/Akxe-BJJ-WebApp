@@ -1364,6 +1364,117 @@ export default {
       }
     }
     
+    // ==================== NEWSLETTER ENDPOINTS ====================
+    
+    // POST /api/admin/send-newsletter (Admin only)
+    if (url.pathname === '/api/admin/send-newsletter' && request.method === 'POST') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        // Rate limiting: Check if newsletter was sent in the last hour
+        const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+        const recentNewsletter = await env.DB.prepare(
+          'SELECT * FROM newsletter_logs WHERE created_at > ? ORDER BY created_at DESC LIMIT 1'
+        ).bind(oneHourAgo).first();
+        
+        if (recentNewsletter) {
+          const timeSince = Date.now() - new Date(recentNewsletter.created_at).getTime();
+          const minutesRemaining = Math.ceil((60 * 60 * 1000 - timeSince) / (60 * 1000));
+          return jsonResponse({
+            error: `Rate limit: Please wait ${minutesRemaining} minutes before sending another newsletter`
+          }, 429);
+        }
+        
+        const { subject, htmlContent } = await request.json();
+        
+        if (!subject || !htmlContent) {
+          return jsonResponse({ error: 'Subject and content required' }, 400);
+        }
+        
+        // Get all active users
+        const activeUsers = await env.DB.prepare(
+          'SELECT email FROM allowed_users WHERE status = "active" AND valid_until > datetime("now")'
+        ).all();
+        
+        if (!activeUsers.results || activeUsers.results.length === 0) {
+          return jsonResponse({ error: 'No active users found' }, 400);
+        }
+        
+        const recipients = activeUsers.results.map(u => u.email);
+        
+        // Send newsletter via Resend API
+        try {
+          await sendEmail(env, recipients, subject, htmlContent);
+        } catch (emailError) {
+          console.error('Failed to send newsletter:', emailError);
+          return jsonResponse({ error: 'Failed to send newsletter emails' }, 500);
+        }
+        
+        // Log newsletter send
+        await env.DB.prepare(
+          'INSERT INTO newsletter_logs (sent_by, subject, recipient_count, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind(payload.email, subject, recipients.length).run();
+        
+        // Create admin notification
+        await env.DB.prepare(
+          'INSERT INTO admin_notifications (type, user_email, message, created_at) VALUES (?, ?, ?, datetime("now"))'
+        ).bind('newsletter_sent', payload.email, `Newsletter sent to ${recipients.length} users: ${subject}`).run();
+        
+        return jsonResponse({
+          success: true,
+          message: `Newsletter sent to ${recipients.length} users`,
+          recipientCount: recipients.length,
+        });
+        
+      } catch (error) {
+        console.error('Error sending newsletter:', error);
+        return jsonResponse({ error: 'Failed to send newsletter' }, 500);
+      }
+    }
+    
+    // GET /api/admin/newsletter-history (Admin only)
+    if (url.pathname === '/api/admin/newsletter-history' && request.method === 'GET') {
+      try {
+        const authHeader = request.headers.get('Authorization');
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return jsonResponse({ error: 'Unauthorized' }, 401);
+        }
+        
+        const token = authHeader.substring(7);
+        const payload = await verifyJWT(token, env.JWT_SECRET);
+        
+        if (!payload || !(await isAdmin(payload.email, env))) {
+          return jsonResponse({ error: 'Admin access required' }, 403);
+        }
+        
+        // Get last 10 newsletters
+        const newsletters = await env.DB.prepare(
+          'SELECT * FROM newsletter_logs ORDER BY created_at DESC LIMIT 10'
+        ).all();
+        
+        return jsonResponse({
+          success: true,
+          newsletters: newsletters.results || [],
+        });
+        
+      } catch (error) {
+        console.error('Error fetching newsletter history:', error);
+        return jsonResponse({ error: 'Failed to fetch newsletter history' }, 500);
+      }
+    }
+    
     // ==================== TRAINING LOG ENDPOINTS ====================
     
     // POST /api/training-log/add - Add new training log entry

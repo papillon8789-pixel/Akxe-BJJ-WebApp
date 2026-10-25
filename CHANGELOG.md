@@ -18,6 +18,44 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-25] - Newsletter System für Admin Dashboard 📧
+
+### Hinzugefügt
+- **Newsletter-System** für Admin-Benutzer:
+  - **"Send Newsletter" Button** im Admin Dashboard Header
+  - **Newsletter Modal** mit vollständiger Email-Vorschau
+  - **Vordefinierter Newsletter-Inhalt**:
+    - Betreff: "🎉 Neue Features in der PRIMO BJJ App!"
+    - Training Analytics Feature-Ankündigung
+    - 4 neue Sumi Gaeshi TakeDown Videos
+    - Professionelles HTML-Email-Template
+  - **API Endpoint**: `POST /api/admin/send-newsletter`
+  - **Newsletter History**: `GET /api/admin/newsletter-history`
+  - **Rate Limiting**: Max 1 Newsletter pro Stunde
+  - **Logging**: Alle Newsletter-Versendungen werden in DB geloggt
+  - **Sicherheit**: Nur Admins können Newsletter versenden
+
+### Technisch
+- Neue Datei: [`NEWSLETTER-SYSTEM.md`](bjj-app/NEWSLETTER-SYSTEM.md) - Vollständige Dokumentation
+- Neue Datei: [`workers/migrations/add-newsletter-logs.sql`](bjj-app/workers/migrations/add-newsletter-logs.sql) - DB Migration
+- Erweitert: [`workers/auth-api.js`](bjj-app/workers/auth-api.js) - Newsletter API Endpoints
+- Erweitert: [`workers/schema.sql`](bjj-app/workers/schema.sql) - newsletter_logs Tabelle
+- Erweitert: [`src/components/AdminDashboard.jsx`](bjj-app/src/components/AdminDashboard.jsx) - Newsletter UI & Modal
+- Verwendet bestehende Resend API Integration
+- Database-basiertes Rate Limiting (1 Newsletter/Stunde)
+- Admin-Benachrichtigungen bei Newsletter-Versand
+
+### Deployment
+```bash
+# 1. Database Migration ausführen
+wrangler d1 execute bjj-auth-db --file=./workers/migrations/add-newsletter-logs.sql
+
+# 2. Worker deployen
+cd workers && wrangler deploy
+```
+
+---
+
 ## [2026-10-25] - Sumi Gaeshi Techniken & Sacrifice Filter 🥋
 
 ### Hinzugefügt

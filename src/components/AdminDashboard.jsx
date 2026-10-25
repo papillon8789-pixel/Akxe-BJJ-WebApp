@@ -14,6 +14,9 @@ export default function AdminDashboard() {
   const [extendEmail, setExtendEmail] = useState(null);
   const [analytics, setAnalytics] = useState(null);
   const [analyticsLoading, setAnalyticsLoading] = useState(true);
+  const [showNewsletterModal, setShowNewsletterModal] = useState(false);
+  const [sendingNewsletter, setSendingNewsletter] = useState(false);
+  const [newsletterSuccess, setNewsletterSuccess] = useState(null);
 
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -329,6 +332,123 @@ export default function AdminDashboard() {
     }
   };
 
+  // Send Newsletter
+  const handleSendNewsletter = async () => {
+    try {
+      setSendingNewsletter(true);
+      setError(null);
+      setNewsletterSuccess(null);
+
+      const subject = '🎉 New Features in the PRIMO BJJ App!';
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background: linear-gradient(135deg, #1a1a1a 0%, #000 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+              .logo { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+              .content { padding: 30px; background: white; }
+              .feature-box { background: #f5f5f5; border-left: 4px solid #dc2626; padding: 20px; margin: 20px 0; border-radius: 8px; }
+              .feature-title { color: #dc2626; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+              .button { display: inline-block; background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
+              .footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 10px 10px; }
+              .highlight { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 20px 0; border-radius: 8px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <div class="logo">🦅 PRIMO BJJ</div>
+                <p style="margin: 0; opacity: 0.9;">Technique Locker</p>
+              </div>
+              
+              <div class="content">
+                <h2 style="color: #1a1a1a; margin-top: 0;">🎉 New Features in the PRIMO BJJ App!</h2>
+                <p>Hey BJJ Family,</p>
+                <p>We've got exciting updates for you! The PRIMO BJJ App has been enhanced with new features:</p>
+                
+                <div class="feature-box">
+                  <div class="feature-title">📊 Training Analytics Now Available for Everyone</div>
+                  <p><strong>Just launched!</strong> Track your training sessions and monitor your progress:</p>
+                  <ul>
+                    <li>📅 Training calendar with all your sessions</li>
+                    <li>🥋 Gi vs NoGi statistics</li>
+                    <li>🔥 Calories burned tracking</li>
+                    <li>⏱️ Total training time and averages</li>
+                    <li>📈 Monthly overviews and trends</li>
+                  </ul>
+                  <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                    <em>Perfect for optimizing your training routine and staying motivated!</em>
+                  </p>
+                </div>
+                
+                <div class="highlight">
+                  <strong>🎥 4 New Sumi Gaeshi TakeDown Videos!</strong><br>
+                  From Wednesday's training session, now available:
+                  <ul style="margin-top: 10px;">
+                    <li>Sumi Gaeshi - Yoko NoGi Version (arm and body grip)</li>
+                    <li>Sumi Gaeshi - Upper Hook NoGi Version</li>
+                    <li>Sumi Gaeshi - Under Hook NoGi Version</li>
+                    <li>Sumi Gaeshi - Russian Tie NoGi Version</li>
+                  </ul>
+                </div>
+                
+                <p style="margin-top: 30px;"><strong>Ready to get started?</strong></p>
+                <p>Log in now and discover the new features!</p>
+                
+                <div style="text-align: center;">
+                  <a href="https://primo-bjj.com" class="button">🔓 Open App</a>
+                </div>
+                
+                <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
+                  Happy training!<br>
+                  <strong>Your PRIMO BJJ Team</strong>
+                </p>
+              </div>
+              
+              <div class="footer">
+                <p style="margin: 0;">© 2026 PRIMO BJJ - AKXE München</p>
+                <p style="margin: 5px 0 0 0;">"Together we stand, united we fight"</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+
+      const response = await fetch(`${API_URL}/api/admin/send-newsletter`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ subject, htmlContent }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send newsletter');
+      }
+
+      setNewsletterSuccess(`Newsletter erfolgreich an ${data.recipientCount} User versendet!`);
+      setShowNewsletterModal(false);
+      
+      // Refresh analytics after sending
+      setTimeout(() => {
+        fetchAnalytics();
+      }, 1000);
+
+    } catch (err) {
+      console.error('Error sending newsletter:', err);
+      setError(err.message);
+    } finally {
+      setSendingNewsletter(false);
+    }
+  };
+
   const handleCustomDateSubmit = (email) => {
     if (!customDate) {
       setError('Please select a date');
@@ -359,9 +479,148 @@ export default function AdminDashboard() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">User Management</h1>
-          <p className="text-sm md:text-base text-gray-400">Manage all users and their access</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">User Management</h1>
+              <p className="text-sm md:text-base text-gray-400">Manage all users and their access</p>
+            </div>
+            <button
+              onClick={() => setShowNewsletterModal(true)}
+              className="px-4 md:px-6 py-2.5 md:py-3 bg-gradient-to-r from-primo-red to-red-700 hover:from-red-700 hover:to-primo-red text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+            >
+              <span className="text-lg">📧</span>
+              <span>Send Newsletter</span>
+            </button>
+          </div>
         </div>
+
+        {/* Newsletter Success Message */}
+        {newsletterSuccess && (
+          <div className="bg-green-900/30 border border-green-700 rounded-lg p-4 mb-6">
+            <div className="flex items-start gap-3">
+              <span className="text-green-500 text-xl">✅</span>
+              <div className="flex-1">
+                <p className="text-green-200 text-sm font-medium">{newsletterSuccess}</p>
+              </div>
+              <button onClick={() => setNewsletterSuccess(null)} className="text-green-400 hover:text-green-300">✕</button>
+            </div>
+          </div>
+        )}
+
+        {/* Newsletter Modal */}
+        {showNewsletterModal && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50" onClick={() => !sendingNewsletter && setShowNewsletterModal(false)}>
+            <div className="bg-card-bg border border-gray-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+              {/* Modal Header */}
+              <div className="sticky top-0 bg-gradient-to-r from-primo-red to-red-700 p-6 rounded-t-lg">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                      <span>📧</span>
+                      Newsletter versenden
+                    </h2>
+                    <p className="text-red-100 text-sm mt-1">An alle aktiven User</p>
+                  </div>
+                  <button
+                    onClick={() => setShowNewsletterModal(false)}
+                    disabled={sendingNewsletter}
+                    className="text-white hover:text-red-200 text-2xl disabled:opacity-50"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6">
+                <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 mb-6">
+                  <h3 className="text-white font-semibold mb-2">📋 Newsletter Preview</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex gap-2">
+                      <span className="text-gray-400 font-medium">Subject:</span>
+                      <span className="text-white">🎉 New Features in the PRIMO BJJ App!</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="text-gray-400 font-medium">Recipients:</span>
+                      <span className="text-white">All active users ({counts.active} users)</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Preview */}
+                <div className="bg-white rounded-lg p-6 mb-6 text-gray-900">
+                  <div className="bg-gradient-to-r from-gray-900 to-black text-white p-6 rounded-t-lg text-center mb-4">
+                    <div className="text-2xl font-bold mb-2">🦅 PRIMO BJJ</div>
+                    <p className="text-sm opacity-90">Technique Locker</p>
+                  </div>
+                  
+                  <h2 className="text-xl font-bold mb-4">🎉 New Features in the PRIMO BJJ App!</h2>
+                  <p className="mb-4">Hey BJJ Family,</p>
+                  <p className="mb-4">We've got exciting updates for you! The PRIMO BJJ App has been enhanced with new features:</p>
+                  
+                  <div className="bg-gray-100 border-l-4 border-red-600 p-4 rounded mb-4">
+                    <div className="font-bold text-red-600 mb-2">📊 Training Analytics Now Available</div>
+                    <p className="mb-2"><strong>Just launched!</strong> Track your training sessions and monitor your progress:</p>
+                    <ul className="list-disc list-inside space-y-1 text-sm">
+                      <li>📅 Training calendar with all sessions</li>
+                      <li>🥋 Gi vs NoGi statistics</li>
+                      <li>🔥 Calories burned tracking</li>
+                      <li>⏱️ Total training time and averages</li>
+                      <li>📈 Monthly overviews and trends</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded mb-4">
+                    <strong>🎥 4 New Sumi Gaeshi TakeDown Videos!</strong>
+                    <p className="text-sm mt-2">From Wednesday's training - now available</p>
+                  </div>
+                  
+                  <div className="text-center my-6">
+                    <div className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-bold">
+                      🔓 Open App
+                    </div>
+                  </div>
+                </div>
+
+                {/* Warning */}
+                <div className="bg-orange-900/30 border border-orange-700 rounded-lg p-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="text-orange-500 text-xl">⚠️</span>
+                    <div className="flex-1 text-sm">
+                      <p className="text-orange-200 font-medium mb-1">Rate Limiting aktiv</p>
+                      <p className="text-orange-300">Nur 1 Newsletter pro Stunde kann versendet werden.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowNewsletterModal(false)}
+                    disabled={sendingNewsletter}
+                    className="flex-1 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
+                  >
+                    Abbrechen
+                  </button>
+                  <button
+                    onClick={handleSendNewsletter}
+                    disabled={sendingNewsletter}
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-600 text-white font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {sendingNewsletter ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="inline-block animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></span>
+                        Wird versendet...
+                      </span>
+                    ) : (
+                      '✉️ Newsletter versenden'
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Analytics Widget */}
         {!analyticsLoading && analytics && (
