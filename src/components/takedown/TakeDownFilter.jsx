@@ -5,6 +5,7 @@ const MECHANIC_TYPES = {
   HIPS: 'hips',
   ARMS: 'arms',
   LEGS: 'legs',
+  SACRIFICE: 'sacrifice',
   UNCATEGORIZED: 'uncategorized'
 };
 
@@ -14,6 +15,7 @@ const TakeDownFilter = ({ activeFilter, onFilterChange, counts }) => {
     { id: MECHANIC_TYPES.HIPS, label: 'Hips', color: 'bg-gradient-to-r from-orange-600 to-red-600' },
     { id: MECHANIC_TYPES.ARMS, label: 'Arms', color: 'bg-gradient-to-r from-blue-600 to-cyan-600' },
     { id: MECHANIC_TYPES.LEGS, label: 'Legs', color: 'bg-gradient-to-r from-green-600 to-emerald-600' },
+    { id: MECHANIC_TYPES.SACRIFICE, label: 'Sacrifice', color: 'bg-gradient-to-r from-purple-600 to-pink-600' },
     { id: MECHANIC_TYPES.UNCATEGORIZED, label: 'Other', color: 'bg-gradient-to-r from-gray-600 to-gray-500' }
   ];
 

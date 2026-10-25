@@ -7,22 +7,38 @@ const getMechanicBadge = (mechanicType) => {
     hips: { label: 'Hips', color: 'bg-gradient-to-r from-orange-600 to-red-600' },
     arms: { label: 'Arms', color: 'bg-gradient-to-r from-blue-600 to-cyan-600' },
     legs: { label: 'Legs', color: 'bg-gradient-to-r from-green-600 to-emerald-600' },
+    sacrifice: { label: 'Sacrifice', color: 'bg-gradient-to-r from-purple-600 to-pink-600' },
     uncategorized: { label: 'Other', color: 'bg-gradient-to-r from-gray-600 to-gray-500' }
   };
   
   return badges[mechanicType] || badges.uncategorized;
 };
 
+// Check if technique group is new (within last 7 days)
+const isGroupNew = (variants) => {
+  if (!variants || variants.length === 0) return false;
+  
+  // Check if any variant in the group is new (within last 7 days)
+  return variants.some(variant => {
+    if (!variant.dateAdded) return false;
+    const addedDate = new Date(variant.dateAdded);
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+    return addedDate >= sevenDaysAgo;
+  });
+};
+
 const TakeDownAccordion = ({ group, isOpen, onToggle }) => {
   const { name, mechanicType, variants } = group;
   const badge = getMechanicBadge(mechanicType);
+  const isNew = isGroupNew(variants);
   
   return (
     <div className="mb-4">
       {/* Accordion Header */}
       <button
         onClick={onToggle}
-        className="w-full bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 
+        className="w-full bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600
                    rounded-lg p-4 transition-all duration-200 shadow-lg hover:shadow-xl
                    flex items-center justify-between group"
       >
@@ -36,8 +52,13 @@ const TakeDownAccordion = ({ group, isOpen, onToggle }) => {
           
           {/* Technique Name */}
           <div className="flex-1 text-left">
-            <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-red-400 transition-colors">
+            <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-red-400 transition-colors flex items-center gap-2">
               {name}
+              {isNew && (
+                <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-2 py-0.5 rounded-full text-xs font-bold uppercase animate-pulse">
+                  NEW!
+                </span>
+              )}
             </h3>
             <p className="text-sm text-gray-400">
               {variants.length} {variants.length === 1 ? 'variant' : 'variants'}

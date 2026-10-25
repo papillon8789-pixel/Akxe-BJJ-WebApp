@@ -18,6 +18,111 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 ---
 
+## [2026-10-25] - Sumi Gaeshi Techniken & Sacrifice Filter 🥋
+
+### Hinzugefügt
+- **4 neue Sumi Gaeshi TakeDown-Techniken** (IDs 1-4, ganz oben in der Liste):
+  - **Sumi Gaeshi - Yoko NoGi Version**: "arm and body grip - start from uchi mata"
+  - **Sumi Gaeshi - Upper Hook NoGi Version**: "upper hook and neck grip"
+  - **Sumi Gaeshi - Under Hook NoGi Version**: "under hook and neck grip"
+  - **Sumi Gaeshi - Yoko NoGi Russian Tie Version**: "russian tie grip"
+  - Alle mit `mechanicType: "sacrifice"` und NoGi Tags
+  - Videos: TakeDown_Technique_30.mp4 bis TakeDown_Technique_33.mp4
+  - dateAdded: "2026-10-25" für NEW Badge (7 Tage Zeitfenster)
+
+- **Neuer "Sacrifice" Filter** in TakeDown-Kategorie:
+  - Lila-Pink Gradient: `bg-gradient-to-r from-purple-600 to-pink-600`
+  - Filter-Reihenfolge: All | Hips | Arms | Legs | **Sacrifice** | Other
+  - Automatischer Zähler zeigt (4) Techniken
+  - Datei: [`src/components/takedown/TakeDownFilter.jsx`](src/components/takedown/TakeDownFilter.jsx)
+
+- **Sacrifice Badge** in TakeDownAccordion:
+  - Lila-Pink Badge für Sacrifice-Techniken
+  - Datei: [`src/components/takedown/TakeDownAccordion.jsx`](src/components/takedown/TakeDownAccordion.jsx)
+
+- **NEW Badge auf Gruppen-Ebene**:
+  - Automatisches Badge für Technik-Gruppen mit neuen Varianten (< 7 Tage)
+  - Gelb-Orange Gradient mit Pulse-Animation
+  - Funktion: `isGroupNew()` in TakeDownAccordion.jsx
+  - Erscheint neben Gruppen-Namen (z.B. "Sumi Gaeshi NEW!")
+
+- **Workflow-Dokumentation**:
+  - Neue Datei: [`TAKEDOWN-WORKFLOW.md`](TAKEDOWN-WORKFLOW.md)
+  - Standardisierter Workflow für zukünftige TakeDown-Techniken
+  - Schritt-für-Schritt Anleitung mit Code-Beispielen
+  - Gradient-Farben Empfehlungen für neue Mechanik-Typen
+  - Wichtige Hinweise zu subCategory, Gruppierung, NEW Badge
+
+### Geändert
+- **mockTechniques.js aktualisiert**:
+  - Sumi Gaeshi Techniken an IDs 1-4 (ganz oben)
+  - Alle anderen Techniken um 4 IDs nach hinten verschoben
+  - `subCategory: "TakeDown"` für alle Sumi Gaeshi (wichtig für korrekte Gruppierung!)
+  - Gesamt: 82 Techniken (vorher 78)
+  - Datei: [`src/data/mockTechniques.js`](src/data/mockTechniques.js)
+
+- **TakeDownView.jsx erweitert**:
+  - Sacrifice-Count in Filter-Statistiken integriert
+  - Automatische Filterung nach `mechanicType: "sacrifice"`
+  - Datei: [`src/components/takedown/TakeDownView.jsx`](src/components/takedown/TakeDownView.jsx)
+
+- **NEW Badge Zeitfenster optimiert**:
+  - Von 30 Tage auf **7 Tage** reduziert
+  - Verhindert, dass ältere Techniken fälschlicherweise als "neu" markiert werden
+  - Nur Sumi Gaeshi (2026-10-25) bekommt NEW Badge
+
+### Technische Details
+- **Filter-System**:
+  - 5 Mechanik-Typen: Hips, Arms, Legs, **Sacrifice**, Other
+  - Jeder Typ hat eigenen Gradient und Badge
+  - Automatische Zählung pro Filter-Kategorie
+
+- **Gruppierung**:
+  - Techniken werden nach Titel gruppiert (vor " - ")
+  - "Sumi Gaeshi - Variante" → Gruppe: "Sumi Gaeshi"
+  - Alle Varianten unter einem Accordion
+  - Badge zeigt Mechanik-Typ der Gruppe
+
+- **Anzeige-Reihenfolge**:
+  - Neue Techniken mit niedrigen IDs erscheinen oben
+  - Sumi Gaeshi (IDs 1-4) steht ganz oben
+  - Innerhalb der TakeDown-Kategorie, unterhalb der Filter
+
+### User Experience
+**Admin/User sieht:**
+1. TakeDown-Kategorie öffnen
+2. Filter-Reihe: All (33) | Hips (2) | Arms (6) | Legs (7) | **Sacrifice (4)** | Other (14)
+3. Techniken-Gruppen:
+   - **Sumi Gaeshi NEW!** [Sacrifice Badge] ← Ganz oben! 🎉
+   - Harai Goshi [Hips Badge]
+   - Seoi Nage [Arms Badge]
+   - Ko Uchi Gake [Legs Badge]
+   - O Uchi Gari [Legs Badge]
+   - TakeDown - Technique 16-29 (einzelne Karten)
+
+**Sacrifice Filter klicken:**
+- Zeigt nur die 4 Sumi Gaeshi Techniken
+- Alle anderen Gruppen werden ausgeblendet
+
+### Aktueller Stand
+- **Gesamt: 82 Techniken** (vorher 78, +4 neue)
+- **TakeDown: 33 Techniken** (vorher 29, +4 neue)
+  - All (33)
+  - Hips (2) - Harai Goshi
+  - Arms (6) - Seoi Nage
+  - Legs (7) - Ko Uchi Gake, O Uchi Gari
+  - **Sacrifice (4) - Sumi Gaeshi** 🆕
+  - Other (14) - Unkategorisiert
+
+### Wichtige Erkenntnisse für zukünftige Updates
+1. **subCategory muss "TakeDown" sein** - nicht den Technik-Namen verwenden!
+2. **Neue Techniken oben einfügen** - IDs 1-X für prominente Platzierung
+3. **NEW Badge Zeitfenster**: 7 Tage (nicht 30 Tage)
+4. **Gruppierung erfolgt über Titel** - Format: "Technik Name - Variante"
+5. **Workflow dokumentiert** in TAKEDOWN-WORKFLOW.md
+
+---
+
 ## [2026-10-21] - Training Analytics / Mat Log Feature 📊
 
 ### Hinzugefügt

@@ -199,16 +199,17 @@ function AuthenticatedApp() {
     <TechniqueProvider>
       <div>
         <Header />
-        {/* Admin Buttons (only for admins) */}
-        {user?.isAdmin && (
-          <div className="bg-card-bg border-b border-gray-800 px-4 py-2 space-y-2">
-            <button
-              onClick={() => setCurrentView('training')}
-              className="w-full px-4 py-2 bg-transparent border-2 border-[#FF3C00] hover:border-[#FF5500] text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
-            >
-              <span>📊</span>
-              <span>Training Analytics</span>
-            </button>
+        {/* Training Analytics Button (for all users) */}
+        <div className="bg-card-bg border-b border-gray-800 px-4 py-2 space-y-2">
+          <button
+            onClick={() => setCurrentView('training')}
+            className="w-full px-4 py-2 bg-transparent border-2 border-[#FF3C00] hover:border-[#FF5500] text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+          >
+            <span>📊</span>
+            <span>Training Analytics</span>
+          </button>
+          {/* Admin Dashboard Button (only for admins) */}
+          {user?.isAdmin && (
             <button
               onClick={() => setCurrentView('admin')}
               className="w-full px-4 py-2 bg-transparent border-2 border-[#8B6F47] hover:border-[#A0826B] text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
@@ -216,8 +217,8 @@ function AuthenticatedApp() {
               <span>⚙️</span>
               <span>Admin Dashboard</span>
             </button>
-          </div>
-        )}
+          )}
+        </div>
         <IconNavigation />
         <AppContent />
       </div>

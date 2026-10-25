@@ -245,18 +245,6 @@ export default function TrainingLog() {
 
   const percentages = getGiNoGiPercentages();
 
-  if (!user?.isAdmin) {
-    return (
-      <div className="min-h-screen bg-app-bg flex items-center justify-center p-4">
-        <div className="text-center">
-          <div className="text-6xl mb-4">🔒</div>
-          <h2 className="text-2xl font-bold text-white mb-2">Admin Only</h2>
-          <p className="text-gray-400">This feature is only available for administrators.</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-app-bg">
       {/* Header */}
