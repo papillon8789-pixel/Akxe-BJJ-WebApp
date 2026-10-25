@@ -433,12 +433,14 @@ export default function AdminDashboard() {
         throw new Error(data.error || 'Failed to send newsletter');
       }
 
-      setNewsletterSuccess(`Newsletter erfolgreich an ${data.recipientCount} User versendet!`);
+      setNewsletterSuccess(`✅ Newsletter successfully sent to ${data.recipientCount} users! Check your inbox to verify.`);
       setShowNewsletterModal(false);
       
       // Refresh analytics after sending
       setTimeout(() => {
         fetchAnalytics();
+        // Auto-hide success message after 10 seconds
+        setTimeout(() => setNewsletterSuccess(null), 10000);
       }, 1000);
 
     } catch (err) {
