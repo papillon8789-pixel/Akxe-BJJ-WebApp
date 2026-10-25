@@ -10,8 +10,8 @@ export const mockTechniques = [
     "subCategory": "TakeDown",
     "variant": "Yoko NoGi Version",
     "mechanicType": "sacrifice",
-    "videoId": "TakeDown_Technique_30.mp4",
-    "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_30.mp4`,
+    "videoId": "Takedown_Technique_30.mp4",
+    "videoUrl": `${R2_BASE_URL}/Takedown_Technique_30.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Sumi%20Gaeshi%201",
     "duration": null,
     "tags": [
@@ -35,8 +35,8 @@ export const mockTechniques = [
     "subCategory": "TakeDown",
     "variant": "Upper Hook NoGi Version",
     "mechanicType": "sacrifice",
-    "videoId": "TakeDown_Technique_31.mp4",
-    "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_31.mp4`,
+    "videoId": "Takedown_Technique_31.mp4",
+    "videoUrl": `${R2_BASE_URL}/Takedown_Technique_31.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Sumi%20Gaeshi%202",
     "duration": null,
     "tags": [
@@ -60,8 +60,8 @@ export const mockTechniques = [
     "subCategory": "TakeDown",
     "variant": "Under Hook NoGi Version",
     "mechanicType": "sacrifice",
-    "videoId": "TakeDown_Technique_32.mp4",
-    "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_32.mp4`,
+    "videoId": "Takedown_Technique_32.mp4",
+    "videoUrl": `${R2_BASE_URL}/Takedown_Technique_32.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Sumi%20Gaeshi%203",
     "duration": null,
     "tags": [
@@ -85,8 +85,8 @@ export const mockTechniques = [
     "subCategory": "TakeDown",
     "variant": "Yoko NoGi Russian Tie Version",
     "mechanicType": "sacrifice",
-    "videoId": "TakeDown_Technique_33.mp4",
-    "videoUrl": `${R2_BASE_URL}/TakeDown_Technique_33.mp4`,
+    "videoId": "Takedown_Technique_33.mp4",
+    "videoUrl": `${R2_BASE_URL}/Takedown_Technique_33.mp4`,
     "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Sumi%20Gaeshi%204",
     "duration": null,
     "tags": [
