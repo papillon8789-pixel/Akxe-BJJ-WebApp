@@ -1,9 +1,9 @@
 {
   "active": true,
   "type": "info",
-  "title": "🥋 Technique Week!",
-  "message": "New: Half Butterfly Guard!",
+  "title": "🥋 Review Week!",
+  "message": "Half Butterfly Guard!",
   "dismissible": true,
   "link": null,
-  "expiresAt": "2026-11-30T23:59:59Z"
+  "expiresAt": "2026-12-30T23:59:59Z"
 }
