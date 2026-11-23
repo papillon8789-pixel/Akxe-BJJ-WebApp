@@ -12,6 +12,17 @@
   },
   {
     "id": 2,
+    "title": "Seminar",
+    "date": "2026-12-12",
+    "time": "15:30",
+    "description": "BJJ Seminar mit Rafael Lang (5th Degree Black Belt) | 15:30 - 17:30",
+    "icon": "🥋",
+    "color": "purple",
+    "location": "https://maps.app.goo.gl/VLQVSzuN2N4BEp6Z9",
+    "enabled": true
+  },
+  {
+    "id": 3,
     "title": "Event Template",
     "date": "2027-01-01",
     "time": "19:00",

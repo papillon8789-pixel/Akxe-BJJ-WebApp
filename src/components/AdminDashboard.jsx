@@ -339,7 +339,7 @@ export default function AdminDashboard() {
       setError(null);
       setNewsletterSuccess(null);
 
-      const subject = '🎉 New Features in the PRIMO BJJ App!';
+      const subject = '🥋 New Content & Upcoming Event!';
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -356,6 +356,7 @@ export default function AdminDashboard() {
               .button { display: inline-block; background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
               .footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 10px 10px; }
               .highlight { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 20px 0; border-radius: 8px; }
+              .event-box { background: #f3e8ff; border-left: 4px solid #9333ea; padding: 20px; margin: 20px 0; border-radius: 8px; }
             </style>
           </head>
           <body>
@@ -366,45 +367,36 @@ export default function AdminDashboard() {
               </div>
               
               <div class="content">
-                <h2 style="color: #1a1a1a; margin-top: 0;">🎉 New Features in the PRIMO BJJ App!</h2>
+                <h2 style="color: #1a1a1a; margin-top: 0;">🥋 New Content & Upcoming Event!</h2>
                 <p>Hey BJJ Family,</p>
-                <p>We've got exciting updates for you! The PRIMO BJJ App has been enhanced with new features:</p>
+                <p>Quick updates for you:</p>
                 
-                <div class="feature-box">
-                  <div class="feature-title">📊 Training Analytics Now Available for Everyone</div>
-                  <p><strong>Just launched!</strong> Track your training sessions and monitor your progress:</p>
-                  <ul>
-                    <li>📅 Training calendar with all your sessions</li>
-                    <li>🥋 Gi vs NoGi statistics</li>
-                    <li>🔥 Calories burned tracking</li>
-                    <li>⏱️ Total training time and averages</li>
-                    <li>📈 Monthly overviews and trends</li>
-                  </ul>
-                  <p style="margin-top: 15px; color: #666; font-size: 14px;">
-                    <em>Perfect for optimizing your training routine and staying motivated!</em>
+                <div class="event-box">
+                  <div style="color: #9333ea; font-weight: bold; font-size: 18px; margin-bottom: 10px;">🥋 Upcoming Seminar</div>
+                  <p><strong>BJJ Seminar with Rafael Lang (5th Degree Black Belt)</strong></p>
+                  <p style="margin: 10px 0;">
+                    📅 December 12, 2026<br>
+                    ⏰ 15:30 - 17:30<br>
+                    📍 Chiemgaustraße 148, München-Ramersdorf-Perlach
                   </p>
                 </div>
                 
                 <div class="highlight">
-                  <strong>🎥 4 New Sumi Gaeshi TakeDown Videos!</strong><br>
-                  From Wednesday's training session, now available:
-                  <ul style="margin-top: 10px;">
-                    <li>Sumi Gaeshi - Yoko NoGi Version (arm and body grip)</li>
-                    <li>Sumi Gaeshi - Upper Hook NoGi Version</li>
-                    <li>Sumi Gaeshi - Under Hook NoGi Version</li>
-                    <li>Sumi Gaeshi - Russian Tie NoGi Version</li>
-                  </ul>
+                  <strong>🎥 7 New Half Butterfly Videos!</strong><br>
+                  Fresh techniques now available in the Guard section.
                 </div>
-                
-                <p style="margin-top: 30px;"><strong>Ready to get started?</strong></p>
-                <p>Log in now and discover the new features!</p>
+
+                <div class="feature-box">
+                  <div class="feature-title">📝 Review Week</div>
+                  <p>This week we're focusing on reviewing and refining techniques we've learned. Perfect time to solidify your fundamentals!</p>
+                </div>
                 
                 <div style="text-align: center;">
                   <a href="https://primo-bjj.com" class="button">🔓 Open App</a>
                 </div>
                 
                 <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
-                  Happy training!<br>
+                  See you on the mats!<br>
                   <strong>Your PRIMO BJJ Team</strong>
                 </p>
               </div>

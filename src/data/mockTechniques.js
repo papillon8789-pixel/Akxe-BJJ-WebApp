@@ -2078,7 +2078,168 @@ export const mockTechniques = [
     "isDownloaded": false,
     "isBookmarked": false,
     "viewCount": 0,
-    "notes": ""}
+    "notes": ""},
+  {
+    "id": "79",
+    "title": "Half Butterfly - Technique 1",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_1.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_1.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%201",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "80",
+    "title": "Half Butterfly - Technique 2",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_2.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_2.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%202",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "81",
+    "title": "Half Butterfly - Technique 3",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_3.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_3.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%203",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "82",
+    "title": "Half Butterfly - Technique 4",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_4.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_4.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%204",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "83",
+    "title": "Half Butterfly - Technique 5",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_5.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_5.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%205",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "84",
+    "title": "Half Butterfly - Technique 6",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_6.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_6.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%206",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  },
+  {
+    "id": "85",
+    "title": "Half Butterfly - Technique 7",
+    "description": "Half Butterfly technique from PRIMO BJJ Training",
+    "category": "guard",
+    "subCategory": "Half Butterfly",
+    "videoId": "HalfButterfly_Technique_7.mp4",
+    "videoUrl": `${R2_BASE_URL}/HalfButterfly_Technique_7.mp4`,
+    "thumbnail": "https://via.placeholder.com/400x225/1a1a1a/e63946?text=Half%20Butterfly%207",
+    "duration": null,
+    "tags": [
+      "Half Butterfly",
+      "Guard"
+    ],
+    "dateAdded": "2026-11-23",
+    "month": "2026-11",
+    "isLegacy": false,
+    "isFavorite": false,
+    "isDownloaded": false,
+    "isBookmarked": false,
+    "viewCount": 0,
+    "notes": ""
+  }
 ];
 
 
@@ -2095,7 +2256,7 @@ export const categories = [
 ];
 
 export const subCategories = {
-  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso', 'Deep Half'],
+  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso', 'Deep Half', 'Half Butterfly'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   sweep: ['Sweep'],
   mount: ['Mount'],
