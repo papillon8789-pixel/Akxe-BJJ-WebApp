@@ -532,7 +532,7 @@ export default function AdminDashboard() {
                   <div className="space-y-2 text-sm">
                     <div className="flex gap-2">
                       <span className="text-gray-400 font-medium">Subject:</span>
-                      <span className="text-white">🎉 New Features in the PRIMO BJJ App!</span>
+                      <span className="text-white">🥋 New Content & Upcoming Event!</span>
                     </div>
                     <div className="flex gap-2">
                       <span className="text-gray-400 font-medium">Recipients:</span>
@@ -548,25 +548,28 @@ export default function AdminDashboard() {
                     <p className="text-sm opacity-90">Technique Locker</p>
                   </div>
                   
-                  <h2 className="text-xl font-bold mb-4">🎉 New Features in the PRIMO BJJ App!</h2>
+                  <h2 className="text-xl font-bold mb-4">🥋 New Content & Upcoming Event!</h2>
                   <p className="mb-4">Hey BJJ Family,</p>
-                  <p className="mb-4">We've got exciting updates for you! The PRIMO BJJ App has been enhanced with new features:</p>
+                  <p className="mb-4">Quick updates for you:</p>
                   
-                  <div className="bg-gray-100 border-l-4 border-red-600 p-4 rounded mb-4">
-                    <div className="font-bold text-red-600 mb-2">📊 Training Analytics Now Available</div>
-                    <p className="mb-2"><strong>Just launched!</strong> Track your training sessions and monitor your progress:</p>
-                    <ul className="list-disc list-inside space-y-1 text-sm">
-                      <li>📅 Training calendar with all sessions</li>
-                      <li>🥋 Gi vs NoGi statistics</li>
-                      <li>🔥 Calories burned tracking</li>
-                      <li>⏱️ Total training time and averages</li>
-                      <li>📈 Monthly overviews and trends</li>
-                    </ul>
+                  <div className="bg-purple-50 border-l-4 border-purple-600 p-4 rounded mb-4">
+                    <div className="font-bold text-purple-600 mb-2">🥋 Upcoming Seminar</div>
+                    <p className="mb-2"><strong>BJJ Seminar with Rafael Lang (5th Degree Black Belt)</strong></p>
+                    <p className="text-sm">
+                      📅 December 12, 2026<br/>
+                      ⏰ 15:30 - 17:30<br/>
+                      📍 Chiemgaustraße 148, München-Ramersdorf-Perlach
+                    </p>
                   </div>
                   
                   <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded mb-4">
-                    <strong>🎥 4 New Sumi Gaeshi TakeDown Videos!</strong>
-                    <p className="text-sm mt-2">From Wednesday's training - now available</p>
+                    <strong>🎥 7 New Half Butterfly Videos!</strong>
+                    <p className="text-sm mt-2">Fresh techniques now available in the Guard section.</p>
+                  </div>
+
+                  <div className="bg-gray-100 border-l-4 border-red-600 p-4 rounded mb-4">
+                    <div className="font-bold text-red-600 mb-2">📝 Review Week</div>
+                    <p className="text-sm">This week we're focusing on reviewing and refining techniques we've learned. Perfect time to solidify your fundamentals!</p>
                   </div>
                   
                   <div className="text-center my-6">
