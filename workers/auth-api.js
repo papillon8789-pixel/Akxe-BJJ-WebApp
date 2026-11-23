@@ -106,19 +106,28 @@ async function verifyJWT(token, secret) {
 }
 
 // Sende Email via Resend API
-async function sendEmail(env, to, subject, html) {
+async function sendEmail(env, to, subject, html, useBcc = false) {
+  const emailPayload = {
+    from: 'PRIMO BJJ <noreply@primo-bjj.com>',
+    subject,
+    html,
+  };
+
+  // If useBcc is true and to is an array, send as BCC
+  if (useBcc && Array.isArray(to)) {
+    emailPayload.to = ['noreply@primo-bjj.com']; // Dummy recipient
+    emailPayload.bcc = to;
+  } else {
+    emailPayload.to = Array.isArray(to) ? to : [to];
+  }
+
   const emailResponse = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      from: 'PRIMO BJJ <noreply@primo-bjj.com>',
-      to: Array.isArray(to) ? to : [to],
-      subject,
-      html,
-    })
+    body: JSON.stringify(emailPayload)
   });
   
   if (!emailResponse.ok) {
@@ -1413,9 +1422,9 @@ export default {
         
         const recipients = activeUsers.results.map(u => u.email);
         
-        // Send newsletter via Resend API
+        // Send newsletter via Resend API with BCC to protect recipient privacy
         try {
-          await sendEmail(env, recipients, subject, htmlContent);
+          await sendEmail(env, recipients, subject, htmlContent, true);
         } catch (emailError) {
           console.error('Failed to send newsletter:', emailError);
           return jsonResponse({ error: 'Failed to send newsletter emails' }, 500);
