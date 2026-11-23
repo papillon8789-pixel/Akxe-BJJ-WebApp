@@ -2256,7 +2256,7 @@ export const categories = [
 ];
 
 export const subCategories = {
-  guard: ['Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso', 'Deep Half', 'Half Butterfly'],
+  guard: ['Half Butterfly', 'Z Guard', '50/50 Guard', 'Octopus Guard', 'Half-lasso Guard', 'Spider Lasso', 'Deep Half'],
   pass: ['Guard Pass', 'Knee Slice', 'Toreando', 'Leg Drag'],
   sweep: ['Sweep'],
   mount: ['Mount'],
