@@ -1,7 +1,7 @@
 # Newsletter Content - English Version
 
 ## Subject Line
-🎉 New Features in the PRIMO BJJ App!
+🥋 New Georgian Grip Techniques & Upcoming Event!
 
 ---
 
@@ -10,36 +10,37 @@
 ```
 Hey BJJ Family,
 
-We've got exciting updates for you! The PRIMO BJJ App has been enhanced with new features:
+Exciting updates from your training this week:
 
-📊 TRAINING ANALYTICS NOW AVAILABLE FOR EVERYONE
+🎥 NEW: GEORGIAN GRIP TECHNIQUES!
 
-Just launched! Track your training sessions and monitor your progress:
+Fresh from this week's takedown training! Two new Georgian Grip videos now available in the Takedown section:
 
-• 📅 Training calendar with all your sessions
-• 🥋 Gi vs NoGi statistics
-• 🔥 Calories burned tracking
-• ⏱️ Total training time and averages
-• 📈 Monthly overviews and trends
+• Georgian Grip - How to Attack
+  Sleeve and belt on the same side - push down his head - hide your leg
 
-Perfect for optimizing your training routine and staying motivated!
+• Georgian Grip - How to Defend
+  Get up with your back - don't let Tori pull your arm - take his belt - constantly threaten Ura-Nage
 
-🎥 4 NEW SUMI GAESHI TAKEDOWN VIDEOS!
+🙏 Special thanks to Professor Mariano for sharing these excellent takedown techniques with us!
 
-From Wednesday's training session, now available:
+🥋 UPCOMING SEMINAR
 
-• Sumi Gaeshi - Yoko NoGi Version (arm and body grip)
-• Sumi Gaeshi - Upper Hook NoGi Version
-• Sumi Gaeshi - Under Hook NoGi Version
-• Sumi Gaeshi - Russian Tie NoGi Version
+BJJ Seminar with Rafael Lang (5th Degree Black Belt)
+📅 December 12, 2026
+⏰ 15:30 - 17:30
+📍 Chiemgaustraße 148, München-Ramersdorf-Perlach
 
-READY TO GET STARTED?
+🎥 ALSO AVAILABLE: 7 New Half Butterfly Videos!
+Fresh techniques in the Guard section.
 
-Log in now and discover the new features!
+READY TO WATCH?
+
+Log in now and check out the new Georgian Grip techniques!
 
 👉 https://primo-bjj.com
 
-Happy training!
+See you on the mats!
 Your PRIMO BJJ Team
 
 ---

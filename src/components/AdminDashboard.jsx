@@ -339,7 +339,7 @@ export default function AdminDashboard() {
       setError(null);
       setNewsletterSuccess(null);
 
-      const subject = '🥋 New Content & Upcoming Event!';
+      const subject = '🥋 New Georgian Grip Techniques & Upcoming Event!';
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -357,6 +357,7 @@ export default function AdminDashboard() {
               .footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 10px 10px; }
               .highlight { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 20px 0; border-radius: 8px; }
               .event-box { background: #f3e8ff; border-left: 4px solid #9333ea; padding: 20px; margin: 20px 0; border-radius: 8px; }
+              .new-badge { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; margin-left: 8px; }
             </style>
           </head>
           <body>
@@ -367,9 +368,23 @@ export default function AdminDashboard() {
               </div>
               
               <div class="content">
-                <h2 style="color: #1a1a1a; margin-top: 0;">🥋 New Content & Upcoming Event!</h2>
+                <h2 style="color: #1a1a1a; margin-top: 0;">🥋 New Georgian Grip Techniques & Upcoming Event!</h2>
                 <p>Hey BJJ Family,</p>
-                <p>Quick updates for you:</p>
+                <p>Exciting updates from your training this week:</p>
+                
+                <div class="feature-box">
+                  <div class="feature-title">🎥 NEW: Georgian Grip Techniques <span class="new-badge">NEW!</span></div>
+                  <p>Fresh from this week's takedown training! Two new Georgian Grip videos now available in the Takedown section:</p>
+                  <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Georgian Grip - How to Attack</strong><br>
+                    <span style="color: #666; font-size: 14px;">Sleeve and belt on the same side - push down his head - hide your leg</span></li>
+                    <li><strong>Georgian Grip - How to Defend</strong><br>
+                    <span style="color: #666; font-size: 14px;">Get up with your back - don't let Tori pull your arm - take his belt - constantly threaten Ura-Nage</span></li>
+                  </ul>
+                  <p style="margin-top: 15px; padding: 10px; background: #fef3c7; border-radius: 6px; font-size: 14px;">
+                    🙏 <strong>Special thanks to Professor Mariano</strong> for sharing these excellent takedown techniques with us!
+                  </p>
+                </div>
                 
                 <div class="event-box">
                   <div style="color: #9333ea; font-weight: bold; font-size: 18px; margin-bottom: 10px;">🥋 Upcoming Seminar</div>
@@ -382,17 +397,12 @@ export default function AdminDashboard() {
                 </div>
                 
                 <div class="highlight">
-                  <strong>🎥 7 New Half Butterfly Videos!</strong><br>
-                  Fresh techniques now available in the Guard section.
-                </div>
-
-                <div class="feature-box">
-                  <div class="feature-title">📝 Review Week</div>
-                  <p>This week we're focusing on reviewing and refining techniques we've learned. Perfect time to solidify your fundamentals!</p>
+                  <strong>🎥 Also Available: 7 New Half Butterfly Videos!</strong><br>
+                  Fresh techniques in the Guard section.
                 </div>
                 
                 <div style="text-align: center;">
-                  <a href="https://primo-bjj.com" class="button">🔓 Open App</a>
+                  <a href="https://primo-bjj.com" class="button">🔓 Open App & Watch Now</a>
                 </div>
                 
                 <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5; color: #666; font-size: 14px;">
