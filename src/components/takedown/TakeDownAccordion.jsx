@@ -8,6 +8,7 @@ const getMechanicBadge = (mechanicType) => {
     arms: { label: 'Arms', color: 'bg-gradient-to-r from-blue-600 to-cyan-600' },
     legs: { label: 'Legs', color: 'bg-gradient-to-r from-green-600 to-emerald-600' },
     sacrifice: { label: 'Sacrifice', color: 'bg-gradient-to-r from-purple-600 to-pink-600' },
+    grips: { label: 'Grips', color: 'bg-gradient-to-r from-yellow-600 to-amber-600' },
     uncategorized: { label: 'Other', color: 'bg-gradient-to-r from-gray-600 to-gray-500' }
   };
   

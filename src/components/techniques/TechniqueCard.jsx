@@ -54,8 +54,12 @@ export default function TechniqueCard({ technique }) {
     return colors[difficulty?.toLowerCase()] || 'bg-gray-500 text-white';
   };
 
-  // Check if technique is new (added in current month)
+  // Check if technique is new (added in current month or explicitly marked as new)
   const isNew = () => {
+    // Check explicit isNew flag first
+    if (technique.isNew === true) return true;
+    
+    // Otherwise check if added within last 30 days
     if (!technique.dateAdded) return false;
     const addedDate = new Date(technique.dateAdded);
     const now = new Date();

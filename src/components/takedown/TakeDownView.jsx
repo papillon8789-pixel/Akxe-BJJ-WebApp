@@ -48,7 +48,20 @@ const TakeDownView = ({ techniques }) => {
     }, {});
     
     // All named technique groups (even single variants) get accordions
-    const multiVariantGroups = Object.values(grouped);
+    // Sort groups: NEW techniques first, then alphabetically
+    const multiVariantGroups = Object.values(grouped).sort((a, b) => {
+      // Check if groups have new techniques
+      const aHasNew = a.variants.some(v => v.isNew === true || v.dateAdded === '2026-11-26');
+      const bHasNew = b.variants.some(v => v.isNew === true || v.dateAdded === '2026-11-26');
+      
+      // NEW techniques come first
+      if (aHasNew && !bHasNew) return -1;
+      if (!aHasNew && bHasNew) return 1;
+      
+      // Otherwise sort alphabetically
+      return a.name.localeCompare(b.name);
+    });
+    
     const singleTechniques = genericTechniques; // Generic techniques shown as direct cards
     
     // Calculate counts for each filter
@@ -59,6 +72,7 @@ const TakeDownView = ({ techniques }) => {
       [MECHANIC_TYPES.ARMS]: allTechniques.filter(t => t.mechanicType === 'arms').length,
       [MECHANIC_TYPES.LEGS]: allTechniques.filter(t => t.mechanicType === 'legs').length,
       [MECHANIC_TYPES.SACRIFICE]: allTechniques.filter(t => t.mechanicType === 'sacrifice').length,
+      [MECHANIC_TYPES.GRIPS]: allTechniques.filter(t => t.mechanicType === 'grips').length,
       [MECHANIC_TYPES.UNCATEGORIZED]: allTechniques.filter(t => t.mechanicType === 'uncategorized').length
     };
     
