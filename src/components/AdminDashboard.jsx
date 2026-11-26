@@ -542,7 +542,7 @@ export default function AdminDashboard() {
                   <div className="space-y-2 text-sm">
                     <div className="flex gap-2">
                       <span className="text-gray-400 font-medium">Subject:</span>
-                      <span className="text-white">🥋 New Content & Upcoming Event!</span>
+                      <span className="text-white">🥋 New Georgian Grip Techniques & Upcoming Event!</span>
                     </div>
                     <div className="flex gap-2">
                       <span className="text-gray-400 font-medium">Recipients:</span>
@@ -558,9 +558,26 @@ export default function AdminDashboard() {
                     <p className="text-sm opacity-90">Technique Locker</p>
                   </div>
                   
-                  <h2 className="text-xl font-bold mb-4">🥋 New Content & Upcoming Event!</h2>
+                  <h2 className="text-xl font-bold mb-4">🥋 New Georgian Grip Techniques & Upcoming Event!</h2>
                   <p className="mb-4">Hey BJJ Family,</p>
-                  <p className="mb-4">Quick updates for you:</p>
+                  <p className="mb-4">Exciting updates from your training this week:</p>
+                  
+                  <div className="bg-gray-100 border-l-4 border-red-600 p-4 rounded mb-4">
+                    <div className="font-bold text-red-600 mb-2 flex items-center gap-2">
+                      🎥 NEW: Georgian Grip Techniques
+                      <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-2 py-0.5 rounded-full text-xs font-bold">NEW!</span>
+                    </div>
+                    <p className="text-sm mb-2">Fresh from this week's takedown training! Two new Georgian Grip videos now available in the Takedown section:</p>
+                    <ul className="text-sm space-y-2 ml-4">
+                      <li><strong>Georgian Grip - How to Attack</strong><br/>
+                      <span className="text-gray-600 text-xs">Sleeve and belt on the same side - push down his head - hide your leg</span></li>
+                      <li><strong>Georgian Grip - How to Defend</strong><br/>
+                      <span className="text-gray-600 text-xs">Get up with your back - don't let Tori pull your arm - take his belt - constantly threaten Ura-Nage</span></li>
+                    </ul>
+                    <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-sm">
+                      🙏 <strong>Special thanks to Professor Mariano</strong> for sharing these excellent takedown techniques with us!
+                    </div>
+                  </div>
                   
                   <div className="bg-purple-50 border-l-4 border-purple-600 p-4 rounded mb-4">
                     <div className="font-bold text-purple-600 mb-2">🥋 Upcoming Seminar</div>
@@ -573,18 +590,13 @@ export default function AdminDashboard() {
                   </div>
                   
                   <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded mb-4">
-                    <strong>🎥 7 New Half Butterfly Videos!</strong>
-                    <p className="text-sm mt-2">Fresh techniques now available in the Guard section.</p>
-                  </div>
-
-                  <div className="bg-gray-100 border-l-4 border-red-600 p-4 rounded mb-4">
-                    <div className="font-bold text-red-600 mb-2">📝 Review Week</div>
-                    <p className="text-sm">This week we're focusing on reviewing and refining techniques we've learned. Perfect time to solidify your fundamentals!</p>
+                    <strong>🎥 Also Available: 7 New Half Butterfly Videos!</strong>
+                    <p className="text-sm mt-2">Fresh techniques in the Guard section.</p>
                   </div>
                   
                   <div className="text-center my-6">
                     <div className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-bold">
-                      🔓 Open App
+                      🔓 Open App & Watch Now
                     </div>
                   </div>
                 </div>
